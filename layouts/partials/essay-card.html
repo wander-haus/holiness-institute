@@ -1,0 +1,5 @@
+<a href="{{ .RelPermalink }}" class="essay-card">
+  {{ with .Params.number }}<p class="essay-card__number">Essay {{ . }}</p>{{ end }}
+  <h3 class="essay-card__title">{{ .Title }}</h3>
+  {{ with .Params.summary }}<p class="essay-card__summary">{{ . }}</p>{{ end }}
+</a>

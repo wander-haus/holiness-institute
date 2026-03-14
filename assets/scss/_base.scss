@@ -1,0 +1,135 @@
+// ==========================================================================
+// Base Styles — Reset & Typography
+// ==========================================================================
+
+@use 'variables' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-body;
+  font-size: $font-size-base;
+  line-height: $line-height-body;
+  color: $color-body-text;
+  background-color: $color-bg;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  font-weight: 600;
+  line-height: $line-height-heading;
+  color: $color-heading;
+  margin-bottom: $space-sm;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+@media (max-width: $bp-md) {
+  h1 { font-size: 1.875rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+}
+
+// Body text
+p {
+  margin-bottom: $space-md;
+}
+
+a {
+  color: $color-link;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-link-hover;
+  }
+}
+
+// Lists
+ul, ol {
+  margin-bottom: $space-md;
+  padding-left: $space-md;
+}
+
+li {
+  margin-bottom: $space-xs;
+}
+
+// Blockquotes
+blockquote {
+  border-left: 3px solid $color-pullquote;
+  padding: $space-sm $space-md;
+  margin: $space-lg 0;
+  font-style: italic;
+  color: $color-pullquote;
+  background: rgba($color-pullquote, 0.04);
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Horizontal rules
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    $gold,
+    transparent
+  );
+  margin: $space-xl 0;
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Tables
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: $space-lg 0;
+  font-size: $font-size-small;
+}
+
+th, td {
+  padding: $space-xs $space-sm;
+  text-align: left;
+  border-bottom: 1px solid rgba($deep-gold, 0.2);
+}
+
+th {
+  font-family: $font-label;
+  font-size: $font-size-meta;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $color-heading;
+}
+
+// Selection
+::selection {
+  background: rgba($gold, 0.25);
+  color: $color-body-text;
+}

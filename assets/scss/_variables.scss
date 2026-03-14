@@ -1,0 +1,61 @@
+// ==========================================================================
+// Design System Variables — The Holiness Institute
+// ==========================================================================
+
+// Color Palette
+$gold:                #C5A044;
+$deep-gold:           #8B7332;
+$parchment:           #F5F0E8;
+$deep-purple-charcoal:#2A1F3D;
+$sepia:               #3D3228;
+$dark-charcoal:       #2C2C2C;
+$muted-brown:         #6B5E50;
+$burgundy:            #5C1A1A;
+$sage-green:          #4A5C3F;
+
+// Functional aliases
+$color-heading:       $gold;
+$color-accent:        $gold;
+$color-link:          $gold;
+$color-link-hover:    $deep-gold;
+$color-bg:            $parchment;
+$color-hero-bg:       $deep-purple-charcoal;
+$color-footer-bg:     $deep-purple-charcoal;
+$color-section-alt:   $sepia;
+$color-body-text:     $dark-charcoal;
+$color-meta:          $muted-brown;
+$color-pullquote:     $burgundy;
+$color-secondary:     $sage-green;
+
+// Typography
+$font-heading:  'Cormorant Garamond', 'Georgia', serif;
+$font-body:     'EB Garamond', 'Georgia', serif;
+$font-label:    'Cinzel', 'Georgia', serif;
+
+$font-size-base:    1.125rem;   // 18px
+$font-size-small:   0.875rem;
+$font-size-meta:    0.8125rem;
+$line-height-body:  1.75;
+$line-height-heading: 1.2;
+
+// Layout
+$max-width-reading: 700px;
+$max-width-site:    1200px;
+$nav-height:        72px;
+
+// Spacing
+$space-xs:  0.5rem;
+$space-sm:  1rem;
+$space-md:  1.5rem;
+$space-lg:  2.5rem;
+$space-xl:  4rem;
+$space-xxl: 6rem;
+
+// Breakpoints
+$bp-sm:  480px;
+$bp-md:  768px;
+$bp-lg:  1024px;
+
+// Transitions
+$transition-fast: 0.2s ease;
+$transition-base: 0.3s ease;

@@ -1,0 +1,256 @@
+// ==========================================================================
+// Components
+// ==========================================================================
+
+@use 'variables' as *;
+
+// Gold ornamental divider
+.gold-rule {
+  text-align: center;
+  margin: $space-xl 0;
+
+  &::before {
+    content: '✦';
+    color: $gold;
+    font-size: 0.875rem;
+    letter-spacing: 1em;
+  }
+}
+
+.gold-rule--triple {
+  &::before {
+    content: '✦  ✦  ✦';
+  }
+}
+
+// Essay card (for list pages)
+.essay-card {
+  display: block;
+  padding: $space-lg 0;
+  border-bottom: 1px solid rgba($deep-gold, 0.15);
+  text-decoration: none;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: rgba($gold, 0.06);
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.essay-card__number {
+  font-family: $font-label;
+  font-size: $font-size-meta;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-meta;
+  margin-bottom: $space-xs;
+}
+
+.essay-card__title {
+  font-family: $font-heading;
+  font-size: 1.5rem;
+  color: $color-heading;
+  margin-bottom: $space-xs;
+  line-height: 1.3;
+}
+
+.essay-card__summary {
+  color: $color-body-text;
+  font-size: $font-size-base;
+  line-height: 1.6;
+}
+
+.essay-card__status {
+  font-family: $font-label;
+  font-size: $font-size-meta;
+  color: $color-meta;
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
+
+// Essay cards on dark (section--alt) backgrounds
+.section--alt {
+  .essay-card {
+    border-bottom-color: rgba($gold, 0.2);
+
+    &:hover {
+      background: rgba($gold, 0.06);
+    }
+  }
+
+  .essay-card__number {
+    color: rgba($parchment, 0.5);
+  }
+
+  .essay-card__summary {
+    color: rgba($parchment, 0.8);
+  }
+
+  .essay-card__status {
+    color: rgba($parchment, 0.45);
+  }
+}
+
+// Chapter list (book)
+.chapter-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chapter-item {
+  border-bottom: 1px solid rgba($deep-gold, 0.15);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.chapter-item__link {
+  display: flex;
+  align-items: baseline;
+  gap: $space-sm;
+  padding: $space-md 0;
+  text-decoration: none;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: rgba($gold, 0.03);
+  }
+}
+
+.chapter-item__num {
+  font-family: $font-label;
+  font-size: $font-size-meta;
+  color: $color-meta;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+  min-width: 3rem;
+}
+
+.chapter-item__title {
+  font-family: $font-heading;
+  font-size: 1.25rem;
+  color: $color-heading;
+  line-height: 1.3;
+}
+
+// Framework diagnostic card
+.diagnostic-card {
+  background: rgba($gold, 0.04);
+  border-left: 3px solid $gold;
+  padding: $space-md;
+  margin: $space-md 0;
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 1.25rem;
+    color: $color-heading;
+    margin-bottom: $space-xs;
+  }
+
+  &__question {
+    font-style: italic;
+    color: $color-pullquote;
+  }
+}
+
+// Coming soon badge
+.coming-soon {
+  display: inline-block;
+  font-family: $font-label;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-meta;
+  background: rgba($muted-brown, 0.1);
+  padding: 0.2em 0.6em;
+  border-radius: 2px;
+}
+
+// Contact form
+.contact-form {
+  max-width: $max-width-reading;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: $space-md;
+}
+
+.form-label {
+  display: block;
+  font-family: $font-label;
+  font-size: $font-size-meta;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $color-meta;
+  margin-bottom: $space-xs;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: $space-sm;
+  font-family: $font-body;
+  font-size: $font-size-base;
+  color: $color-body-text;
+  background: white;
+  border: 1px solid rgba($deep-gold, 0.3);
+  transition: border-color $transition-fast;
+
+  &:focus {
+    outline: none;
+    border-color: $gold;
+  }
+}
+
+.form-textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-button {
+  font-family: $font-label;
+  font-size: $font-size-small;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $parchment;
+  background: $deep-purple-charcoal;
+  border: 1px solid $gold;
+  padding: $space-sm $space-lg;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $gold;
+    color: $deep-purple-charcoal;
+  }
+}
+
+// Evaluate placeholder
+.evaluate-placeholder {
+  text-align: center;
+  padding: $space-xxl $space-md;
+
+  &__icon {
+    font-size: 3rem;
+    margin-bottom: $space-md;
+    opacity: 0.4;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    color: $color-heading;
+    margin-bottom: $space-sm;
+  }
+
+  &__text {
+    color: $color-meta;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}

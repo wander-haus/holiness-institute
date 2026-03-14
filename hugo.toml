@@ -1,0 +1,56 @@
+baseURL = 'https://holiness.institute/'
+languageCode = 'en-us'
+title = 'The Holiness Institute'
+enableRobotsTXT = true
+
+[params]
+  description = 'A Catholic ecclesial resource center promoting holiness as the governing principle of pastoral renewal.'
+  author = 'Stephen Gajdosik'
+  tagline = 'Holiness as the Governing Principle of Pastoral Renewal'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+
+[menu]
+  [[menu.main]]
+    name = 'Home'
+    url = '/'
+    weight = 1
+  [[menu.main]]
+    name = 'Framework'
+    url = '/framework/'
+    weight = 2
+  [[menu.main]]
+    name = 'Writings'
+    url = '/writings/'
+    weight = 3
+  [[menu.main]]
+    name = 'Book'
+    url = '/book/'
+    weight = 4
+  [[menu.main]]
+    name = 'About'
+    url = '/about/'
+    weight = 5
+
+  [[menu.footer]]
+    name = 'Contact'
+    url = '/contact/'
+    weight = 1
+  [[menu.footer]]
+    name = 'Evaluate'
+    url = '/evaluate/'
+    weight = 2
+
+[outputs]
+  home = ['HTML', 'RSS']
+  section = ['HTML', 'RSS']
+
+[sitemap]
+  changefreq = 'monthly'
+  priority = 0.5

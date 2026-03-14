@@ -1,0 +1,26 @@
+---
+title: "History of the 8S Framework"
+subtitle: "The Development and Theological Reordering"
+weight: 2
+summary: "How the McKinsey 7S model was reordered and subordinated to theological and metaphysical principles for ecclesial application."
+---
+
+The 8S framework employed in this work has a developmental history that deserves clarification. It did not originate as a theological construct, nor was it initially conceived for ecclesial application. Its earliest form can be traced to the 7S model articulated within McKinsey & Company in the late twentieth century as a descriptive tool for organizational coherence. In its original expression, the framework included seven elements: strategy, structure, systems, staffing, skills, style, and superordinate goal. The superordinate goal functioned as the governing purpose around which the other elements were to be aligned.
+
+In most presentations the elements were arranged in a circular or web-like configuration, visually reinforcing mutual interdependence rather than hierarchical order. The structure conveyed relational coherence but not ontological priority. Each element influenced the others, yet no clear governing end visibly disciplined the whole. Superordinate Goal was present, but it did not always function as true final cause. The model described alignment. It did not insist upon teleology.
+
+Over time, particularly in corporate usage, the emphasis on Superordinate Goal diminished further as Shared Values came to occupy the central position. Culture became the integrative center, and strategic effectiveness often assumed practical primacy. The framework remained analytically useful, yet its ordering became increasingly descriptive rather than directional. It could reveal misalignment, but it could not by itself determine whether the institution was ordered toward the right end.
+
+One of the collaborators in the development of the present framework had served as a principal in McKinsey's New York office and had worked extensively with the 7S model in corporate settings. Observing the gradual softening of teleological clarity, he restored the Superordinate Goal to its governing position and reordered the remaining elements explicitly beneath it. Purpose was no longer one factor among many but the determinative principle. Strategy, structure, systems, staffing, skills, and style were subordinated to an articulated end rather than allowed to function as de facto drivers. The model thus recovered teleological coherence.
+
+Yet even this restoration remained incomplete. In corporate adaptation, Shared Values had replaced Superordinate Goal in some iterations, but culture and purpose are not identical. The present work therefore reintroduces Shared Values, forming an eightfold articulation. Purpose and culture are both essential, yet they are not interchangeable. What an institution is for and what it loves most must both be examined.
+
+The decisive development, however, lies not in adding an eighth element but in subordinating the entire structure to theological and metaphysical principles. Within ecclesial life the Superordinate Goal cannot remain undefined. The Second Vatican Council declares that "all in the Church... are called to holiness" and that this holiness consists in "the perfection of charity" (*Lumen Gentium*, 39–40). Saint John Paul II makes this normative for pastoral governance when he writes, "All pastoral initiatives must be set in relation to holiness" (*Novo Millennio Ineunte*, 30). In the Church, therefore, the Superordinate Goal is not institutional success, sustainability, or influence. It is union with God in Christ.
+
+The framework is accordingly subordinated beneath final causality and sacramental ontology. The Four Causes provide the governing grammar. Holiness is final cause. Grace is primary efficient cause. The Church is sacrament and organism. Persons are the primary material cause of sanctification. Strategy, structure, staffing, skills, systems, style, and shared values are evaluated not merely for internal coherence but for conformity to this supernatural order.
+
+It is essential to emphasize that the 8S do not generate sanctification. They diagnose alignment. They reveal whether the visible articulation of diocesan life corresponds to its supernatural end or whether inversion has occurred. When holiness governs, each element finds proportion. When preservation governs, misalignment spreads quietly across all eight dimensions.
+
+In this reordered and subordinated form, the 8S are not imported corporate logic but an analytic instrument placed beneath the Church's own metaphysical commitments. The theology governs the framework. The framework does not govern the theology. Used rightly, it functions as a mirror rather than a mechanism. It enables bishops and pastors to examine whether final causality remains explicit, whether sacramental identity governs method, whether grace is protected as principal cause, and whether persons remain the true locus of transformation.
+
+When so ordered, the 8S serve the Church's renewal not by producing fruit, but by helping her recognize whether she remains attached to the Vine from whom alone fruit can come.

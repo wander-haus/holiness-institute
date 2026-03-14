@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="page-hero">
+  <h1 class="page-hero__title">{{ .Title }}</h1>
+</div>
+<div class="section">
+  <div class="evaluate-placeholder">
+    <p class="evaluate-placeholder__icon">&cross;</p>
+    <h2 class="evaluate-placeholder__title">Coming Soon</h2>
+    <p class="evaluate-placeholder__text">
+      The Holiness Institute is developing a diagnostic evaluation tool grounded in the 8S Framework and Four Causes. This tool will help parishes and dioceses assess whether their pastoral structures are ordered toward holiness as their governing end.
+    </p>
+    {{ .Content }}
+  </div>
+</div>
+{{ end }}

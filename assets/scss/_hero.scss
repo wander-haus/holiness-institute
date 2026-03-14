@@ -1,0 +1,103 @@
+// ==========================================================================
+// Hero Section
+// ==========================================================================
+
+@use 'variables' as *;
+
+.hero {
+  background-color: $color-hero-bg;
+  color: $parchment;
+  padding: $space-xxl $space-md;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      ellipse at center,
+      rgba($gold, 0.06) 0%,
+      transparent 70%
+    );
+  }
+}
+
+.hero__content {
+  position: relative;
+  max-width: $max-width-reading;
+  margin: 0 auto;
+}
+
+.hero__label {
+  font-family: $font-label;
+  font-size: $font-size-meta;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $gold;
+  margin-bottom: $space-md;
+}
+
+.hero__title {
+  font-family: $font-heading;
+  font-size: 3rem;
+  font-weight: 600;
+  color: $parchment;
+  margin-bottom: $space-md;
+  line-height: 1.15;
+
+  @media (max-width: $bp-md) {
+    font-size: 2rem;
+  }
+}
+
+.hero__subtitle {
+  font-family: $font-body;
+  font-size: 1.25rem;
+  color: rgba($parchment, 0.75);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto $space-lg;
+
+  @media (max-width: $bp-md) {
+    font-size: 1.1rem;
+  }
+}
+
+.hero__rule {
+  width: 80px;
+  height: 1px;
+  background: $gold;
+  margin: 0 auto $space-lg;
+  border: none;
+}
+
+// Page-level hero (shorter)
+.page-hero {
+  background-color: $color-hero-bg;
+  color: $parchment;
+  padding: $space-xl $space-md;
+  text-align: center;
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 2.25rem;
+    color: $parchment;
+    margin-bottom: $space-xs;
+
+    @media (max-width: $bp-md) {
+      font-size: 1.75rem;
+    }
+  }
+
+  &__subtitle {
+    font-family: $font-body;
+    font-size: 1.125rem;
+    color: rgba($parchment, 0.65);
+    font-style: italic;
+  }
+}

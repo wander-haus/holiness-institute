@@ -1,0 +1,116 @@
+// ==========================================================================
+// Reading / Prose Styles
+// ==========================================================================
+
+@use 'variables' as *;
+
+.prose {
+  max-width: $max-width-reading;
+  margin: 0 auto;
+  padding: $space-xl $space-md;
+
+  h2 {
+    margin-top: $space-xl;
+    margin-bottom: $space-sm;
+    padding-bottom: $space-xs;
+    border-bottom: 1px solid rgba($gold, 0.2);
+  }
+
+  h3 {
+    margin-top: $space-lg;
+  }
+
+  // Drop cap on first paragraph
+  > p:first-of-type::first-letter {
+    font-family: $font-heading;
+    font-size: 3.5em;
+    float: left;
+    line-height: 0.8;
+    padding-right: 0.1em;
+    padding-top: 0.05em;
+    color: $gold;
+  }
+
+  // Footnotes
+  .footnotes {
+    margin-top: $space-xl;
+    padding-top: $space-md;
+    border-top: 1px solid rgba($gold, 0.2);
+    font-size: $font-size-small;
+    color: $color-meta;
+  }
+
+  // Emphasis styles for theological terms
+  em {
+    font-style: italic;
+  }
+
+  strong {
+    font-weight: 700;
+    color: $dark-charcoal;
+  }
+}
+
+// Pull quote
+.pullquote {
+  font-family: $font-heading;
+  font-size: 1.375rem;
+  color: $color-pullquote;
+  text-align: center;
+  padding: $space-lg $space-md;
+  margin: $space-xl 0;
+  border-top: 1px solid rgba($gold, 0.3);
+  border-bottom: 1px solid rgba($gold, 0.3);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+// Article meta
+.article-meta {
+  text-align: center;
+  color: $color-meta;
+  font-size: $font-size-meta;
+  margin-bottom: $space-lg;
+  font-family: $font-label;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+// Prev/Next navigation
+.prev-next {
+  display: flex;
+  justify-content: space-between;
+  gap: $space-md;
+  max-width: $max-width-reading;
+  margin: $space-xl auto 0;
+  padding: $space-lg $space-md 0;
+  border-top: 1px solid rgba($gold, 0.2);
+}
+
+.prev-next__item {
+  flex: 1;
+
+  &--next {
+    text-align: right;
+  }
+}
+
+.prev-next__label {
+  font-family: $font-label;
+  font-size: $font-size-meta;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $color-meta;
+  display: block;
+  margin-bottom: $space-xs;
+}
+
+.prev-next__title {
+  font-family: $font-heading;
+  font-size: 1.125rem;
+  color: $color-link;
+
+  &:hover {
+    color: $color-link-hover;
+  }
+}

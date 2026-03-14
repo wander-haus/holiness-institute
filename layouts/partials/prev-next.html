@@ -1,0 +1,33 @@
+{{ $pages := where .CurrentSection.Pages "Params.weight" "!=" nil }}
+{{ $pages = $pages.ByWeight }}
+{{ $current := . }}
+{{ $prev := false }}
+{{ $next := false }}
+
+{{ range $i, $p := $pages }}
+  {{ if eq $p.File.Path $current.File.Path }}
+    {{ if gt $i 0 }}
+      {{ $prev = index $pages (sub $i 1) }}
+    {{ end }}
+    {{ if lt (add $i 1) (len $pages) }}
+      {{ $next = index $pages (add $i 1) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if or $prev $next }}
+<nav class="prev-next" aria-label="Previous and next">
+  <div class="prev-next__item">
+    {{ with $prev }}
+    <span class="prev-next__label">&larr; Previous</span>
+    <a href="{{ .RelPermalink }}" class="prev-next__title">{{ .Title }}</a>
+    {{ end }}
+  </div>
+  <div class="prev-next__item prev-next__item--next">
+    {{ with $next }}
+    <span class="prev-next__label">Next &rarr;</span>
+    <a href="{{ .RelPermalink }}" class="prev-next__title">{{ .Title }}</a>
+    {{ end }}
+  </div>
+</nav>
+{{ end }}

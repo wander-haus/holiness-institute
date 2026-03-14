@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="page-hero">
+  <h1 class="page-hero__title">{{ .Title }}</h1>
+  {{ with .Params.subtitle }}<p class="page-hero__subtitle">{{ . }}</p>{{ end }}
+</div>
+<div class="reading-width section">
+  {{ .Content }}
+
+  {{ range .Pages.ByWeight }}
+  <div class="gold-rule"></div>
+  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+  {{ end }}
+</div>
+{{ end }}

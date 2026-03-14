@@ -1,0 +1,13 @@
+{{ define "main" }}
+<div class="page-hero">
+  <h1 class="page-hero__title">{{ .Title }}</h1>
+  {{ with .Params.subtitle }}<p class="page-hero__subtitle">{{ . }}</p>{{ end }}
+</div>
+{{ with .Params.number }}
+<p class="article-meta">Essay {{ . }}</p>
+{{ end }}
+<article class="prose">
+  {{ .Content }}
+</article>
+{{ partial "prev-next.html" . }}
+{{ end }}

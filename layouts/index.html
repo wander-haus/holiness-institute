@@ -1,0 +1,46 @@
+{{ define "main" }}
+
+{{ partial "hero.html" (dict
+  "label" "A Catholic Ecclesial Resource Center"
+  "title" "The Holiness Institute"
+  "subtitle" "Promoting holiness as the governing principle of pastoral renewal — grounded in Sacred Scripture, Sacred Tradition, and the Magisterium."
+) }}
+
+<section class="section">
+  <div class="reading-width">
+    <h2>Mission</h2>
+    {{ .Content }}
+  </div>
+</section>
+
+{{ $writings := where (where .Site.RegularPages "Section" "writings") "Params.featured" true }}
+{{ with $writings }}
+<section class="section section--alt">
+  <div class="reading-width">
+    <h2>Featured Writings</h2>
+    <div class="gold-rule"></div>
+    {{ range . }}
+      {{ partial "essay-card.html" . }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+<section class="section">
+  <div class="reading-width" style="text-align: center;">
+    <h2>The 8S Framework</h2>
+    <p>A purpose-built diagnostic framework that reorders ecclesial life according to the Four Causes — ensuring holiness remains the governing end of every pastoral structure, strategy, and system.</p>
+    <p><a href="{{ "framework/" | relURL }}">Explore the Framework &rarr;</a></p>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="reading-width" style="text-align: center;">
+    <h2>The Book</h2>
+    <p style="font-style: italic; color: rgba(245,240,232,0.7);">Abiding and Fruitfulness: Holiness Planning as the Path of Renewal</p>
+    <p>Eleven chapters presenting holiness as the organizing principle of ecclesial life — from first principles through pastoral application.</p>
+    <p><a href="{{ "book/" | relURL }}">Read the Book &rarr;</a></p>
+  </div>
+</section>
+
+{{ end }}

@@ -1,0 +1,29 @@
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="site-nav__inner">
+    <a href="{{ "/" | relURL }}" class="site-nav__brand">The Holiness Institute</a>
+
+    <ul class="site-nav__links">
+      {{ range .Site.Menus.main }}
+      <li>
+        <a href="{{ .URL | relURL }}" class="site-nav__link{{ if $.IsMenuCurrent "main" . }} active{{ end }}{{ if $.HasMenuCurrent "main" . }} active{{ end }}">
+          {{ .Name }}
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+
+    <button class="site-nav__toggle" aria-label="Toggle menu" onclick="document.querySelector('.site-nav__mobile').classList.toggle('is-open')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="site-nav__mobile">
+    <ul>
+      {{ range .Site.Menus.main }}
+      <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+</nav>

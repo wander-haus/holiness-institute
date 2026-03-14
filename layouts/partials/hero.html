@@ -1,0 +1,8 @@
+<section class="hero">
+  <div class="hero__content">
+    {{ with .label }}<p class="hero__label">{{ . }}</p>{{ end }}
+    <h1 class="hero__title">{{ .title }}</h1>
+    <hr class="hero__rule">
+    {{ with .subtitle }}<p class="hero__subtitle">{{ . }}</p>{{ end }}
+  </div>
+</section>
