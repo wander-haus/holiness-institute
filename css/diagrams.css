@@ -1,0 +1,608 @@
+/* ==========================================================================
+   Diagram styles — Journey of Holiness, Substitutes wheel, Path of Holiness,
+   and the Causality diagram. Loaded only on pages that carry a diagram.
+   ========================================================================== */
+
+.diagram-figure {
+  margin: var(--space-6) auto;
+  max-width: 60rem;
+  padding-inline: var(--space-3);
+}
+
+.diagram-caption {
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+.diagram-caption .diagram-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: var(--navy);
+  letter-spacing: 0.04em;
+}
+.diagram-caption .diagram-title::after {
+  content: '';
+  display: block;
+  width: 3rem;
+  border-top: 1px solid var(--gold);
+  margin: var(--space-2) auto;
+}
+.diagram-caption .diagram-sub {
+  display: block;
+  font-style: italic;
+  font-size: 1.05rem;
+  max-width: 38rem;
+  margin-inline: auto;
+}
+
+.diagram-quote {
+  text-align: center;
+  font-style: italic;
+  font-size: 1rem;
+  margin-top: var(--space-4);
+}
+.diagram-quote cite {
+  font-style: normal;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--gold-text);
+  font-size: 0.9rem;
+}
+
+/* Shared detail panel */
+.diagram-panel {
+  background: var(--cream-deep);
+  border: 1px solid var(--gold);
+  padding: var(--space-4);
+}
+.diagram-panel-hint {
+  font-style: italic;
+  font-size: 1rem;
+  margin: 0;
+}
+.diagram-panel-title {
+  margin: 0 0 var(--space-1);
+  font-size: 1.4rem;
+}
+.diagram-panel-sub {
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  color: var(--gold-text);
+  font-size: 0.95rem;
+  margin: 0 0 var(--space-3);
+}
+.diagram-panel-fields { margin: 0; }
+.diagram-panel-fields dt {
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  color: var(--gold-text);
+  font-size: 0.95rem;
+  margin-top: var(--space-3);
+}
+.diagram-panel-fields dt:first-child { margin-top: 0; }
+.diagram-panel-fields dd {
+  margin: var(--space-1) 0 0;
+  font-size: 1.02rem;
+}
+.diagram-panel-fields .love-row { color: var(--red); }
+
+/* Text-version fallback */
+.diagram-text {
+  margin-top: var(--space-4);
+  border-top: 1px solid var(--cream-deep);
+  padding-top: var(--space-3);
+  font-size: 1.02rem;
+}
+.diagram-text summary {
+  cursor: pointer;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  color: var(--gold-text);
+}
+
+/* --------------------------------------------------------------------------
+   Journey of Holiness
+   -------------------------------------------------------------------------- */
+
+.journey-grid {
+  display: grid;
+  gap: var(--space-4);
+  position: relative;
+}
+@media (min-width: 760px) {
+  .journey-grid { grid-template-columns: repeat(3, 1fr); }
+  /* Gold connector line behind the medallions */
+  .journey-grid::before {
+    content: '';
+    position: absolute;
+    top: 1.4rem;
+    left: 16%;
+    right: 16%;
+    border-top: 1px solid var(--gold);
+  }
+}
+
+.journey-stage {
+  text-align: center;
+  background: var(--cream-deep);
+  border: 1px solid var(--gold);
+  padding: 0 var(--space-4) var(--space-4);
+  position: relative;
+  margin-top: 1.4rem;
+}
+
+.journey-medallion {
+  display: inline-grid;
+  place-items: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 2px solid var(--gold);
+  color: var(--cream);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  position: relative;
+  top: -1.4rem;
+  z-index: 1;
+}
+
+.journey-head {
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 1.25rem;
+  margin: -0.5rem 0 var(--space-2);
+}
+.journey-head small {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--gold-text);
+  letter-spacing: 0.12em;
+}
+
+.journey-motto {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--navy);
+  margin-bottom: var(--space-2);
+}
+
+.journey-body {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.journey-band {
+  margin-top: var(--space-4);
+  background: var(--navy);
+  color: var(--cream);
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+@media (min-width: 760px) {
+  .journey-band { grid-template-columns: repeat(3, 1fr); }
+}
+.journey-band span { font-size: 0.98rem; line-height: 1.5; }
+.journey-band strong {
+  display: block;
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  color: var(--gold-bright);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+/* --------------------------------------------------------------------------
+   Substitutes wheel
+   -------------------------------------------------------------------------- */
+
+.substitutes-layout {
+  display: grid;
+  gap: var(--space-4);
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .substitutes-layout { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+}
+
+.substitutes-wheel svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.sub-spokes line {
+  stroke: var(--gold);
+  stroke-opacity: 0.45;
+  stroke-width: 1;
+}
+
+.sub-center-disc { fill: var(--navy); }
+.sub-center-ring {
+  fill: none;
+  stroke: var(--gold-bright);
+  stroke-width: 1.5;
+}
+.sub-center-title {
+  fill: var(--cream);
+  font-family: var(--font-body);
+  font-size: 24px;
+  letter-spacing: 4px;
+  font-weight: 600;
+}
+.sub-center-sub {
+  fill: var(--gold-bright);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+}
+
+.sub-node { cursor: pointer; }
+.sub-node-disc {
+  fill: var(--cream-deep);
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  transition: stroke 0.2s ease, fill 0.2s ease;
+}
+.sub-node:hover .sub-node-disc,
+.sub-node:focus-visible .sub-node-disc {
+  stroke: var(--gold-bright);
+  stroke-width: 2.5;
+}
+.sub-node.selected .sub-node-disc {
+  fill: var(--navy);
+  stroke: var(--gold-bright);
+  stroke-width: 2.5;
+}
+.sub-node-label {
+  fill: var(--navy);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  pointer-events: none;
+}
+.sub-node.selected .sub-node-label { fill: var(--cream); }
+.sub-node:focus { outline: none; }
+.sub-node:focus-visible .sub-node-disc { stroke-dasharray: 4 3; }
+
+/* Belief → Trust → Abandonment → Self-Gift strip */
+.path-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-3);
+  margin-top: var(--space-4);
+  padding: var(--space-3);
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+}
+.path-strip-label {
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  color: var(--gold-text);
+  font-size: 0.95rem;
+  margin-right: var(--space-2);
+}
+.path-strip a {
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  color: var(--navy);
+  font-size: 1.05rem;
+}
+.path-strip a:hover { color: var(--gold-text); }
+.path-strip-arrow { color: var(--gold); }
+
+/* --------------------------------------------------------------------------
+   Path of Holiness map
+   -------------------------------------------------------------------------- */
+
+.path-map-mount { display: none; }
+
+@media (min-width: 760px) {
+  html.js .svg-active .path-map-mount { display: block; }
+  html.js .svg-active .path-stage-list { display: none; }
+}
+
+.path-map-mount svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--navy);
+}
+
+.path-band-purgative { fill: #14213d; }
+.path-band-illuminative { fill: #1b2a4a; }
+.path-band-unitive { fill: #243760; }
+
+.path-band-label {
+  fill: rgb(250 246 238 / 0.75);
+  font-family: var(--font-body);
+  font-size: 17px;
+  letter-spacing: 4px;
+}
+
+.path-glow {
+  fill: var(--gold-bright);
+  opacity: 0.3;
+}
+.path-glow-core {
+  fill: #f0dfae;
+  opacity: 0.9;
+}
+
+.path-goal-label {
+  fill: var(--gold-bright);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 17px;
+}
+
+.path-road {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 5;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+
+.path-station { cursor: pointer; }
+.path-station-disc {
+  fill: var(--navy-deep);
+  stroke: var(--gold);
+  stroke-width: 2;
+  transition: stroke 0.2s ease, fill 0.2s ease;
+}
+.path-station:hover .path-station-disc,
+.path-station:focus-visible .path-station-disc {
+  stroke: var(--gold-bright);
+  stroke-width: 3;
+}
+.path-station.selected .path-station-disc {
+  fill: var(--gold-bright);
+}
+.path-station-numeral {
+  fill: var(--cream);
+  font-family: var(--font-display);
+  font-size: 17px;
+  pointer-events: none;
+}
+.path-station.selected .path-station-numeral { fill: var(--navy-deep); font-weight: 600; }
+.path-station-name {
+  fill: var(--cream);
+  font-family: var(--font-body);
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+.path-station:focus { outline: none; }
+
+.path-night-marker { cursor: pointer; }
+.path-night-moon {
+  fill: rgb(250 246 238 / 0.7);
+  transition: fill 0.2s ease;
+}
+.path-night-marker:hover .path-night-moon,
+.path-night-marker:focus-visible .path-night-moon,
+.path-night-marker.selected .path-night-moon {
+  fill: var(--gold-bright);
+}
+.path-night-marker:focus { outline: none; }
+
+.path-panel { margin-top: var(--space-3); }
+
+.macro-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 0;
+  font-size: 0.98rem;
+}
+.macro-step {
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  opacity: 0.55;
+}
+.macro-step.active {
+  color: var(--gold-text);
+  opacity: 1;
+  font-weight: 600;
+  border-bottom: 1px solid var(--gold);
+}
+.macro-arrow { color: var(--gold); }
+
+/* Pre-rendered stage list (mobile + no-JS) */
+.path-stage-list .path-way {
+  border: 1px solid var(--gold);
+  background: var(--cream-deep);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+.path-stage-list h3 {
+  margin-top: 0;
+  text-align: center;
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+}
+.path-way-desc {
+  font-style: italic;
+  font-size: 1rem;
+  text-align: center;
+}
+.path-stage-list ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.path-stage-list ol li { margin-bottom: var(--space-3); }
+.path-stage-list h4 {
+  margin: 0 0 var(--space-1);
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 1.1rem;
+}
+.path-stage-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.98rem;
+}
+.path-stage-list ul li { margin-bottom: 0.15rem; }
+.path-night {
+  border-top: 1px solid var(--gold);
+  padding-top: var(--space-3);
+  font-size: 0.98rem;
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   Causality diagram
+   -------------------------------------------------------------------------- */
+
+.causality { max-width: 44rem; margin-inline: auto; }
+
+.causality-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.causality-toggle { display: inline-flex; }
+.causality-state-btn {
+  font-family: var(--font-body);
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+  font-size: 1rem;
+  background: var(--cream);
+  color: var(--navy);
+  border: 1px solid var(--gold);
+  padding: 0.5rem 1.4rem;
+  cursor: pointer;
+}
+.causality-state-btn + .causality-state-btn { border-left: 0; }
+.causality-state-btn.active {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.causality-select-label {
+  font-size: 1rem;
+  font-style: italic;
+}
+.causality-select {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  border: 1px solid var(--gold);
+  background: var(--cream);
+  color: var(--ink);
+  padding: 0.4rem 0.6rem;
+  margin-left: var(--space-2);
+}
+
+.causality-diagram {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  position: relative;
+}
+
+.causality-node {
+  text-align: center;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--gold);
+  min-width: 16rem;
+}
+.causality-node strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.causality-node-kicker {
+  display: block;
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  font-size: 0.85rem;
+  margin-bottom: var(--space-1);
+}
+.causality-node-sub {
+  display: block;
+  font-style: italic;
+  font-size: 0.98rem;
+}
+
+.causality-node.governing {
+  background: var(--navy);
+  color: var(--cream);
+}
+.causality-node.governing .causality-node-kicker { color: var(--gold-bright); }
+.causality-node.governing.usurper {
+  background: var(--red);
+  border-color: var(--red);
+}
+.causality-node.governing.usurper .causality-node-kicker { color: var(--cream); }
+
+.causality-arrows {
+  display: flex;
+  gap: var(--space-5);
+  color: var(--gold);
+  font-size: 1.3rem;
+  line-height: 1;
+}
+.causality-arrows.strained { color: var(--red); opacity: 0.7; }
+
+.causality-means {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+}
+.causality-means li {
+  border: 1px solid var(--gold);
+  background: var(--cream-deep);
+  padding: var(--space-1) var(--space-3);
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.95rem;
+}
+.causality-means.strained li {
+  border-style: dashed;
+  opacity: 0.85;
+}
+
+.causality-side.dotted {
+  border: 1px dashed var(--gold);
+  color: var(--gold-text);
+  text-align: center;
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.95rem;
+}
+.causality-side.dotted strong {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+.causality-node.fruit { background: var(--cream-deep); }
+.causality-node.fruit.withered {
+  opacity: 0.75;
+  border-style: dashed;
+}
+
+.causality-caption {
+  margin-top: var(--space-4);
+  font-style: italic;
+  font-size: 1.02rem;
+  text-align: center;
+}
