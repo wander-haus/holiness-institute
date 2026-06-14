@@ -40,7 +40,7 @@ function headerHTML(navMode, currentPage) {
     <header class="site-header">
       <div class="wrap">
         <a class="brand" href="index.html">
-          <img src="assets/images/hi-logo.png" alt="" width="44" height="44">
+          <img src="assets/images/hi-logo.png" alt="" width="54" height="54">
           <span class="brand-name">The Holiness Institute</span>
         </a>
         <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -54,7 +54,7 @@ function headerHTML(navMode, currentPage) {
 }
 
 function footerHTML(navMode) {
-  const minimal = navMode === 'none' || navMode === 'minimal';
+  const minimal = navMode === 'minimal';
   const cols = minimal ? '' : `
     <div class="footer-cols">
       <div>
@@ -80,12 +80,16 @@ function footerHTML(navMode) {
         </ul>
       </div>
     </div>`;
+  // The contemplative pages (minimal footer) already close with scripture in
+  // their own content, so the footer there is a quiet institutional sign-off
+  // rather than a second repetition of the same verse.
+  const motto = minimal ? '' : `<p>“Remain in my love.” <cite>(Jn 15:9)</cite></p>`;
   return `
     <footer class="site-footer${minimal ? ' minimal' : ''}">
       <div class="wrap">
         ${cols}
         <div class="footer-motto">
-          <p>“Remain in my love.” <cite>(Jn 15:9)</cite></p>
+          ${motto}
           <p class="footer-fine">The Holiness Institute · Called to the Fullness of Love</p>
         </div>
       </div>
@@ -94,8 +98,9 @@ function footerHTML(navMode) {
 
 export function injectChrome() {
   const { nav = 'full', page = '' } = document.body.dataset;
-  if (nav !== 'none') {
-    document.body.insertAdjacentHTML('afterbegin', headerHTML(nav, page));
-  }
+  // The landing (nav="none") carries its masthead and closing gateway in its
+  // own markup; a footer there would only repeat what is already on the page.
+  if (nav === 'none') return;
+  document.body.insertAdjacentHTML('afterbegin', headerHTML(nav, page));
   document.body.insertAdjacentHTML('beforeend', footerHTML(nav));
 }

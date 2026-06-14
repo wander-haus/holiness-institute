@@ -2,3 +2,6 @@
 
 # Founder's source documents — kept local, not published with the site.
 client-documents/
+
+# Local editor / preview tooling — not part of the published site.
+.claude/

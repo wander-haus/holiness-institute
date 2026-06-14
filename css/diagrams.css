@@ -5,7 +5,7 @@
 
 .diagram-figure {
   margin: var(--space-6) auto;
-  max-width: 60rem;
+  max-width: 66rem;
   padding-inline: var(--space-3);
 }
 
@@ -107,16 +107,19 @@
 
 .journey-grid {
   display: grid;
-  gap: var(--space-4);
+  gap: var(--space-3);
   position: relative;
 }
 @media (min-width: 760px) {
-  .journey-grid { grid-template-columns: repeat(3, 1fr); }
+  .journey-grid {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+  }
   /* Gold connector line behind the medallions */
   .journey-grid::before {
     content: '';
     position: absolute;
-    top: 1.4rem;
+    top: 1.6rem;
     left: 16%;
     right: 16%;
     border-top: 1px solid var(--gold);
@@ -127,24 +130,25 @@
   text-align: center;
   background: var(--cream-deep);
   border: 1px solid var(--gold);
-  padding: 0 var(--space-4) var(--space-4);
+  /* slimmer side padding gives the mottos room to read as one breath */
+  padding: 0 var(--space-3) var(--space-4);
   position: relative;
-  margin-top: 1.4rem;
+  margin-top: 1.6rem;
 }
 
 .journey-medallion {
   display: inline-grid;
   place-items: center;
-  width: 2.8rem;
-  height: 2.8rem;
+  width: 3.2rem;
+  height: 3.2rem;
   border-radius: 50%;
   background: var(--navy);
   border: 2px solid var(--gold);
   color: var(--cream);
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   position: relative;
-  top: -1.4rem;
+  top: -1.6rem;
   z-index: 1;
 }
 
@@ -202,7 +206,7 @@
 .substitutes-layout {
   display: grid;
   gap: var(--space-4);
-  align-items: start;
+  align-items: center;
 }
 @media (min-width: 900px) {
   .substitutes-layout { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
@@ -216,8 +220,8 @@
 
 .sub-spokes line {
   stroke: var(--gold);
-  stroke-opacity: 0.45;
-  stroke-width: 1;
+  stroke-opacity: 0.75;
+  stroke-width: 2;
 }
 
 .sub-center-disc { fill: var(--navy); }
@@ -229,7 +233,7 @@
 .sub-center-title {
   fill: var(--cream);
   font-family: var(--font-body);
-  font-size: 24px;
+  font-size: 28px;
   letter-spacing: 4px;
   font-weight: 600;
 }
@@ -237,7 +241,7 @@
   fill: var(--gold-bright);
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 18px;
+  font-size: 19px;
 }
 
 .sub-node { cursor: pointer; }
@@ -248,10 +252,12 @@
   transition: stroke 0.2s ease, fill 0.2s ease;
 }
 .sub-node:hover .sub-node-disc,
+.sub-node:active .sub-node-disc,
 .sub-node:focus-visible .sub-node-disc {
   stroke: var(--gold-bright);
   stroke-width: 2.5;
 }
+.sub-node:active .sub-node-disc { fill: var(--cream); }
 .sub-node.selected .sub-node-disc {
   fill: var(--navy);
   stroke: var(--gold-bright);
@@ -260,7 +266,7 @@
 .sub-node-label {
   fill: var(--navy);
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.4px;
   pointer-events: none;
@@ -321,19 +327,21 @@
 .path-band-unitive { fill: #243760; }
 
 .path-band-label {
-  fill: rgb(250 246 238 / 0.75);
+  fill: rgb(250 246 238 / 0.85);
   font-family: var(--font-body);
   font-size: 17px;
   letter-spacing: 4px;
 }
 
+/* The destination light — union with God — breaking through as a soft halo. */
 .path-glow {
   fill: var(--gold-bright);
-  opacity: 0.3;
+  opacity: 0.5;
+  filter: blur(3px);
 }
 .path-glow-core {
-  fill: #f0dfae;
-  opacity: 0.9;
+  fill: #f4e6bf;
+  opacity: 1;
 }
 
 .path-goal-label {
@@ -359,6 +367,7 @@
   transition: stroke 0.2s ease, fill 0.2s ease;
 }
 .path-station:hover .path-station-disc,
+.path-station:active .path-station-disc,
 .path-station:focus-visible .path-station-disc {
   stroke: var(--gold-bright);
   stroke-width: 3;
@@ -376,7 +385,7 @@
 .path-station-name {
   fill: var(--cream);
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 16px;
   letter-spacing: 0.5px;
 }
 .path-station:focus { outline: none; }
@@ -605,4 +614,13 @@
   font-style: italic;
   font-size: 1.02rem;
   text-align: center;
+}
+
+/* Honor reduced-motion for the interactive diagrams' state transitions too. */
+@media (prefers-reduced-motion: reduce) {
+  .sub-node-disc,
+  .path-station-disc,
+  .path-night-moon {
+    transition-duration: 0.01ms;
+  }
 }

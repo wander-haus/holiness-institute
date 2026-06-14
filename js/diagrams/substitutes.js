@@ -8,8 +8,8 @@ import { SUBSTITUTES } from './substitutes-data.js';
 const SIZE = 600;
 const CX = SIZE / 2;
 const CY = SIZE / 2;
-const ORBIT = 215;
-const NODE_R = 56;
+const ORBIT = 218;
+const NODE_R = 62;
 const CENTER_R = 108;
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -41,7 +41,7 @@ function nodeLabel(label, cx, cy) {
     }
   }
   if (line) lines.push(line);
-  const lineHeight = 17;
+  const lineHeight = 19;
   const startY = cy - ((lines.length - 1) * lineHeight) / 2;
   const g = el('g');
   lines.forEach((l, i) => {
@@ -128,6 +128,18 @@ export function initSubstitutes() {
   });
 
   mount.appendChild(svg);
+
+  /* On phones the wheel's labels would shrink below legibility. There, hide
+     the SVG and reveal the always-readable text version instead — the same
+     graceful fallback the Path map uses. */
+  const small = window.matchMedia('(max-width: 640px)');
+  const details = document.querySelector('#substitutes-figure .diagram-text');
+  const applyMode = () => {
+    mount.style.display = small.matches ? 'none' : '';
+    if (small.matches && details) details.open = true;
+  };
+  applyMode();
+  small.addEventListener('change', applyMode);
 }
 
 function selectNode(item, node, nodes, panel) {

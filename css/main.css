@@ -67,7 +67,7 @@
   --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --font-body: 'EB Garamond', Georgia, 'Times New Roman', serif;
 
-  --measure: 65ch;
+  --measure: 70ch;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 1rem;
@@ -86,13 +86,26 @@ html {
 
 body {
   margin: 0;
-  background: var(--cream);
+  background-color: var(--cream);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 1.1875rem;
-  line-height: 1.65;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Subliminal warmth: a barely-perceptible candlelight that brightens from
+   above and warms toward the edges. A viewport-fixed layer behind all content
+   (iOS-safe, unlike background-attachment: fixed); --cream is the fallback. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(135% 105% at 50% -8%,
+    #fefbf4 0%, #faf6ee 44%, #f4ebda 100%);
 }
 
 img { max-width: 100%; height: auto; }
@@ -110,7 +123,8 @@ a:hover { text-decoration-color: var(--gold-bright); }
   outline-offset: 3px;
 }
 
-::selection { background: var(--gold); color: var(--cream); }
+/* Ink-on-gold (~4.6:1) instead of the former cream-on-gold (~2.9:1). */
+::selection { background: var(--gold); color: var(--ink); }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
@@ -132,6 +146,29 @@ hr {
   width: 4rem;
   margin: var(--space-5) auto;
 }
+
+/* Fleuron divider for major spiritual transitions: a small ornament flanked
+   by short gold rules. Use <div class="fleuron" role="presentation">✦</div>;
+   add .sacred to tint the ornament Sacred-Heart red. The flanking rules carry
+   the divider even if the glyph is unavailable. */
+.fleuron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin: var(--space-5) auto;
+  color: var(--gold);
+  font-size: 1.05rem;
+  line-height: 1;
+}
+.fleuron::before,
+.fleuron::after {
+  content: '';
+  width: 3.25rem;
+  border-top: 1px solid var(--gold);
+  opacity: 0.85;
+}
+.fleuron.sacred { color: var(--red); }
 
 /* ---------- Utility ------------------------------------------------------- */
 
@@ -233,19 +270,51 @@ main { display: block; }
   margin: var(--space-4) auto;
 }
 
+/* Scripture / direct divine speech. Reserved for the Lord's own words at
+   section thresholds — lifted, centered, and marked by a small red cross,
+   so His voice reads as sacred rather than as an ordinary pull-quote. */
 .quote {
-  border-left: 2px solid var(--gold);
-  margin: var(--space-4) 0;
-  padding: var(--space-1) 0 var(--space-1) var(--space-4);
+  text-align: center;
+  max-width: 34rem;
+  margin: var(--space-3) auto var(--space-5);
+  padding: 0;
+  border: 0;
   font-style: normal;
 }
-.quote p { margin-bottom: var(--space-2); }
+.quote::before {
+  content: '\2020'; /* dagger-cross — widely supported in serif faces */
+  display: block;
+  color: var(--red);
+  font-size: 1.1rem;
+  line-height: 1;
+  margin: 0 auto var(--space-3);
+}
+.quote p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.4vw, 1.6rem);
+  line-height: 1.5;
+  color: var(--navy);
+  margin: 0;
+}
+.quote cite {
+  display: block;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.95rem;
+  color: var(--gold-text);
+  margin-top: var(--space-2);
+}
 
 .prayer {
   background: var(--cream-deep);
   border-top: 1px solid var(--gold);
   border-bottom: 1px solid var(--gold);
-  padding: var(--space-5) var(--space-4);
+  /* A faint inner glow of gold light, so the prayer reads as illuminated. */
+  box-shadow: inset 0 0 38px rgb(176 141 62 / 0.13);
+  padding: var(--space-6) var(--space-4);
   margin: var(--space-5) 0;
   text-align: center;
 }
@@ -260,7 +329,7 @@ main { display: block; }
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.25rem;
-  line-height: 1.6;
+  line-height: 1.75;
   color: var(--navy);
   max-width: 36rem;
   margin: 0 auto var(--space-3);
@@ -272,7 +341,7 @@ main { display: block; }
 .doors {
   display: grid;
   gap: var(--space-4);
-  margin: var(--space-5) 0;
+  margin: var(--space-6) 0 var(--space-5);
 }
 @media (min-width: 760px) {
   .doors { grid-template-columns: repeat(3, 1fr); }
@@ -281,35 +350,62 @@ main { display: block; }
 .door {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: flex-start;
   gap: var(--space-3);
   background: var(--cream-deep);
   border: 1px solid var(--gold);
-  padding: var(--space-4);
+  padding: var(--space-5) var(--space-4);
   text-align: center;
   text-decoration: none;
   transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 .door:hover, .door:focus-visible {
   border-color: var(--gold-bright);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 24px rgb(27 42 74 / 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgb(27 42 74 / 0.10);
+}
+.door:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgb(27 42 74 / 0.08);
 }
 
-.door .door-desc {
-  font-style: italic;
-  color: var(--ink);
-  margin: 0;
-  font-size: 1.05rem;
+/* Icon medallion — a gold-ringed disc of candlelight, echoing the logo. */
+.door-icon {
+  display: grid;
+  place-items: center;
+  width: 4.25rem;
+  height: 4.25rem;
+  margin-bottom: var(--space-1);
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: var(--cream);
+  box-shadow: inset 0 0 14px rgb(176 141 62 / 0.10);
+  color: var(--navy);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.door-icon svg { width: 2.15rem; height: 2.15rem; display: block; }
+.door:hover .door-icon, .door:focus-visible .door-icon {
+  border-color: var(--gold-bright);
+  box-shadow: inset 0 0 20px rgb(176 141 62 / 0.20);
 }
 
 .door .door-label {
   font-variant: small-caps;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   color: var(--navy);
-  font-size: 1.05rem;
-  border-top: 1px solid var(--gold);
-  padding-top: var(--space-3);
+  font-size: 1.3rem;
+  line-height: 1.1;
+}
+
+.door .door-desc {
+  display: block;
+  font-style: italic;
+  color: var(--ink);
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.5;
+  max-width: 18rem;
 }
 
 /* Numbered path cards on hub pages */
@@ -337,6 +433,7 @@ main { display: block; }
   border-color: var(--gold-bright);
   transform: translateY(-2px);
 }
+.path-list a:active { transform: translateY(0); }
 .path-list a::before {
   content: counter(pathstep);
   font-family: var(--font-display);
@@ -377,6 +474,7 @@ main { display: block; }
   background: var(--navy-deep);
   border-color: var(--gold-bright);
 }
+.btn:active { transform: translateY(1px); }
 
 .continue-block {
   text-align: center;
@@ -411,7 +509,7 @@ main { display: block; }
   gap: var(--space-2);
   text-decoration: none;
 }
-.brand img { width: 44px; height: 44px; }
+.brand img { width: 54px; height: 54px; }
 .brand .brand-name {
   font-family: var(--font-display);
   font-weight: 600;
@@ -493,7 +591,11 @@ main { display: block; }
 /* ---------- Footer ---------------------------------------------------------- */
 
 .site-footer {
-  background: var(--navy-deep);
+  background-color: var(--navy-deep);
+  /* a faint warmth gathering at the top edge, like reflected candlelight */
+  background-image: radial-gradient(120% 150% at 50% 0%,
+    #1d2f52 0%, var(--navy-deep) 60%);
+  border-top: 1px solid rgb(176 141 62 / 0.45);
   color: var(--cream);
   margin-top: var(--space-6);
   padding: var(--space-5) 0 var(--space-4);
@@ -537,6 +639,8 @@ main { display: block; }
 
 .site-footer.minimal { padding: var(--space-4) 0; }
 .site-footer.minimal .footer-cols { display: none; }
+/* Minimal footer is a single quiet sign-off line — no divider above it. */
+.site-footer.minimal .footer-motto { border-top: 0; padding-top: 0; }
 
 /* ---------- Landing page ----------------------------------------------------- */
 
@@ -546,9 +650,23 @@ main { display: block; }
   padding: var(--space-5) var(--space-4) 0;
   text-align: center;
 }
-.landing .landing-logo {
-  width: clamp(96px, 16vw, 130px);
+/* The Sacred Heart is the institute's center — let it anchor the landing,
+   resting within a soft fall of gold light. */
+.landing .landing-logo-halo {
+  display: inline-block;
   margin: var(--space-4) auto var(--space-2);
+  padding: clamp(18px, 3vw, 30px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 46%,
+    rgb(201 162 39 / 0.18) 0%,
+    rgb(201 162 39 / 0.05) 52%,
+    transparent 72%);
+}
+.landing .landing-logo {
+  display: block;
+  width: clamp(124px, 19vw, 172px);
+  height: auto;
+  margin: 0;
 }
 .landing .landing-title {
   font-variant: small-caps;
@@ -595,6 +713,37 @@ main { display: block; }
 }
 
 .quiet-link { font-size: 0.98rem; }
+
+/* Closing gateway to the foundational "notion" essay. Understated per the
+   author's wish that it not dominate the landing — but deliberate, not hidden. */
+.landing-coda {
+  text-align: center;
+  margin: var(--space-5) auto var(--space-6);
+}
+.landing-coda .coda-kicker {
+  display: block;
+  font-variant: small-caps;
+  letter-spacing: 0.16em;
+  font-size: 0.92rem;
+  color: var(--gold-text);
+  margin-bottom: var(--space-2);
+}
+.landing-coda .coda-link {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.25rem, 2.6vw, 1.55rem);
+  line-height: 1.3;
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 3px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.landing-coda .coda-link:hover,
+.landing-coda .coda-link:focus-visible {
+  color: var(--gold-text);
+  border-bottom-color: var(--gold-bright);
+}
 
 /* ---------- Threshold pages ---------------------------------------------------- */
 
