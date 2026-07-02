@@ -3,7 +3,12 @@
    stations and two dark-night markers. On narrow viewports (and without JS)
    the pre-rendered stage list in the page carries the same content. */
 
-import { WAYS, STAGES, NIGHTS, MACROS } from './path-data.js';
+import { WAYS, STAGES, NIGHTS, MACROS, LENSES } from './path-data.js';
+
+/* The active lens: the same path read as stages of prayer, as the
+   maturation of trust, or as pastoral implications. */
+let currentLens = 'prayer';
+let lastStage = null;
 
 const W = 1200;
 const H = 420;
@@ -146,7 +151,36 @@ export function initPath() {
     svg.appendChild(g);
   });
 
+  // Lens toggle: one path, three readings
+  const toolbar = document.createElement('div');
+  toolbar.className = 'path-lenses';
+  toolbar.setAttribute('role', 'group');
+  toolbar.setAttribute('aria-label', 'Read the path through a lens');
+  const lensLabel = document.createElement('span');
+  lensLabel.className = 'path-lenses-label';
+  lensLabel.textContent = 'Read the path as:';
+  toolbar.appendChild(lensLabel);
+  LENSES.forEach((lens) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'path-lens-btn';
+    btn.textContent = lens.label;
+    btn.setAttribute('aria-pressed', lens.id === currentLens ? 'true' : 'false');
+    btn.addEventListener('click', () => {
+      currentLens = lens.id;
+      toolbar.querySelectorAll('.path-lens-btn').forEach((b) =>
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+      if (lastStage) {
+        selectStage(lastStage.stage, lastStage.node, svg, panel);
+      } else {
+        panel.innerHTML = `<p class="diagram-panel-hint">Select a stage on the path to read it as ${lens.label.toLowerCase()}.</p>`;
+      }
+    });
+    toolbar.appendChild(btn);
+  });
+
   mount.appendChild(svg);
+  mount.appendChild(toolbar);
   mount.appendChild(panel);
   figure.classList.add('svg-active');
 }
@@ -158,15 +192,23 @@ function clearSelection(svg) {
 function selectStage(stage, node, svg, panel) {
   clearSelection(svg);
   node.classList.add('selected');
+  lastStage = { stage, node };
 
   const way = WAYS.find((w) => w.id === stage.way);
+  const lens = LENSES.find((l) => l.id === currentLens);
   const macroStrip = MACROS.map((m) =>
     `<span class="${m === stage.macro || (stage.macro === 'Union' && m === 'Self-Gift') ? 'macro-step active' : 'macro-step'}">${m}</span>`
   ).join('<span class="macro-arrow" aria-hidden="true">→</span>');
 
+  /* The selected lens leads the panel, so switching lenses visibly changes
+     the reading; the four constant fields follow as reference. */
   panel.innerHTML = `
     <h3 class="diagram-panel-title">${stage.numeral}. ${stage.name}</h3>
     <p class="diagram-panel-sub">${way.name}</p>
+    <div class="path-lens-lead">
+      <span class="path-lens-lead-label">Read as ${lens.label.toLowerCase()}</span>
+      <p>${stage.lenses[currentLens]}</p>
+    </div>
     <dl class="diagram-panel-fields">
       <dt>Path of prayer</dt><dd>${stage.prayer}</dd>
       <dt class="love-row">Growth of love</dt><dd class="love-row">${stage.love}</dd>
@@ -174,4 +216,7 @@ function selectStage(stage, node, svg, panel) {
       <dt>The soul’s movement</dt><dd>${stage.note}</dd>
     </dl>
     <p class="macro-strip" aria-label="The soul’s overall movement: faith, trust, abandonment, self-gift">${macroStrip}</p>`;
+  const lead = panel.querySelector('.path-lens-lead');
+  lead.classList.add('is-fresh');
+  requestAnimationFrame(() => requestAnimationFrame(() => lead.classList.remove('is-fresh')));
 }

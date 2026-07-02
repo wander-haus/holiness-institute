@@ -616,6 +616,35 @@
   text-align: center;
 }
 
+/* Causal ledger: the four causes read out under the diagram, flipping with
+   the toggle so the inversion is seen at every level, not only the top. */
+.causal-ledger {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2) var(--space-4);
+  margin: var(--space-3) auto 0;
+  padding-top: var(--space-2);
+  border-top: 1px solid rgb(176 141 62 / 0.35);
+  max-width: 44rem;
+}
+.causal-ledger > div { text-align: center; }
+.causal-ledger dt {
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  color: var(--gold-text);
+}
+.causal-ledger dd {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--navy);
+}
+.causal-ledger.usurped dd {
+  color: var(--red);
+  font-style: italic;
+}
+
 /* Honor reduced-motion for the interactive diagrams' state transitions too. */
 @media (prefers-reduced-motion: reduce) {
   .sub-node-disc,
@@ -623,4 +652,413 @@
   .path-night-moon {
     transition-duration: 0.01ms;
   }
+}
+
+/* --------------------------------------------------------------------------
+   Sacramental data page — indexed chart and diocesan explorer
+   -------------------------------------------------------------------------- */
+
+/* Direct child only: the legend's small swatch SVGs must not be stretched. */
+.sd-chart-wrap > svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  font-family: var(--font-body);
+}
+
+.sd-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2) var(--space-4);
+  margin-top: var(--space-3);
+}
+.sd-legend-item {
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  font-size: 0.98rem;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.sd-swatch {
+  display: inline-block;
+  width: 1.4rem;
+  height: 4px;
+  border-radius: 2px;
+}
+.sd-legend-events {
+  text-align: center;
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--gold-text);
+  margin: var(--space-2) 0 0;
+}
+
+.sd-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-3) var(--space-4);
+  margin: var(--space-4) 0 var(--space-3);
+}
+.sd-controls label {
+  display: block;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.92rem;
+  color: var(--gold-text);
+  margin-bottom: var(--space-1);
+}
+.sd-controls select,
+.sd-controls input {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1px solid var(--gold);
+  padding: 0.45rem 0.6rem;
+}
+.sd-controls .sd-search-wrap { flex: 1 1 14rem; }
+.sd-controls input { width: 100%; }
+
+.sd-count {
+  font-size: 0.95rem;
+  font-style: italic;
+  margin: 0 0 var(--space-2);
+}
+
+.sd-table-scroll {
+  max-height: 34rem;
+  overflow: auto;
+  border: 1px solid var(--gold);
+  background: var(--cream);
+}
+.sd-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.98rem;
+}
+.sd-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--navy);
+  color: var(--cream);
+  text-align: left;
+  padding: 0;
+}
+.sd-table thead button {
+  all: unset;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--space-2) var(--space-3);
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  font-size: 0.92rem;
+}
+.sd-table thead button:hover { color: var(--gold-bright); }
+.sd-table thead button:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: -3px;
+}
+.sd-table th, .sd-table td { padding: var(--space-1) var(--space-3); }
+.sd-table tbody th {
+  font-weight: 400;
+  text-align: left;
+}
+.sd-table tbody tr:nth-child(even) { background: var(--cream-deep); }
+.sd-table .num, .sd-table thead th.num button { text-align: right; }
+.sd-table tfoot th, .sd-table tfoot td {
+  border-top: 2px solid var(--gold);
+  font-weight: 600;
+  padding-block: var(--space-2);
+}
+.sd-table tfoot th { text-align: left; }
+
+/* Static national summary table (text alternative for the chart) */
+.sd-static-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  margin-top: var(--space-3);
+}
+.sd-static-table th, .sd-static-table td {
+  padding: var(--space-1) var(--space-2);
+  border-bottom: 1px solid var(--cream-deep);
+}
+.sd-static-table th { font-variant: small-caps; letter-spacing: 0.06em; color: var(--navy); }
+.sd-static-table td { text-align: right; }
+.sd-static-table td:first-child, .sd-static-table th:first-child { text-align: left; }
+
+/* --------------------------------------------------------------------------
+   Holiness page — examination callouts, Where Do I Stop cards, Rule of
+   Reordering, path lenses, saints strip, fatherhood bridge
+   -------------------------------------------------------------------------- */
+
+/* A spiritual mirror, not a workbook exercise. */
+.examen {
+  max-width: 34rem;
+  margin: var(--space-5) auto;
+  padding-inline: var(--space-3);
+  text-align: center;
+}
+.examen::before {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  border-top: 1px solid var(--gold);
+  margin: 0 auto var(--space-3);
+}
+.examen p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+  line-height: 1.5;
+  color: var(--gold-text);
+  margin: 0;
+}
+
+/* Where Do I Stop? */
+.examine-heading { text-align: center; }
+.examine-cards {
+  display: grid;
+  gap: var(--space-2);
+  margin-block: var(--space-4);
+}
+@media (min-width: 700px) {
+  .examine-cards { grid-template-columns: repeat(2, 1fr); }
+}
+.examine-card {
+  background: var(--cream-deep);
+  border: 1px solid var(--gold);
+}
+.examine-card summary {
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  padding: var(--space-2) var(--space-4);
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  color: var(--navy);
+  font-size: 1.08rem;
+  transition: background 0.2s ease;
+}
+.examine-card summary::-webkit-details-marker { display: none; }
+.examine-card summary::after {
+  content: '+';
+  position: absolute;
+  right: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--gold);
+}
+.examine-card[open] summary::after { content: '−'; }
+.examine-card summary:hover { background: rgb(176 141 62 / 0.08); }
+.examine-card p {
+  padding: 0 var(--space-4);
+  margin: 0 0 var(--space-2);
+  font-size: 1rem;
+}
+.examine-card p:last-child { padding-bottom: var(--space-3); }
+.examine-card p strong {
+  display: block;
+  font-weight: 400;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+  color: var(--gold-text);
+}
+
+/* Rule of Reordering — table on wide screens, stacked cards on narrow. */
+.reorder-table {
+  width: 100%;
+  max-width: 60rem;
+  margin-inline: auto;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+.reorder-table thead th {
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--gold-text);
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--gold);
+}
+.reorder-table tbody th {
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  font-weight: 400;
+  color: var(--navy);
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+}
+.reorder-table tbody td { padding: var(--space-2) var(--space-3); }
+.reorder-table tbody td[data-label="False Substitution"] { color: var(--red); font-style: italic; }
+.reorder-table tbody td[data-label="Reordered in Holiness"] { color: var(--navy); }
+/* Four-causes comparison on causality.html reuses the same table dress. */
+.reorder-table tbody td[data-label="The Church’s Order"] { color: var(--navy); }
+.reorder-table tbody td[data-label="The Assumed Order"] { color: var(--red); font-style: italic; }
+.reorder-table tbody tr { border-bottom: 1px solid var(--cream-deep); }
+.reorder-table tbody tr:nth-child(even) { background: rgb(243 236 221 / 0.5); }
+
+@media (max-width: 700px) {
+  .reorder-table, .reorder-table tbody, .reorder-table tr, .reorder-table th, .reorder-table td {
+    display: block;
+  }
+  .reorder-table thead { display: none; }
+  .reorder-table tbody tr {
+    border: 1px solid var(--gold);
+    background: var(--cream-deep);
+    margin-bottom: var(--space-3);
+    padding: var(--space-2) 0;
+  }
+  .reorder-table tbody tr:nth-child(even) { background: var(--cream-deep); }
+  .reorder-table tbody th { font-size: 1.1rem; padding-bottom: 0; }
+  .reorder-table tbody td { padding-block: var(--space-1); }
+  .reorder-table tbody td::before {
+    content: attr(data-label);
+    display: block;
+    font-variant: small-caps;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    color: var(--gold-text);
+    font-style: normal;
+  }
+}
+.reorder-doorway {
+  text-align: center;
+  font-style: italic;
+  font-size: 1rem;
+  max-width: 44rem;
+  margin: var(--space-4) auto 0;
+}
+
+/* Path lenses */
+.path-lenses {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: var(--space-3) 0;
+}
+.path-lenses-label {
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.95rem;
+  color: var(--gold-text);
+  margin-right: var(--space-2);
+}
+.path-lens-btn {
+  font-family: var(--font-body);
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.98rem;
+  color: var(--navy);
+  background: var(--cream);
+  border: 1px solid var(--gold);
+  padding: 0.4rem 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.path-lens-btn:hover { background: rgb(176 141 62 / 0.12); }
+.path-lens-btn[aria-pressed="true"] {
+  background: var(--navy);
+  color: var(--cream);
+  border-color: var(--gold-bright);
+}
+/* The lens reading leads the stage panel; switching lenses swaps this block. */
+.path-lens-lead {
+  margin: var(--space-3) 0;
+  padding: var(--space-2) var(--space-3);
+  border-left: 2px solid var(--gold);
+  background: rgb(176 141 62 / 0.07);
+  transition: background 0.35s ease-out;
+}
+.path-lens-lead.is-fresh { background: rgb(176 141 62 / 0.22); }
+.path-lens-lead-label {
+  display: block;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.92rem;
+  color: var(--gold-text);
+  margin-bottom: 0.25rem;
+}
+.path-lens-lead p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.18rem;
+  line-height: 1.5;
+  color: var(--navy);
+}
+@media (prefers-reduced-motion: reduce) {
+  .path-lens-lead { transition: none; }
+}
+
+/* Saints strip */
+.saints-strip {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 60rem;
+  margin-inline: auto;
+}
+@media (min-width: 700px) {
+  .saints-strip { grid-template-columns: repeat(4, 1fr); }
+}
+.saint-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background: var(--cream-deep);
+  border: 1px solid var(--gold);
+  padding: var(--space-4) var(--space-3);
+  text-align: center;
+  text-decoration: none;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.saint-card:hover, .saint-card:focus-visible {
+  border-color: var(--gold-bright);
+  transform: translateY(-3px);
+}
+.saint-card .saint-name {
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+  color: var(--navy);
+  font-size: 1.15rem;
+}
+.saint-card .saint-line {
+  font-style: italic;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* Fatherhood bridge: two flow strips joined by a descending arrow */
+.bridge-panel .flow-strip + .flow-strip { margin-top: var(--space-4); position: relative; }
+.bridge-panel .flow-strip + .flow-strip::before {
+  content: '↓';
+  position: absolute;
+  top: calc(-1 * var(--space-4) - 0.2em);
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+.bridge-panel .flow-caption { margin-top: var(--space-4); }
+
+/* Grayscale line swatches in mini-chart legend */
+.sd-swatch-line { width: 1.75rem; height: 6px; display: inline-block; }
+
+@media (prefers-reduced-motion: reduce) {
+  .saint-card, .saint-card:hover { transform: none; }
 }

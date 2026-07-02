@@ -170,6 +170,44 @@ hr {
 }
 .fleuron.sacred { color: var(--red); }
 
+/* Illuminated initial — a quiet nod to the manuscript tradition (rubricated
+   chapter initials). Apply .drop-cap to a section's opening paragraph only;
+   never to a one-line paragraph or one that opens with a quotation mark. */
+.prose .drop-cap::first-letter {
+  float: left;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 3.1em;
+  line-height: 0.8;
+  padding: 0.08em 0.14em 0 0;
+  color: var(--red);
+}
+
+/* Illuminated pull-quote: a line lifted verbatim from the surrounding prose,
+   set large between paragraphs. Decorative repetition — always mark the
+   element aria-hidden="true" so screen readers hear the text once. */
+.pull-quote {
+  max-width: 30rem;
+  margin: var(--space-5) auto;
+  text-align: center;
+}
+.pull-quote::before {
+  content: '✦';
+  display: block;
+  color: var(--gold);
+  font-size: 0.85rem;
+  line-height: 1;
+  margin: 0 auto var(--space-3);
+}
+.pull-quote p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+  line-height: 1.45;
+  color: var(--navy);
+  margin: 0;
+}
+
 /* ---------- Utility ------------------------------------------------------- */
 
 .visually-hidden {
@@ -601,13 +639,20 @@ main { display: block; }
   padding: var(--space-5) 0 var(--space-4);
 }
 .site-footer a { color: var(--cream); text-decoration-color: var(--gold); }
+/* The columns size to their content and center as a group — so the footer
+   sits centered like the rest of the site's chrome (motto, epigraphs,
+   captions) — while headings and links stay left-aligned within each list. */
 .site-footer .footer-cols {
   display: grid;
   gap: var(--space-4);
   margin-bottom: var(--space-4);
+  justify-content: center;
 }
 @media (min-width: 700px) {
-  .site-footer .footer-cols { grid-template-columns: repeat(3, 1fr); }
+  .site-footer .footer-cols {
+    grid-template-columns: repeat(3, auto);
+    column-gap: clamp(2.5rem, 8vw, 7rem);
+  }
 }
 .site-footer h2 {
   font-variant: small-caps;
@@ -859,6 +904,295 @@ article section h2 {
   color: var(--gold); /* large decorative numeral */
   font-size: 1.6em;
   margin-right: 0.4rem;
+}
+
+/* ---------- About page: John Paul's Rule callout ------------------------------------ */
+
+.jp-rule {
+  background: var(--cream-deep);
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  box-shadow: inset 0 0 38px rgb(176 141 62 / 0.13);
+  padding: var(--space-4) var(--space-4) var(--space-4);
+  margin-block: var(--space-5);
+  text-align: center;
+}
+.jp-rule-title {
+  font-family: var(--font-body);
+  font-variant: small-caps;
+  letter-spacing: 0.16em;
+  font-size: 1.05rem;
+  color: var(--gold-text);
+  margin: 0 0 var(--space-3);
+}
+.jp-rule-lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.jp-rule-lines li {
+  padding: var(--space-2) 0;
+}
+.jp-rule-lines li + li { border-top: 1px solid rgb(176 141 62 / 0.3); }
+.jp-rule-text {
+  display: block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+  color: var(--navy);
+  line-height: 1.4;
+}
+.jp-rule-lines cite {
+  font-style: normal;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  color: var(--gold-text);
+}
+
+/* ---------- Expandable cards (shared: principles, bios) ------------------------------ */
+
+.principle-cards,
+.bio-cards {
+  display: grid;
+  gap: var(--space-3);
+  margin-block: var(--space-4);
+}
+
+.principle-card,
+.bio-card {
+  background: var(--cream-deep);
+  border: 1px solid var(--gold);
+}
+.principle-card summary,
+.bio-card summary {
+  cursor: pointer;
+  padding: var(--space-3) var(--space-4);
+  list-style: none;
+  position: relative;
+  transition: background 0.2s ease;
+}
+.principle-card summary::-webkit-details-marker,
+.bio-card summary::-webkit-details-marker { display: none; }
+.principle-card summary::after,
+.bio-card summary::after {
+  content: '+';
+  position: absolute;
+  right: var(--space-4);
+  top: var(--space-3);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--gold);
+}
+.principle-card[open] summary::after,
+.bio-card[open] summary::after { content: '−'; }
+.principle-card summary:hover,
+.bio-card summary:hover { background: rgb(176 141 62 / 0.08); }
+.principle-card > p,
+.bio-card > p {
+  padding: 0 var(--space-4) var(--space-4);
+  margin: 0;
+}
+
+.principle-card .principle-head,
+.bio-card .bio-name {
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  color: var(--navy);
+  font-size: 1.15rem;
+}
+.principle-card .principle-line,
+.bio-card .bio-line {
+  display: block;
+  font-style: italic;
+  font-size: 1rem;
+  margin-top: var(--space-1);
+  padding-right: var(--space-4);
+}
+.bio-card .bio-role {
+  display: block;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.92rem;
+  color: var(--gold-text);
+  margin-top: 2px;
+}
+
+/* ---------- About page: Consecration → Mission flow strip ---------------------------- */
+
+.flow-figure { margin-block: var(--space-5); }
+.flow-strip {
+  list-style: none;
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2) var(--space-3);
+}
+.flow-strip li {
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: var(--navy);
+  background: var(--cream-deep);
+  border: 1px solid var(--gold);
+  padding: var(--space-2) var(--space-4);
+}
+/* Connector arrows trail each box (except the last), centered in the flex gap.
+   If the strip wraps, a row ends "… →", which reads as a continuation, and the
+   next row starts cleanly — no stray arrow at a line start. */
+.flow-strip li { position: relative; }
+.flow-strip li:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  width: var(--space-3);
+  text-align: center;
+  transform: translateY(-50%);
+  color: var(--gold);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+/* Narrow screens: one column, arrows turn downward between boxes. */
+@media (max-width: 540px) {
+  .flow-strip { flex-direction: column; gap: var(--space-4); }
+  .flow-strip li:not(:last-child)::after {
+    content: '↓';
+    left: 50%;
+    top: calc(100% + 0.45rem);
+    width: auto;
+    transform: translateX(-50%);
+  }
+}
+.flow-caption {
+  text-align: center;
+  font-style: italic;
+  font-size: 1.02rem;
+}
+.flow-more { margin-top: var(--space-2); }
+
+/* ---------- About page: Holiness Planning wheel -------------------------------------- */
+
+.planning-figure {
+  margin: var(--space-6) auto;
+  max-width: 56rem;
+  padding-inline: var(--space-3);
+}
+.planning-grid {
+  display: grid;
+  gap: var(--space-3);
+}
+@media (min-width: 700px) {
+  .planning-grid { grid-template-columns: repeat(2, 1fr); }
+  .planning-center { grid-column: 1 / -1; }
+}
+.planning-center {
+  text-align: center;
+  background: var(--navy);
+  border: 2px solid var(--gold);
+  padding: var(--space-4);
+}
+.planning-center-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--cream);
+  letter-spacing: 0.06em;
+}
+.planning-center-sub {
+  display: block;
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  font-size: 0.95rem;
+  color: var(--gold-bright);
+  margin-top: var(--space-1);
+}
+.planning-s {
+  background: var(--cream-deep);
+  border: 1px solid var(--gold);
+}
+.planning-s summary {
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  padding: var(--space-3) var(--space-4);
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+  color: var(--navy);
+  font-size: 1.1rem;
+  transition: background 0.2s ease;
+}
+.planning-s summary::-webkit-details-marker { display: none; }
+.planning-s summary::after {
+  content: '+';
+  position: absolute;
+  right: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--gold);
+}
+.planning-s[open] summary::after { content: '−'; }
+.planning-s summary:hover { background: rgb(176 141 62 / 0.08); }
+.planning-s p {
+  padding: 0 var(--space-4) var(--space-4);
+  margin: 0;
+  font-style: italic;
+  font-size: 1.02rem;
+}
+
+/* ---------- About page: sacramental decline strip ------------------------------------ */
+
+.decline-figure {
+  margin: var(--space-5) auto;
+  max-width: 56rem;
+  padding-inline: var(--space-3);
+}
+.decline-strip {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  border-top: 1px solid var(--gold);
+}
+@media (min-width: 620px) {
+  .decline-strip { grid-template-columns: 3fr 1fr 1fr; }
+}
+.decline-region {
+  padding: var(--space-3) var(--space-3) var(--space-2);
+  border-left: 1px solid var(--gold);
+  background: linear-gradient(to bottom, rgb(176 141 62 / 0.10), transparent 75%);
+}
+.decline-region:last-child { border-right: 1px solid var(--gold); }
+.decline-years {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--navy);
+  line-height: 1.1;
+}
+.decline-label {
+  display: block;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.92rem;
+  color: var(--gold-text);
+  margin-top: var(--space-1);
+}
+.decline-cta { margin-top: var(--space-4); }
+
+/* ---------- Retreats page: the closing cry ------------------------------------------- */
+
+.abba-cry {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  color: var(--navy);
+  margin-block: var(--space-4);
 }
 
 /* ---------- Draft notice ------------------------------------------------------------ */

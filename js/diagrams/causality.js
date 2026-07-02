@@ -96,6 +96,12 @@ export function initCausality() {
             <strong>Fruit</strong>
             <span class="causality-node-sub">souls disposed for grace — faith, hope, and love abound</span>
           </div>
+          <dl class="causal-ledger" aria-label="The four causes, rightly ordered">
+            <div><dt>Final</dt><dd>Holiness</dd></div>
+            <div><dt>Efficient</dt><dd>Grace</dd></div>
+            <div><dt>Formal</dt><dd>Christ</dd></div>
+            <div><dt>Material</dt><dd>The person</dd></div>
+          </dl>
         </div>`;
       caption.textContent = CAPTIONS.ordered;
     } else {
@@ -120,6 +126,12 @@ export function initCausality() {
             <strong>Fruit recedes</strong>
             <span class="causality-node-sub">activity continues, but less faith, less hope, less love</span>
           </div>
+          <dl class="causal-ledger usurped" aria-label="The four causes as the inversion assumes them">
+            <div><dt>Final</dt><dd>${inversion.name}</dd></div>
+            <div><dt>Efficient</dt><dd>Human method</dd></div>
+            <div><dt>Formal</dt><dd>The model</dd></div>
+            <div><dt>Material</dt><dd>The institution</dd></div>
+          </dl>
         </div>`;
       caption.textContent = CAPTIONS.inverted(inversion.name);
     }

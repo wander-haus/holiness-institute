@@ -53,37 +53,39 @@ function headerHTML(navMode, currentPage) {
     </header>`;
 }
 
-function footerHTML(navMode) {
-  const minimal = navMode === 'minimal';
+/* footerMode may differ from navMode: a contemplative page (minimal header)
+   can still carry the full navigation footer via data-footer="full". */
+function footerHTML(footerMode, navMode = footerMode) {
+  const minimal = footerMode === 'minimal';
   const cols = minimal ? '' : `
     <div class="footer-cols">
       <div>
         <h2>Begin</h2>
         <ul>
           ${BEGIN_LINKS.map((l) => `<li><a href="${l.href}">${l.label}</a></li>`).join('\n')}
-          <li><a href="how-you-see-god.html">How You See God Determines Everything</a></li>
+          <li><a href="how-you-see-god.html">How You See God</a></li>
         </ul>
       </div>
       <div>
         <h2>Explore</h2>
         <ul>
-          ${NAV_LINKS.slice(0, 4).map((l) => `<li><a href="${l.href}">${l.label}</a></li>`).join('\n')}
+          ${NAV_LINKS.slice(0, 5).map((l) => `<li><a href="${l.href}">${l.label}</a></li>`).join('\n')}
         </ul>
       </div>
       <div>
         <h2>Go Deeper</h2>
         <ul>
-          ${NAV_LINKS.slice(4).map((l) => `<li><a href="${l.href}">${l.label}</a></li>`).join('\n')}
+          ${NAV_LINKS.slice(5).map((l) => `<li><a href="${l.href}">${l.label}</a></li>`).join('\n')}
           <li><a href="laity.html">For the Laity</a></li>
           <li><a href="priests.html">For Priests</a></li>
           <li><a href="bishops.html">For Bishops</a></li>
         </ul>
       </div>
     </div>`;
-  // The contemplative pages (minimal footer) already close with scripture in
-  // their own content, so the footer there is a quiet institutional sign-off
-  // rather than a second repetition of the same verse.
-  const motto = minimal ? '' : `<p>“Remain in my love.” <cite>(Jn 15:9)</cite></p>`;
+  // The contemplative pages (minimal header) already close with scripture in
+  // their own content, so their footer — even when it carries the nav columns —
+  // omits the motto rather than repeat the same verse twice on one page.
+  const motto = navMode === 'full' ? `<p>“Remain in my love.” <cite>(Jn 15:9)</cite></p>` : '';
   return `
     <footer class="site-footer${minimal ? ' minimal' : ''}">
       <div class="wrap">
@@ -97,10 +99,11 @@ function footerHTML(navMode) {
 }
 
 export function injectChrome() {
-  const { nav = 'full', page = '' } = document.body.dataset;
-  // The landing (nav="none") carries its masthead and closing gateway in its
-  // own markup; a footer there would only repeat what is already on the page.
+  const { nav = 'full', page = '', footer } = document.body.dataset;
+  // nav="none" renders a page fully chromeless (no header or footer). The
+  // landing used this until July 2026, when the client asked for navigation
+  // on the front page; it now uses nav="full" like the content pages.
   if (nav === 'none') return;
   document.body.insertAdjacentHTML('afterbegin', headerHTML(nav, page));
-  document.body.insertAdjacentHTML('beforeend', footerHTML(nav));
+  document.body.insertAdjacentHTML('beforeend', footerHTML(footer || nav, nav));
 }

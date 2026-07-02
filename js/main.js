@@ -20,6 +20,8 @@ const diagrams = [
   ['substitutes-figure', './diagrams/substitutes.js', 'initSubstitutes'],
   ['path-figure', './diagrams/path.js', 'initPath'],
   ['causality-figure', './diagrams/causality.js', 'initCausality'],
+  ['sd-chart-mount', './diagrams/decline.js', 'initDecline'],
+  ['decline-mini-mount', './diagrams/decline-mini.js', 'initDeclineMini'],
 ];
 
 for (const [id, mod, fn] of diagrams) {
