@@ -15,8 +15,10 @@ const NAV_LINKS = [
   { id: 'causality', href: 'causality.html', label: 'Causality' },
 ];
 
+// "Start Here" is reserved for the landing page itself (Steve, "Landing
+// Page" email, July 4, 2026) — the footer names each threshold instead.
 const BEGIN_LINKS = [
-  { href: 'begin-laity.html', label: 'Start Here' },
+  { href: 'begin-laity.html', label: 'For Laity' },
   { href: 'begin-priests.html', label: 'For Priests' },
   { href: 'begin-bishops.html', label: 'For Bishops' },
 ];
@@ -100,10 +102,12 @@ function footerHTML(footerMode, navMode = footerMode) {
 
 export function injectChrome() {
   const { nav = 'full', page = '', footer } = document.body.dataset;
-  // nav="none" renders a page fully chromeless (no header or footer). The
-  // landing used this until July 2026, when the client asked for navigation
-  // on the front page; it now uses nav="full" like the content pages.
-  if (nav === 'none') return;
-  document.body.insertAdjacentHTML('afterbegin', headerHTML(nav, page));
-  document.body.insertAdjacentHTML('beforeend', footerHTML(footer || nav, nav));
+  // nav="none" renders a page without header chrome. It may still carry a
+  // footer via data-footer="full": the landing does this (July 4, 2026 —
+  // Steve asked for the original chromeless front page back, keeping the
+  // nav footer). Its motto is omitted like the threshold pages', since the
+  // landing closes with the same verse in its own content.
+  if (nav !== 'none') document.body.insertAdjacentHTML('afterbegin', headerHTML(nav, page));
+  const footerMode = footer || (nav === 'none' ? '' : nav);
+  if (footerMode) document.body.insertAdjacentHTML('beforeend', footerHTML(footerMode, nav));
 }

@@ -21,11 +21,13 @@
   <link rel="preload" href="assets/fonts/cormorant-garamond-v21-latin-500italic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/main.css">
 </head>
-<body class="landing" data-nav="full" data-page="home">
+<!-- Chromeless landing restored per Steve ("Landing Page" email, July 4, 2026):
+     no header nav, but the full nav footer stays via data-footer="full". -->
+<body class="landing" data-nav="none" data-footer="full" data-page="home">
   <a class="skip-link" href="#main">Skip to content</a>
   <noscript>
     <nav class="noscript-nav" aria-label="Site">
-      <a href="begin-laity.html">Start Here</a> ·
+      <a href="begin-laity.html">For Laity</a> ·
       <a href="begin-priests.html">For Priests</a> ·
       <a href="begin-bishops.html">For Bishops</a> ·
       <a href="how-you-see-god.html">How You See God</a> ·
@@ -70,6 +72,11 @@
             <path d="M20 18c2.3 2.6 4 4.6 4 7.2a4 4 0 0 1-8 0C16 22.6 17.7 20.6 20 18Z"/>
           </svg>
         </span>
+        <!-- NOTE for client review: per your "Landing Page" email, "Start Here"
+             is reserved for this landing page, and the footer labels the laity
+             threshold "For Laity". This door still reads "Start Here" while
+             leading to the laity threshold — should it become "For Laity"
+             to match? -->
         <span class="door-label">Start Here</span>
         <span class="door-desc">For those who sense that something is wrong and want to see more clearly.</span>
       </a>

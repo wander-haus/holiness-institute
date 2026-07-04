@@ -514,6 +514,16 @@ main { display: block; }
 }
 .btn:active { transform: translateY(1px); }
 
+/* A centered row of buttons; wraps to a stacked column with breathing room. */
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+  margin-block: var(--space-4);
+  padding-inline: var(--space-3);
+}
+
 .continue-block {
   text-align: center;
   margin: var(--space-6) 0 var(--space-5);
@@ -1068,6 +1078,16 @@ article section h2 {
     transform: translateX(-50%);
   }
 }
+/* Inside a narrow measure (the Holiness essay column), four boxes can't sit on
+   one line — .flow-column opts a strip into the vertical form at any width. */
+.flow-figure.flow-column .flow-strip { flex-direction: column; gap: var(--space-4); }
+.flow-figure.flow-column .flow-strip li:not(:last-child)::after {
+  content: '↓';
+  left: 50%;
+  top: calc(100% + 0.45rem);
+  width: auto;
+  transform: translateX(-50%);
+}
 .flow-caption {
   text-align: center;
   font-style: italic;
@@ -1161,7 +1181,7 @@ article section h2 {
   border-top: 1px solid var(--gold);
 }
 @media (min-width: 620px) {
-  .decline-strip { grid-template-columns: 3fr 1fr 1fr; }
+  .decline-strip { grid-template-columns: 4fr 6fr 3fr; }
 }
 .decline-region {
   padding: var(--space-3) var(--space-3) var(--space-2);

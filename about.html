@@ -20,6 +20,7 @@
   <link rel="preload" href="assets/fonts/eb-garamond-v32-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-garamond-v21-latin-500italic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/diagrams.css">
 </head>
 <body data-nav="full" data-page="about">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -129,18 +130,6 @@
       </details>
     </div>
 
-    <!-- Compressed doorway into the Holiness page's Journey diagram -->
-    <figure class="flow-figure prose">
-      <ol class="flow-strip">
-        <li>Consecration</li>
-        <li>Sanctification</li>
-        <li>Holiness</li>
-        <li>Mission</li>
-      </ol>
-      <figcaption class="flow-caption">What is given in baptism must mature into the perfection of love.</figcaption>
-      <p class="center flow-more"><a class="quiet-link" href="holiness.html">Explore the full Journey of Holiness</a></p>
-    </figure>
-
     <div class="prose">
       <h2 id="offers">What the Institute Offers</h2>
       <p>The Institute publishes books, essays, data tools, diagnostic studies, and practical resources to help the Church recover holiness as the governing principle of renewal.</p>
@@ -159,58 +148,82 @@
       <p>Where those questions are asked honestly, renewal has already begun.</p>
     </div>
 
-    <!-- Holiness Planning wheel: Holiness as Superordinate Goal, the seven S's
-         around it. Each S opens one diagnostic question.
-         NOTE for client review: the seven diagnostic questions below are drafted
-         from the "governing questions" paragraph above; please review or replace
-         the wording of each. -->
-    <figure class="planning-figure">
+    <!-- "The Deficit Beneath the Activity" — Steve's new section (July 4, 2026),
+         replacing "The Hope Before Us" and the compressed arc strip. Prose is
+         his text nearly verbatim; year references adjusted from "1920 to 2020"
+         to the workbook's actual span (1921–2025, COVID-distorted 2021 point
+         omitted).
+         NOTE for client review: Steve's emailed graph was checked against this
+         chart — it plots the same workbook series with survey years shifted to
+         round half-decades (1921→"1920" … 2021→"2020"). Two deliberate
+         departures from that graph, per his own email text: (1) its final
+         "2020" point is actually the 2021 COVID-year data, which he asked to
+         exclude, so this chart ends at 2025 ("useable") with 2021 omitted;
+         (2) his prose requires the Catholic-population line and calls the
+         widening gap "the most important feature," so the population line and
+         deficit wash are kept even though his attached graph (per-capita only)
+         lacks them. Confirm with Steve. -->
+    <div class="prose" id="deficit-beneath-activity">
+      <h2>The Deficit Beneath the Activity</h2>
+      <p>The Church can appear stronger than she is. A diocese can have full churches in certain places, active ministries, visible schools, large appeals, professional staffs, and healthy balance sheets, while the sacramental life of the faithful is weakening beneath the surface. These visible signs matter, yet they can also deceive. They measure institutional activity more easily than spiritual depth.</p>
+      <p>The long arc of sacramental participation in the United States makes that danger visible. When infant baptisms, marriages, and receptions into full communion are measured per Catholic and indexed from 1921 to 2025, the pattern is severe. The Church’s population grew, but sacramental reception per Catholic fell sharply. By 2025, infant baptism per Catholic had fallen to a small fraction of its 1921 level. Total marriages had fallen still further. Receptions into full communion rose at moments, including around the Great Jubilee of 2000, yet even that increase did not become a lasting reversal of the longer decline.</p>
+      <p>The graph also removes one of the easiest explanations for the present crisis: the claim that everything was essentially sound before the Second Vatican Council. The data does not support that comfort. Whatever damage came through postconciliar confusion, liturgical rupture, weak catechesis, and cultural upheaval, the sacramental weakening had already begun. The Council did not strike down a healthy Catholic organism. It revealed how much of that organism had already been living from population, habit, and culture rather than from deep, transmissible holiness.</p>
+    </div>
+
+    <figure class="diagram-figure" id="deficit-figure">
       <figcaption class="diagram-caption">
-        <span class="diagram-title">The Holiness Planning Wheel</span>
-        <span class="diagram-sub">Holiness is the Superordinate Goal that orders every other element of planning. Select an element to see its diagnostic question.</span>
+        <span class="diagram-title">Catholic Population and Indexed Per-Capita Sacramental Participation, 1921–2025</span>
+        <span class="diagram-sub">Each line begins at 100 in 1921. The Catholic population grew nearly fourfold; sacramental reception per Catholic fell to a fraction of its starting level. The COVID-distorted 2021 figures are omitted.</span>
       </figcaption>
-      <div class="planning-grid">
-        <div class="planning-center">
-          <span class="planning-center-title">Holiness</span>
-          <span class="planning-center-sub">The Superordinate Goal</span>
-        </div>
-        <details class="planning-s">
-          <summary>Strategies</summary>
-          <p>Does this plan begin from the end — disposing souls for union with God in love — or from institutional goals that have quietly assumed command?</p>
-        </details>
-        <details class="planning-s">
-          <summary>Structures</summary>
-          <p>Do our structures lead souls to prayer and the sacraments, or do they chiefly exist to maintain themselves?</p>
-        </details>
-        <details class="planning-s">
-          <summary>Staffing</summary>
-          <p>Are we forming and choosing people for holiness and spiritual fatherhood, or for competence alone?</p>
-        </details>
-        <details class="planning-s">
-          <summary>Skills</summary>
-          <p>Do we prize the skills of sanctification — prayer, discernment, spiritual direction — as seriously as the skills of administration?</p>
-        </details>
-        <details class="planning-s">
-          <summary>Systems</summary>
-          <p>Do our systems measure what matters — sacramental fruitfulness, spiritual maturity — or only what is countable?</p>
-        </details>
-        <details class="planning-s">
-          <summary>Style</summary>
-          <p>Does our manner of governing read as fatherhood, or as management?</p>
-        </details>
-        <details class="planning-s">
-          <summary>Shared Values</summary>
-          <p>If holiness quietly ceased to govern our common life, would anything we do notice its absence?</p>
-        </details>
+      <div class="sd-chart-wrap" id="deficit-chart-mount">
+        <noscript>
+          <img src="assets/images/sacramental-decline-normalized.png"
+               alt="Line chart of per-capita sacramental participation in the United States, indexed to 100 at 1920. Infant baptisms, total marriages, and receptions into full communion all fall well below their starting level before the Second Vatican Council opens in 1962, and continue falling after it. The Catholic population line, and the indexed figures for every series, are in the table below.">
+        </noscript>
       </div>
+      <details class="diagram-text">
+        <summary>Text version of this chart</summary>
+        <p>Each measure is indexed to its 1921 level (1921 = 100). Catholic population is the total reported across dioceses; sacramental measures are per-capita rates. The underlying figures, the per-diocese explorer, and the notes on method are on <a href="sacramental-data.html">the data page</a>.</p>
+        <table class="sd-static-table">
+          <caption class="visually-hidden">Catholic population and indexed per-capita sacramental participation, 1921 = 100</caption>
+          <thead>
+            <tr><th scope="col">Year</th><th scope="col">Catholic Population</th><th scope="col">Infant Baptisms</th><th scope="col">Total Marriages</th><th scope="col">Received into Full Communion</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1921</td><td>100.0</td><td>100.0</td><td>100.0</td><td>100.0</td></tr>
+            <tr><td>1931</td><td>113.3</td><td>86.3</td><td>95.8</td><td>75.0</td></tr>
+            <tr><td>1941</td><td>128.5</td><td>71.4</td><td>116.5</td><td>109.3</td></tr>
+            <tr><td>1946</td><td>154.7</td><td>69.9</td><td>87.1</td><td>89.2</td></tr>
+            <tr><td>1951</td><td>166.9</td><td>90.5</td><td>108.0</td><td>126.8</td></tr>
+            <tr><td>1961</td><td>232.7</td><td>87.6</td><td>73.1</td><td>105.1</td></tr>
+            <tr><td>1966</td><td>256.7</td><td>74.7</td><td>73.9</td><td>85.9</td></tr>
+            <tr><td>1971</td><td>265.8</td><td>61.5</td><td>92.7</td><td>55.8</td></tr>
+            <tr><td>1976</td><td>271.1</td><td>50.0</td><td>73.1</td><td>52.8</td></tr>
+            <tr><td>1981</td><td>291.6</td><td>50.1</td><td>67.8</td><td>57.0</td></tr>
+            <tr><td>1986</td><td>292.9</td><td>49.9</td><td>64.6</td><td>54.9</td></tr>
+            <tr><td>1991</td><td>311.7</td><td>47.7</td><td>56.4</td><td>39.1</td></tr>
+            <tr><td>1996</td><td>330.6</td><td>46.5</td><td>48.9</td><td>45.4</td></tr>
+            <tr><td>2001</td><td>351.3</td><td>43.6</td><td>40.4</td><td>52.3</td></tr>
+            <tr><td>2006</td><td>374.4</td><td>38.0</td><td>30.5</td><td>41.0</td></tr>
+            <tr><td>2011</td><td>379.3</td><td>32.5</td><td>23.9</td><td>34.3</td></tr>
+            <tr><td>2015</td><td>392.8</td><td>26.4</td><td>20.2</td><td>30.8</td></tr>
+            <tr><td>2025</td><td>384.3</td><td>19.0</td><td>15.2</td><td>27.6</td></tr>
+          </tbody>
+        </table>
+      </details>
     </figure>
 
     <div class="prose">
-      <h2>The Hope Before Us</h2>
-      <p>The Church has seen moments when grace visibly stirs souls. The Great Jubilee of 2000 appears to have produced a notable increase in adult reception into the Church, yet that increase did not become a lasting reversal of sacramental decline. The same caution must accompany the hope stirred by the reported rise in conversions in 2026. If this moment has been enflamed by grace through the National Eucharistic Revival, it should be received with gratitude. It should also be received with sobriety.</p>
+      <p>The most important feature of the chart is not any single line. It is the widening space between the Catholic population and per-capita sacramental reception. That delta is the spiritual deficit. It is the difference between the size of the institution and the sacramental density of its life. It is what many of the faithful feel when the Church seems busy but thin, active but not fruitful, organized but not deeply alive in God. It is also what many shepherds can miss when success is measured by full pews, full calendars, full schools, full programs, or full bank accounts.</p>
+      <p>This is why The Holiness Institute is necessary. The Church does not need another way to count activity. She needs to recover the end by which activity is judged. St.&nbsp;John Paul&nbsp;II gave that criterion with unusual clarity: “all pastoral initiatives must be set in relation to holiness” (<em>Novo Millennio Ineunte</em>, 30). If holiness is the end, then sacramental decline cannot be treated as a management problem alone. It is a summons to examine whether Catholic life is forming saints, deepening prayer, strengthening families, renewing confession, drawing souls to the Eucharist, and transmitting faith as living union with Christ.</p>
     </div>
 
-    <!-- The century-long arc, compressed to a strip. -->
+    <!-- The century-long arc, compressed to a strip. "Visible weakening" region
+         added per Steve (July 4, 2026) to complement "Hidden weakening".
+         NOTE for client review: the former "2000 Jubilee convert bulge" region
+         sat out of chronological order next to the new 1960–2020 region, so it
+         now lives in the prose directly below (and as marker 3 on the chart
+         above). Confirm, or say the word and it returns to the strip. -->
     <figure class="decline-figure">
       <figcaption class="diagram-caption">
         <span class="diagram-title">A Century-Long Arc</span>
@@ -221,20 +234,24 @@
           <span class="decline-label">Hidden weakening</span>
         </li>
         <li class="decline-region">
-          <span class="decline-years">2000</span>
-          <span class="decline-label">Jubilee convert bulge</span>
+          <span class="decline-years">1960–2020</span>
+          <span class="decline-label">Visible weakening</span>
         </li>
         <li class="decline-region">
           <span class="decline-years">2026</span>
           <span class="decline-label">Conversion hope</span>
         </li>
       </ol>
-      <p class="center decline-cta"><a class="btn" href="sacramental-data.html">Explore the sacramental data</a></p>
     </figure>
 
     <div class="prose">
-      <p>A rise in conversions is not yet renewal. Renewal begins when converts become saints. It begins when sacramental reception becomes sacramental life. It begins when enthusiasm is deepened into prayer, doctrine, confession, Eucharistic amazement, spiritual discipline, family life, and apostolic charity.</p>
-      <p>The question is not whether God is giving grace. The question is whether the Church will receive, form, and sustain the life He gives.</p>
+      <p>The hope stirred by the reported increase in conversions in 2026 should therefore be received with gratitude and sobriety. Grace may be moving souls toward the Church, especially after the National Eucharistic Revival called Catholics back to the source and summit of Christian life. Yet the Church of 2026 remains the same Church that entered 2020: wounded by weakened practice, fragile formation, thin prayer, and habits of pastoral management that too often mistake activity for fruitfulness. The Great Jubilee of 2000 also appears to have produced a visible increase in converts, but that bulge did not become a lasting reversal of sacramental decline.</p>
+      <p>A rise in conversions is not yet renewal. Renewal begins when converts become saints. It begins when sacramental reception becomes sacramental life. It begins when enthusiasm is deepened into prayer, doctrine, confession, Eucharistic amazement, spiritual discipline, family life, and apostolic charity. The question is not whether God is giving grace. The question is whether the Church will receive, form, and sustain the life He gives.</p>
+    </div>
+
+    <div class="btn-row">
+      <a class="btn" href="holiness.html">What Holiness Is</a>
+      <a class="btn" href="sacramental-data.html">Explore the Sacramental Data</a>
     </div>
 
     <div class="prose">
@@ -244,13 +261,15 @@
     </div>
 
     <div class="bio-cards prose">
+      <!-- Full bios from the book, per Steve (July 4, 2026). -->
       <details class="bio-card">
         <summary>
           <span class="bio-name">Stephen Gajdosik</span>
           <span class="bio-role">Steward of the Institute</span>
           <span class="bio-line">Founder of two Catholic radio apostolates; fifteen years president of the Catholic Radio Association.</span>
         </summary>
-        <p>His ecclesial service has included parochial and diocesan roles, including Director of Religious Education and Press Secretary to a bishop, along with board, committee, and curial appointments. He founded two Catholic radio apostolates that remain in operation and served for fifteen years as president of the Catholic Radio Association, working with pastors and bishops in the United States and internationally to incorporate Catholic radio into their pastoral plans.</p>
+        <p>Stephen Gajdosik serves as Steward of the Institute. He earned a Masters in Theological Studies from the Institute for Pastoral Theology of Ave Maria University. His ecclesial service spans parochial and diocesan roles including Director of Religious Education and Press Secretary to a bishop, along with various ecclesial board, committee, and curial appointments across his career. He served for three terms on the Governance Committee of the Board of Directors of the largest Catholic international pro-life apostolate in the US.</p>
+        <p>Stephen personally founded two Catholic radio apostolates that remain in operation and served for fifteen years as president of the Catholic Radio Association, working closely with parochial pastors and bishops across the United States, the Caribbean, Latin America, Europe, and Africa, incorporating Catholic radio into their pastoral plans. The breadth and sustained character of that episcopal relationship, built on trust, demonstrated competence, and direct pastoral collaboration over many years, gives him a knowledge of how bishops understand and exercise their office that few lay persons have had occasion to acquire.</p>
       </details>
       <details class="bio-card">
         <summary>
@@ -258,7 +277,11 @@
           <span class="bio-role">Director of the Institute</span>
           <span class="bio-line">Corporate executive and founder of several companies; co-founder of the Catholic Radio Association.</span>
         </summary>
-        <p>His professional life included service as a corporate executive, consulting professional, and founder and CEO of several successful companies. His ecclesial service includes instrumental roles in the founding of Catholic radio in South Carolina and the co-founding of the Catholic Radio Association. He has contributed to the growth of Catholic colleges, institutes, and apostolates, and has served on diocesan boards and committees. He is a Knight Grand Cross of the Equestrian Order of the Holy Sepulchre and was granted the Pro Pontifice et Ecclesia Medal by Pope Benedict XVI for service to the Church.</p>
+        <p>Eugene Zurlo serves as a Director of the Institute. His career included being a corporate executive, consulting professional, and a founder/CEO of several successful companies. His deep working knowledge of the tools, assumptions, and governing logic of business strategy and organizational management is direct, practical, and formed through years of professional application. That knowledge gives him an unusually precise capacity to identify where those tools serve the Church’s mission and where their application inverts it.</p>
+        <!-- NOTE for client review: the book text reads "Pro Ponifice et Ecclesia";
+             rendered below as "Pro Pontifice et Ecclesia" (spelling). The decoration's
+             official name is "Pro Ecclesia et Pontifice" — confirm preferred form. -->
+        <p>His ecclesial service includes instrumental roles in the founding of Catholic radio in South Carolina and the co-founding of the Catholic Radio Association, an international apostolate dedicated to the growth of Catholic radio across the United States and internationally. He has contributed to the growth of multiple Catholic colleges, institutes, and apostolates, and has served on several diocesan boards and committees in direct collaboration with bishops and diocesan leadership. He is a Knight Grand Cross of the Equestrian Order of the Holy Sepulchre and was granted the Pro Pontifice et Ecclesia Medal by Pope Benedict XVI for service to the Church.</p>
       </details>
     </div>
 

@@ -22,6 +22,7 @@ const diagrams = [
   ['causality-figure', './diagrams/causality.js', 'initCausality'],
   ['sd-chart-mount', './diagrams/decline.js', 'initDecline'],
   ['decline-mini-mount', './diagrams/decline-mini.js', 'initDeclineMini'],
+  ['deficit-chart-mount', './diagrams/deficit.js', 'initDeficit'],
 ];
 
 for (const [id, mod, fn] of diagrams) {
