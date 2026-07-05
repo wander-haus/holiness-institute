@@ -40,10 +40,14 @@ export function initDeficit() {
   const y = (v) => H - M.b - (v / 410) * (H - M.t - M.b);
 
   const keep = YEARS.map((yr, i) => [yr, i]).filter(([yr]) => yr <= LAST_YEAR);
-  const idx = (arr, base) => keep.map(([yr, i]) => (arr[i] == null ? null : [yr, (100 * arr[i]) / base]));
+  // Blank cells come through as null; drop them rather than crash the whole
+  // chart if a future workbook regeneration leaves a gap (as decline-mini does).
+  const idx = (arr, base) => keep
+    .map(([yr, i]) => (arr[i] == null ? null : [yr, (100 * arr[i]) / base]))
+    .filter(Boolean);
 
-  const popPts = idx(POPULATION.totals, POPULATION.totals[0]);
-  const infPts = idx(NATIONAL.inf.rates, NATIONAL.inf.rates[0]);
+  const popPts = idx(POPULATION.totals, POPULATION.totals.find((v) => v != null));
+  const infPts = idx(NATIONAL.inf.rates, NATIONAL.inf.rates.find((v) => v != null));
 
   const svg = el('svg', {
     viewBox: `0 0 ${W} ${H}`,
@@ -58,27 +62,27 @@ export function initDeficit() {
     fill: 'rgba(122,31,31,0.06)', stroke: 'none',
   }));
   svg.appendChild(el('text', {
-    x: x(1988), y: y(190), 'text-anchor': 'middle',
+    x: x(1988), y: y(190), 'text-anchor': 'middle', class: 'sd-note',
     'font-size': 15, 'font-style': 'italic', fill: '#7a1f1f',
   }, 'The widening space is the spiritual deficit'));
 
   // reference lines + axis
   for (const v of [100, 200, 300, 400]) {
     svg.appendChild(el('line', { x1: M.l, x2: W - M.r, y1: y(v), y2: y(v), stroke: '#c9c2ae', 'stroke-dasharray': v === 100 ? '4 3' : '1 5' }));
-    svg.appendChild(el('text', { x: M.l - 8, y: y(v) + 4, 'text-anchor': 'end', 'font-size': 13, fill: '#6b6656' }, String(v)));
+    svg.appendChild(el('text', { x: M.l - 8, y: y(v) + 4, 'text-anchor': 'end', class: 'sd-tick', 'font-size': 13, fill: '#6b6656' }, String(v)));
   }
-  svg.appendChild(el('text', { x: M.l - 8, y: y(0) + 4, 'text-anchor': 'end', 'font-size': 13, fill: '#6b6656' }, '0'));
+  svg.appendChild(el('text', { x: M.l - 8, y: y(0) + 4, 'text-anchor': 'end', class: 'sd-tick', 'font-size': 13, fill: '#6b6656' }, '0'));
   svg.appendChild(el('line', { x1: M.l, x2: W - M.r, y1: H - M.b, y2: H - M.b, stroke: '#6b6656' }));
   for (let yr = 1920; yr <= 2020; yr += 20) {
     svg.appendChild(el('line', { x1: x(yr), x2: x(yr), y1: H - M.b, y2: H - M.b + 5, stroke: '#6b6656' }));
-    svg.appendChild(el('text', { x: x(yr), y: H - M.b + 21, 'text-anchor': 'middle', 'font-size': 13, fill: '#6b6656' }, String(yr)));
+    svg.appendChild(el('text', { x: x(yr), y: H - M.b + 21, 'text-anchor': 'middle', class: 'sd-tick', 'font-size': 13, fill: '#6b6656' }, String(yr)));
   }
 
   // markers: quiet vertical lines with numbered discs
   MARKERS.forEach((m, i) => {
     svg.appendChild(el('line', { x1: x(m.year), x2: x(m.year), y1: M.t, y2: H - M.b, stroke: '#b5ad97', 'stroke-width': 1, 'stroke-dasharray': '5 4' }));
-    svg.appendChild(el('circle', { cx: x(m.year), cy: M.t - 14, r: 10, fill: '#faf6ee', stroke: '#8a8471' }));
-    svg.appendChild(el('text', { x: x(m.year), y: M.t - 10, 'text-anchor': 'middle', 'font-size': 12, fill: '#2b2b27' }, String(i + 1)));
+    svg.appendChild(el('circle', { cx: x(m.year), cy: M.t - 14, r: 10, class: 'sd-marker-disc', fill: '#faf6ee', stroke: '#8a8471' }));
+    svg.appendChild(el('text', { x: x(m.year), y: M.t - 10, 'text-anchor': 'middle', class: 'sd-marker-num', 'font-size': 12, fill: '#2b2b27' }, String(i + 1)));
   });
 
   const line = (pts, attrs) => el('path', {

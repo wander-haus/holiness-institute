@@ -35,7 +35,7 @@ export const WAYS = [
 export const STAGES = [
   {
     numeral: 'I', name: 'Awakening', way: 'purgative',
-    prayer: 'Vocal prayer', love: 'Fear', notion: 'Judge', macro: 'Faith',
+    prayer: 'Vocal prayer', love: 'Fear', notion: 'Judge', macro: 'Belief',
     note: 'The soul begins its journey.',
     lenses: {
       prayer: 'Vocal prayer: the soul learns to speak to God at all — set prayers, honest words, the first habit of turning toward Him.',
@@ -45,7 +45,7 @@ export const STAGES = [
   },
   {
     numeral: 'II', name: 'Struggle', way: 'purgative',
-    prayer: 'Meditation', love: 'Obedience', notion: 'Almighty God', macro: 'Faith',
+    prayer: 'Meditation', love: 'Obedience', notion: 'Almighty God', macro: 'Belief',
     note: 'Faith deepening toward trust.',
     lenses: {
       prayer: 'Meditation: the mind engages revealed truth; Scripture and the mysteries of Christ become the matter of prayer.',
@@ -59,7 +59,7 @@ export const STAGES = [
     note: 'The soul relies on God and His goodness.',
     lenses: {
       prayer: 'Affective prayer: the heart begins to lead; prayer simplifies from many thoughts to loving attention.',
-      trust: 'Filial trust: the soul begins to rely on God\'s goodness, not merely His power.',
+      trust: 'Filial trust: the soul begins to rely on God’s goodness, not merely His power.',
       pastoral: 'Programs can carry a soul this far — and often stop here. The danger is mistaking the ordered life for the goal.',
     },
   },
@@ -68,7 +68,7 @@ export const STAGES = [
     prayer: 'Recollection', love: 'Abandonment', notion: 'Redeemer', macro: 'Abandonment',
     note: 'The soul yields to God’s will and lives without reserve.',
     lenses: {
-      prayer: 'Recollection: the soul gathers inward; God\'s presence begins to be received rather than produced.',
+      prayer: 'Recollection: the soul gathers inward; God’s presence begins to be received rather than produced.',
       trust: 'Abandonment begins: trusting when He is silent, yielding what prayer cannot secure.',
       pastoral: 'Here most pastoral care ends and many souls are left without guides: the passage into receptivity needs spiritual direction, not more activity.',
     },
@@ -98,9 +98,9 @@ export const STAGES = [
     prayer: 'Spiritual marriage', love: 'Union', notion: 'Indwelling Love', macro: 'Union',
     note: '“It is no longer I who live, but Christ who lives in me.” (Gal 2:20) Union overflows into mission; love becomes the life of the soul and the gift to the world.',
     lenses: {
-      prayer: 'Spiritual marriage: the soul\'s permanent union with God; prayer has become the soul\'s very life.',
-      trust: 'Trust is complete: “Father, into your hands” has become the form of the soul\'s life.',
-      pastoral: 'One soul here renews a parish more than a decade of initiatives: sanctity is the Church\'s true pastoral strategy.',
+      prayer: 'Spiritual marriage: the soul’s permanent union with God; prayer has become the soul’s very life.',
+      trust: 'Trust is complete: “Father, into your hands” has become the form of the soul’s life.',
+      pastoral: 'One soul here renews a parish more than a decade of initiatives: sanctity is the Church’s true pastoral strategy.',
     },
   },
 ];
@@ -119,4 +119,7 @@ export const NIGHTS = [
   },
 ];
 
-export const MACROS = ['Faith', 'Trust', 'Abandonment', 'Self-Gift'];
+/* Named "Belief" (not "Faith") to echo section VI of the Holiness page,
+   "From Belief to Trust, Abandonment, and Self-Gift", which the path-strip
+   under the substitutes figure also links to. */
+export const MACROS = ['Belief', 'Trust', 'Abandonment', 'Self-Gift'];

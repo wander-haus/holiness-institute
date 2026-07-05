@@ -112,6 +112,24 @@ Steve's "Landing Page" email, superseding the design pass's "navigation everywhe
 - `index.html` is chromeless again (`data-nav="none"`) but keeps the full nav footer via `data-footer="full"` — `include.js` now injects a footer for `nav="none"` pages when `data-footer` is set. The footer motto is omitted there (same rule as threshold pages: the landing closes with "Remain in my love" in its own content).
 - Footer "Begin" column: the laity threshold link is labeled "For Laity" (was "Start Here"); "Start Here" appears nowhere in the footer — per Parker, Steve reserves that label for the landing page itself. Index's noscript nav updated to match. The landing's laity *door* still reads "Start Here" → `begin-laity.html` — flagged as a NOTE for client review in `index.html`.
 
+## Design & code review pass (July 5, 2026 — DONE)
+
+Full visual + code review with Parker; all findings fixed the same day:
+
+- **Skip link first again**: `include.js` injects the header *after* `.skip-link` (was `afterbegin`, which buried the link behind the nav in tab order).
+- **Fleuron divider restored**: a stale second `.fleuron` block in `main.css` (display:block) was overriding the designed flex divider and killing its flanking gold rules — removed; dividers sitewide now render ✦ flanked by rules.
+- **Latin fixes**: `fatherhood.html`'s "ipsus Christus" ×4 corrected to *ipse Christus*; italics added per Steve's rule to *alter Christus*, *ipse Christus*, *in persona Christi Capitis*, *Regula Pastoralis*, *munera* (fatherhood + holiness), Mary's *fiat*.
+- **h1s**: landing title is now an `h1.landing-title` (CSS pins the body face so it renders unchanged); `404.html` gained a small-caps "Page Not Found" h1.
+- **Explorer sort**: `decline.js` sets `aria-sort` on `th`s and `.sorted-asc/desc` classes; `diagrams.css` renders a gold ↑/↓ on the active column.
+- **No-JS**: `.sd-controls` hidden unless `html.js` (dead Year/Measure/search inputs no longer render above the noscript notice).
+- **Macro strip**: invalid `aria-label` on `<p>` replaced by a visually-hidden lead-in; inactive step opacity 0.55→0.7 (4.5:1 on both creams); `MACROS` renamed Faith→**Belief** to match section VI + the path-strip (static stage list updated in sync); `.path-strip` div → `<nav>`.
+- **Charts on phones**: axis ticks/marker discs carry `.sd-tick`/`.sd-marker-disc`/`.sd-marker-num` classes; a ≤600px media query in `diagrams.css` enlarges them (CSS beats SVG presentation attributes) and hides the deficit-wash annotation (`.sd-note`) which can't fit at that scale. **Keep the classes when regenerating chart code.**
+- **Layout shift**: `#deficit-chart-mount`/`#decline-mini-mount`/`#sd-chart-mount` reserve height via `aspect-ratio` matching their viewBoxes (keep in sync); noscript imgs carry width/height.
+- **deficit.js hardened**: null cells are filtered and series bases use first non-null (mirrors decline-mini) — a blank cell in a future workbook regeneration degrades gracefully instead of crashing the chart.
+- **Assets**: `hi-logo.png` resized 400→344px and quantized (158KB→33KB, visually identical; source PNG remains in `client-documents/`); font preload corrected sitewide to Cormorant 500 *normal* (headings' actual face — pages were preloading the italic).
+- **404 home link**: guesses `/'+first-segment+'/` then verifies by probing `assets/favicon-32.png`, falling back to `/` — works on github.io project sites, subpath deployments (wander.haus/holiness-institute/), and root custom domains.
+- **Typography nits**: straight quote in holiness §I (*Gaudium et Spes* quote), straight apostrophes in `path-data.js` lens text + the static stage list, "St Paul" → "St. Paul" (retreats).
+
 ## Outstanding items
 
 - Resolve the `NOTE for client review` comments (laity threshold kicker, `how-you-see-god` Continue target, Eudes/Caussade question in `retreats.html`, nav placement + data-source attribution in `sacramental-data.html`, drafted prompts/rows/lenses in `holiness.html` + `path-data.js`, deficit-chart population-line departure + Jubilee strip region + medal name in `about.html`, "Start Here" door label on `index.html`)

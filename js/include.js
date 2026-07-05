@@ -107,7 +107,13 @@ export function injectChrome() {
   // Steve asked for the original chromeless front page back, keeping the
   // nav footer). Its motto is omitted like the threshold pages', since the
   // landing closes with the same verse in its own content.
-  if (nav !== 'none') document.body.insertAdjacentHTML('afterbegin', headerHTML(nav, page));
+  if (nav !== 'none') {
+    // Keep the static "Skip to content" link first in the tab order: inject
+    // the header after it, not before it.
+    const skip = document.querySelector('.skip-link');
+    if (skip) skip.insertAdjacentHTML('afterend', headerHTML(nav, page));
+    else document.body.insertAdjacentHTML('afterbegin', headerHTML(nav, page));
+  }
   const footerMode = footer || (nav === 'none' ? '' : nav);
   if (footerMode) document.body.insertAdjacentHTML('beforeend', footerHTML(footerMode, nav));
 }

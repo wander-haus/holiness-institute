@@ -44,19 +44,19 @@ export function initDeclineMini() {
 
   // 100 reference line + axis
   svg.appendChild(el('line', { x1: M.l, x2: W - M.r, y1: y(100), y2: y(100), stroke: '#c9c2ae', 'stroke-dasharray': '4 3' }));
-  svg.appendChild(el('text', { x: M.l - 8, y: y(100) + 4, 'text-anchor': 'end', 'font-size': 13, fill: '#6b6656' }, '100'));
-  svg.appendChild(el('text', { x: M.l - 8, y: y(0) + 4, 'text-anchor': 'end', 'font-size': 13, fill: '#6b6656' }, '0'));
+  svg.appendChild(el('text', { x: M.l - 8, y: y(100) + 4, 'text-anchor': 'end', class: 'sd-tick', 'font-size': 13, fill: '#6b6656' }, '100'));
+  svg.appendChild(el('text', { x: M.l - 8, y: y(0) + 4, 'text-anchor': 'end', class: 'sd-tick', 'font-size': 13, fill: '#6b6656' }, '0'));
   svg.appendChild(el('line', { x1: M.l, x2: W - M.r, y1: H - M.b, y2: H - M.b, stroke: '#6b6656' }));
   for (let yr = 1920; yr <= 2020; yr += 20) {
     svg.appendChild(el('line', { x1: x(yr), x2: x(yr), y1: H - M.b, y2: H - M.b + 5, stroke: '#6b6656' }));
-    svg.appendChild(el('text', { x: x(yr), y: H - M.b + 21, 'text-anchor': 'middle', 'font-size': 13, fill: '#6b6656' }, String(yr)));
+    svg.appendChild(el('text', { x: x(yr), y: H - M.b + 21, 'text-anchor': 'middle', class: 'sd-tick', 'font-size': 13, fill: '#6b6656' }, String(yr)));
   }
 
   // markers: quiet vertical lines with numbered discs
   MARKERS.forEach((m, i) => {
     svg.appendChild(el('line', { x1: x(m.year), x2: x(m.year), y1: M.t, y2: H - M.b, stroke: '#b5ad97', 'stroke-width': 1, 'stroke-dasharray': '5 4' }));
-    svg.appendChild(el('circle', { cx: x(m.year), cy: M.t - 14, r: 10, fill: '#faf6ee', stroke: '#8a8471' }));
-    svg.appendChild(el('text', { x: x(m.year), y: M.t - 10, 'text-anchor': 'middle', 'font-size': 12, fill: '#2b2b27' }, String(i + 1)));
+    svg.appendChild(el('circle', { cx: x(m.year), cy: M.t - 14, r: 10, class: 'sd-marker-disc', fill: '#faf6ee', stroke: '#8a8471' }));
+    svg.appendChild(el('text', { x: x(m.year), y: M.t - 10, 'text-anchor': 'middle', class: 'sd-marker-num', 'font-size': 12, fill: '#2b2b27' }, String(i + 1)));
   });
 
   // three grayscale lines

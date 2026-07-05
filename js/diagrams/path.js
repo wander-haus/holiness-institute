@@ -215,7 +215,7 @@ function selectStage(stage, node, svg, panel) {
       <dt>Seeing God rightly</dt><dd>${stage.notion}</dd>
       <dt>The soul’s movement</dt><dd>${stage.note}</dd>
     </dl>
-    <p class="macro-strip" aria-label="The soul’s overall movement: faith, trust, abandonment, self-gift">${macroStrip}</p>`;
+    <p class="macro-strip"><span class="visually-hidden">The soul’s overall movement: </span>${macroStrip}</p>`;
   const lead = panel.querySelector('.path-lens-lead');
   lead.classList.add('is-fresh');
   requestAnimationFrame(() => requestAnimationFrame(() => lead.classList.remove('is-fresh')));

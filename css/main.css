@@ -300,13 +300,9 @@ main { display: block; }
   margin: var(--space-3) auto;
 }
 
-.fleuron {
-  color: var(--gold);
-  font-size: 1.2rem;
-  text-align: center;
-  display: block;
-  margin: var(--space-4) auto;
-}
+/* (An older, simpler .fleuron block lived here; it silently overrode the
+   flanked divider defined above, so the flanking gold rules never rendered.
+   Removed — the earlier definition is the intended one.) */
 
 /* Scripture / direct divine speech. Reserved for the Lord's own words at
    section thresholds — lifted, centered, and marked by a small red cross,
@@ -724,6 +720,9 @@ main { display: block; }
   margin: 0;
 }
 .landing .landing-title {
+  /* An h1 for document structure, rendered as the quiet small-caps line it
+     has always been (body face, not the display face). */
+  font-family: var(--font-body);
   font-variant: small-caps;
   letter-spacing: 0.22em;
   font-size: clamp(1.15rem, 2.6vw, 1.5rem);

@@ -416,7 +416,9 @@
   font-variant: small-caps;
   letter-spacing: 0.12em;
   color: var(--ink);
-  opacity: 0.55;
+  /* 0.7, not lower: keeps the inactive steps quiet while staying above the
+     4.5:1 contrast minimum on both cream backgrounds. */
+  opacity: 0.7;
 }
 .macro-step.active {
   color: var(--gold-text);
@@ -666,6 +668,25 @@
   font-family: var(--font-body);
 }
 
+/* Reserve each chart's height before its SVG (or noscript image) arrives, so
+   the essay text below doesn't jump when the diagram renders. The ratios are
+   the SVG viewBoxes in deficit.js / decline-mini.js / decline.js — keep them
+   in sync. The legend appended under the SVG still adds a little height. */
+#deficit-chart-mount { aspect-ratio: 900 / 520; }
+#decline-mini-mount { aspect-ratio: 900 / 440; }
+#sd-chart-mount { aspect-ratio: 960 / 540; }
+
+/* On phones the whole SVG scales down with its viewBox, which shrinks the
+   in-chart type below legibility. Enlarge the axis ticks and marker discs
+   (SVG presentation attributes lose to CSS), and let the caption carry the
+   deficit annotation, which cannot fit at this scale. */
+@media (max-width: 600px) {
+  .sd-chart-wrap > svg .sd-tick { font-size: 22px; }
+  .sd-chart-wrap > svg .sd-marker-num { font-size: 19px; }
+  .sd-chart-wrap > svg .sd-marker-disc { r: 16px; }
+  .sd-chart-wrap > svg .sd-note { display: none; }
+}
+
 .sd-legend {
   display: flex;
   flex-wrap: wrap;
@@ -696,7 +717,11 @@
   margin: var(--space-2) 0 0;
 }
 
-.sd-controls {
+/* The explorer controls only do anything once decline.js has populated and
+   wired them, so without JS they stay hidden and the <noscript> note speaks
+   instead of a row of dead inputs. */
+.sd-controls { display: none; }
+html.js .sd-controls {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
@@ -764,6 +789,11 @@
   outline: 2px solid var(--gold-bright);
   outline-offset: -3px;
 }
+/* Sorted-column indicator: gold header plus a direction arrow. */
+.sd-table thead button.sorted-asc,
+.sd-table thead button.sorted-desc { color: var(--gold-bright); }
+.sd-table thead button.sorted-asc::after { content: ' ↑'; }
+.sd-table thead button.sorted-desc::after { content: ' ↓'; }
 .sd-table th, .sd-table td { padding: var(--space-1) var(--space-3); }
 .sd-table tbody th {
   font-weight: 400;

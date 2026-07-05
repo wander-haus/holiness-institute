@@ -56,12 +56,12 @@ function drawChart() {
   // gridlines + y labels
   for (let v = 0; v <= 120; v += 20) {
     svg.appendChild(el('line', { x1: M.l, x2: W - M.r, y1: y(v), y2: y(v), stroke: '#e6dcc3', 'stroke-width': v === 100 ? 1.5 : 1, 'stroke-dasharray': v === 100 ? '4 3' : 'none' }));
-    svg.appendChild(el('text', { x: M.l - 8, y: y(v) + 4, 'text-anchor': 'end', 'font-size': 13, fill: '#6b6656' }, String(v)));
+    svg.appendChild(el('text', { x: M.l - 8, y: y(v) + 4, 'text-anchor': 'end', class: 'sd-tick', 'font-size': 13, fill: '#6b6656' }, String(v)));
   }
   // x ticks each decade
   for (let yr = 1920; yr <= 2020; yr += 10) {
     svg.appendChild(el('line', { x1: x(yr), x2: x(yr), y1: H - M.b, y2: H - M.b + 5, stroke: '#6b6656' }));
-    if (yr % 20 === 0) svg.appendChild(el('text', { x: x(yr), y: H - M.b + 22, 'text-anchor': 'middle', 'font-size': 13, fill: '#6b6656' }, String(yr)));
+    if (yr % 20 === 0) svg.appendChild(el('text', { x: x(yr), y: H - M.b + 22, 'text-anchor': 'middle', class: 'sd-tick', 'font-size': 13, fill: '#6b6656' }, String(yr)));
   }
   svg.appendChild(el('line', { x1: M.l, x2: W - M.r, y1: H - M.b, y2: H - M.b, stroke: '#6b6656' }));
 
@@ -74,8 +74,8 @@ function drawChart() {
   // numbered marker labels (legend below carries the text)
   MARKERS.forEach((m, i) => {
     const cx = m.span ? (x(m.year) + x(m.span)) / 2 : x(m.year);
-    svg.appendChild(el('circle', { cx, cy: M.t - 16, r: 10, fill: '#faf6ee', stroke: '#8a8471' }));
-    svg.appendChild(el('text', { x: cx, y: M.t - 12, 'text-anchor': 'middle', 'font-size': 12, fill: '#2b2b27' }, String(i + 1)));
+    svg.appendChild(el('circle', { cx, cy: M.t - 16, r: 10, class: 'sd-marker-disc', fill: '#faf6ee', stroke: '#8a8471' }));
+    svg.appendChild(el('text', { x: cx, y: M.t - 12, 'text-anchor': 'middle', class: 'sd-marker-num', 'font-size': 12, fill: '#2b2b27' }, String(i + 1)));
   });
 
   // series
@@ -169,6 +169,16 @@ function initExplorer() {
     const fi = FIELDS.indexOf(metricSel.value) + 2;
     const q = search.value.trim().toLowerCase();
     document.getElementById('sd-col-metric').textContent = FIELD_LABELS[metricSel.value];
+
+    // Reflect the current sort on the column headers, for assistive tech
+    // (aria-sort) and visually (a direction arrow via .sorted-asc/desc).
+    table.querySelectorAll('thead th').forEach((th) => {
+      const btn = th.querySelector('button');
+      const active = btn.dataset.sort === state.sort;
+      th.setAttribute('aria-sort', active ? (state.dir === 1 ? 'ascending' : 'descending') : 'none');
+      btn.classList.toggle('sorted-asc', active && state.dir === 1);
+      btn.classList.toggle('sorted-desc', active && state.dir === -1);
+    });
 
     let rows = (byYear.get(yr) || [])
       .filter((r) => !q || r[1].toLowerCase().includes(q))
