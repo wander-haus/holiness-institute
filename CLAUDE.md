@@ -96,6 +96,15 @@ Steve's emailed edits, implemented with Parker:
 - **Full book bios** for Gajdosik and Zurlo swapped into the bio cards (kept collapsible, summary lines unchanged). "Pro Ponifice" typo rendered as "Pro Pontifice et Ecclesia" → NOTE (official name is "Pro Ecclesia et Pontifice").
 - **In-browser design fixes** (checked live with Parker): `.decline-strip` columns rebalanced to `4fr 6fr 3fr` so "Conversion hope" no longer wraps (the wrap made the strip look clipped); the two section buttons moved out of the prose measure into a new `.btn-row` (flex, centered, wraps with a gap — the old inline pair stacked touching); the moved flow strip on `holiness.html` §II uses a new `.flow-figure.flow-column` modifier (vertical ↓ form at all widths — four boxes can't fit the essay column, and the wrapped form stranded "Mission" after a dangling arrow).
 
+## Reception years and the 2020 cutoff (July 5, 2026 — DONE)
+
+Steve clarified that the workbook's sheets are labeled by **submission year** — each reports the previous year's sacraments (the old "2016 sheet = 2015 data" anomaly was just this rule). Parker: end all graphs at 2020 until the final 2025 data arrives. This supersedes the July 4 range treatment (1921–2025-skip-2021).
+
+- Generated data files (`decline-summary-data.js`, `decline-data.js`) now carry **reception years** (sheet year − 1): 1920…2015, 2020, 2024. Any regeneration from the workbook must reapply this shift.
+- All three charts (`deficit.js`, `decline-mini.js`, `decline.js`) end at 2020 (`LAST_YEAR`): the 2024-receptions column (submitted 2025) stays in the data and the diocesan explorer but out of every chart; the 2026 "reported conversion increase" marker was dropped from charts (beyond the axis); x-domains are now 1918–2022. The 2020 endpoint (submitted 2021) is the COVID year — cautioned on the data page, included per Steve.
+- Static alt tables and year references updated across about/holiness/sacramental-data; "Reading the Data" explains reception years, the 2020 COVID caution, and the 2024 exclusion.
+- The about.html deficit-chart NOTE now covers only the one remaining departure from Steve's graph: the population line + deficit wash are kept (his prose requires them; his attached graph lacks them).
+
 ## Landing page revert (July 4, 2026 — DONE)
 
 Steve's "Landing Page" email, superseding the design pass's "navigation everywhere" for `index.html` only:
@@ -105,7 +114,7 @@ Steve's "Landing Page" email, superseding the design pass's "navigation everywhe
 
 ## Outstanding items
 
-- Resolve the `NOTE for client review` comments (laity threshold kicker, `how-you-see-god` Continue target, Eudes/Caussade question in `retreats.html`, nav placement + data-source attribution in `sacramental-data.html`, drafted prompts/rows/lenses in `holiness.html` + `path-data.js`, deficit-chart range treatment + Jubilee strip region + medal name in `about.html`, "Start Here" door label on `index.html`)
+- Resolve the `NOTE for client review` comments (laity threshold kicker, `how-you-see-god` Continue target, Eudes/Caussade question in `retreats.html`, nav placement + data-source attribution in `sacramental-data.html`, drafted prompts/rows/lenses in `holiness.html` + `path-data.js`, deficit-chart population-line departure + Jubilee strip region + medal name in `about.html`, "Start Here" door label on `index.html`)
 - Steve to review the causality page's four-causes section (closely paraphrases his book) and confirm the *Leadership Illusion* pointer should live there until a dedicated essay page exists
 - Pages with "Draft for review" bands await Steve's review
 - README TODO: set absolute `og:image` URLs after deploy (may be done — check `git log`; last commit set OG meta)

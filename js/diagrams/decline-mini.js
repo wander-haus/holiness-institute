@@ -11,11 +11,13 @@ const SERIES = [
   { key: 'tmar', stroke: '#6b6656', dash: '7 4' },
   { key: 'rec', stroke: '#9a927c', dash: '2 3' },
 ];
+// Reception years; the chart ends at 2020 — 2024 receptions (submitted 2025)
+// are excluded until the final 2025 data arrives.
+const LAST_YEAR = 2020;
 const MARKERS = [
   { year: 1962, label: 'Second Vatican Council opens' },
   { year: 1970, label: 'New Roman Missal implemented' },
   { year: 2000, label: 'Great Jubilee conversion bulge' },
-  { year: 2026, label: 'Reported conversion increase' },
 ];
 
 function el(name, attrs, text) {
@@ -31,13 +33,13 @@ export function initDeclineMini() {
 
   const W = 900, H = 440;
   const M = { l: 48, r: 16, t: 52, b: 40 };
-  const x = (yr) => M.l + ((yr - 1918) / (2028 - 1918)) * (W - M.l - M.r);
+  const x = (yr) => M.l + ((yr - 1918) / (2022 - 1918)) * (W - M.l - M.r);
   const y = (v) => H - M.b - (v / 132) * (H - M.t - M.b);
 
   const svg = el('svg', {
     viewBox: `0 0 ${W} ${H}`,
     role: 'img',
-    'aria-label': 'Indexed per-capita sacramental participation, 1921 to 2025. Infant baptisms, total marriages, and receptions into full communion per Catholic all decline substantially before the Second Vatican Council opens in 1962 and continue declining after it. The indexed figures are in the table below this chart.',
+    'aria-label': 'Indexed per-capita sacramental participation, 1920 to 2020. Infant baptisms, total marriages, and receptions into full communion per Catholic all decline substantially before the Second Vatican Council opens in 1962 and continue declining after it. The indexed figures are in the table below this chart.',
   });
 
   // 100 reference line + axis
@@ -61,7 +63,7 @@ export function initDeclineMini() {
   for (const s of SERIES) {
     const rates = NATIONAL[s.key].rates;
     const base = rates.find((v) => v != null);
-    const pts = YEARS.map((yr, i) => (rates[i] == null ? null : [x(yr), y((100 * rates[i]) / base)])).filter(Boolean);
+    const pts = YEARS.map((yr, i) => (yr > LAST_YEAR || rates[i] == null ? null : [x(yr), y((100 * rates[i]) / base)])).filter(Boolean);
     svg.appendChild(el('path', {
       d: pts.map((p, i) => `${i ? 'L' : 'M'}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' '),
       fill: 'none', stroke: s.stroke, 'stroke-width': 2.25,

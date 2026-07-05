@@ -3,13 +3,15 @@
    per-capita sacramental reception (grayscale) falls to a fraction of its
    starting level; the lightly shaded space between the population line and
    the sacramental lines is the spiritual deficit the section describes.
-   The COVID-distorted 2021 point is omitted (see sacramental-data.html,
-   "Reading the Data"). Text alternative: static indexed table in the page. */
+   Years are reception years; the chart ends at 2020 — the 2024 receptions
+   (submitted 2025) are excluded until the final 2025 data arrives (see
+   sacramental-data.html, "Reading the Data"). Text alternative: static
+   indexed table in the page. */
 
 import { YEARS, NATIONAL, POPULATION } from './decline-summary-data.js';
 
 const SVGNS = 'http://www.w3.org/2000/svg';
-const OMIT = new Set([2021]);
+const LAST_YEAR = 2020;
 const SERIES = [
   { key: 'inf', stroke: '#2b2b27', dash: 'none' },
   { key: 'tmar', stroke: '#6b6656', dash: '7 4' },
@@ -19,7 +21,6 @@ const MARKERS = [
   { year: 1962, label: 'Second Vatican Council opens' },
   { year: 1970, label: 'New Roman Missal implemented' },
   { year: 2000, label: 'Great Jubilee conversion bulge' },
-  { year: 2026, label: 'Reported conversion increase' },
 ];
 
 function el(name, attrs, text) {
@@ -35,10 +36,10 @@ export function initDeficit() {
 
   const W = 900, H = 520;
   const M = { l: 52, r: 16, t: 52, b: 40 };
-  const x = (yr) => M.l + ((yr - 1918) / (2028 - 1918)) * (W - M.l - M.r);
+  const x = (yr) => M.l + ((yr - 1918) / (2022 - 1918)) * (W - M.l - M.r);
   const y = (v) => H - M.b - (v / 410) * (H - M.t - M.b);
 
-  const keep = YEARS.map((yr, i) => [yr, i]).filter(([yr]) => !OMIT.has(yr));
+  const keep = YEARS.map((yr, i) => [yr, i]).filter(([yr]) => yr <= LAST_YEAR);
   const idx = (arr, base) => keep.map(([yr, i]) => (arr[i] == null ? null : [yr, (100 * arr[i]) / base]));
 
   const popPts = idx(POPULATION.totals, POPULATION.totals[0]);
@@ -47,7 +48,7 @@ export function initDeficit() {
   const svg = el('svg', {
     viewBox: `0 0 ${W} ${H}`,
     role: 'img',
-    'aria-label': 'Catholic population and indexed per-capita sacramental participation, 1921 to 2025, each indexed to 100 at 1921. The Catholic population rises to roughly 384 by 2025, while infant baptisms, total marriages, and receptions into full communion per Catholic fall to between roughly 15 and 28. The gap between the rising population line and the falling sacramental lines widens across the whole century. The COVID-affected 2021 figures are omitted. The indexed figures are in the table below this chart.',
+    'aria-label': 'Catholic population and indexed per-capita sacramental participation, 1920 to 2020, each indexed to 100 at 1920. The Catholic population rises to roughly 388 by 2020, while infant baptisms, total marriages, and receptions into full communion per Catholic fall to between roughly 14 and 22. The gap between the rising population line and the falling sacramental lines widens across the whole century. The indexed figures are in the table below this chart.',
   });
 
   // The deficit wash: the widening space between population and per-capita reception.

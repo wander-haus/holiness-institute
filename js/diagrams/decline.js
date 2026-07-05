@@ -12,11 +12,14 @@ const SERIES = [
   { key: 'tmar', color: '#7a1f1f' },
   { key: 'rec', color: '#7d6326' },
 ];
+// Chart years are reception years and stop at 2020 — the 2024 receptions
+// (submitted 2025) stay in the explorer below but out of the chart until
+// the final 2025 data arrives.
+const LAST_YEAR = 2020;
 const MARKERS = [
   { year: 1962, span: 1965, label: 'Second Vatican Council opens (1962)' },
   { year: 1970, label: 'New Roman Missal implemented (1970)' },
   { year: 2000, label: 'Great Jubilee conversion bulge (2000)' },
-  { year: 2026, label: 'Reported conversion increase (2026)' },
 ];
 
 function el(name, attrs, text) {
@@ -40,14 +43,14 @@ function drawChart() {
 
   const W = 960, H = 540;
   const M = { l: 56, r: 20, t: 56, b: 44 };
-  const X0 = 1918, X1 = 2028, Y0 = 0, Y1 = 132;
+  const X0 = 1918, X1 = 2022, Y0 = 0, Y1 = 132;
   const x = (yr) => M.l + ((yr - X0) / (X1 - X0)) * (W - M.l - M.r);
   const y = (v) => H - M.b - ((v - Y0) / (Y1 - Y0)) * (H - M.t - M.b);
 
   const svg = el('svg', {
     viewBox: `0 0 ${W} ${H}`,
     role: 'img',
-    'aria-label': 'Line chart of indexed per-capita sacramental participation in the United States, 1921 to 2025. All three lines — infant baptisms, total marriages, and receptions into full communion per Catholic — decline substantially before the Second Vatican Council opens in 1962, and continue declining after it. A full data table follows this chart.',
+    'aria-label': 'Line chart of indexed per-capita sacramental participation in the United States, 1920 to 2020. All three lines — infant baptisms, total marriages, and receptions into full communion per Catholic — decline substantially before the Second Vatican Council opens in 1962, and continue declining after it. A full data table follows this chart.',
   });
 
   // gridlines + y labels
@@ -78,7 +81,7 @@ function drawChart() {
   // series
   for (const s of SERIES) {
     const vals = indexed(s.key);
-    const pts = YEARS.map((yr, i) => (vals[i] == null ? null : [x(yr), y(vals[i]), yr, vals[i], NATIONAL[s.key].rates[i]])).filter(Boolean);
+    const pts = YEARS.map((yr, i) => (yr > LAST_YEAR || vals[i] == null ? null : [x(yr), y(vals[i]), yr, vals[i], NATIONAL[s.key].rates[i]])).filter(Boolean);
     const d = pts.map((p, i) => `${i ? 'L' : 'M'}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' ');
     svg.appendChild(el('path', { d, fill: 'none', stroke: s.color, 'stroke-width': 2.5, 'stroke-linejoin': 'round' }));
     for (const p of pts) {
@@ -128,6 +131,8 @@ function initExplorer() {
 
   const yearsDesc = [...byYear.keys()].sort((a, b) => b - a);
   for (const yr of yearsDesc) yearSel.appendChild(new Option(String(yr), yr));
+  // Default to the charts' last year, not the provisional 2024 column.
+  if (byYear.has(LAST_YEAR)) yearSel.value = String(LAST_YEAR);
   for (const f of FIELDS) if (f !== 'pop') metricSel.appendChild(new Option(FIELD_LABELS[f], f));
   metricSel.value = 'inf';
 
