@@ -12,6 +12,7 @@ Static website for The Holiness Institute ("Called to the Fullness of Love"), fo
 - **Relative paths only** — the site must work at both `username.github.io/repo/` and a custom domain.
 - **Accessibility is a hard requirement:** every diagram keyboard-operable with a text alternative, animation respects `prefers-reduced-motion`, site fully readable without JS.
 - **Fonts are self-hosted** (Cormorant Garamond, EB Garamond) in `assets/fonts/`.
+- **Always italicize Latin text and titles** (Steve's rule, July 5, 2026): encyclical/document titles (*Novo Millennio Ineunte*, *Lumen Gentium*…), Latin phrases (*Nemo dat quod non habet*, *munus sanctificandi*), Latin honors (*Pro Pontifice et Ecclesia*). Use `<em>`; skip attribute values and `<cite>` elements (already italic).
 - **Voice:** the site's prose is drawn from Steve's writing — measured, theological, literary. Match it; don't paraphrase into marketing copy. Pages drafted from his notes carry a "Draft for review" band. Open questions for Steve are marked `NOTE for client review` in HTML comments (currently in `begin-laity.html`, `how-you-see-god.html`, `retreats.html`).
 - `client-documents/` is **gitignored** — source material, never published.
 
