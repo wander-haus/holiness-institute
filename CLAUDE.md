@@ -116,5 +116,5 @@ Steve's "Landing Page" email, superseding the design pass's "navigation everywhe
 
 - Resolve the `NOTE for client review` comments (laity threshold kicker, `how-you-see-god` Continue target, Eudes/Caussade question in `retreats.html`, nav placement + data-source attribution in `sacramental-data.html`, drafted prompts/rows/lenses in `holiness.html` + `path-data.js`, deficit-chart population-line departure + Jubilee strip region + medal name in `about.html`, "Start Here" door label on `index.html`)
 - Steve to review the causality page's four-causes section (closely paraphrases his book) and confirm the *Leadership Illusion* pointer should live there until a dedicated essay page exists
-- Pages with "Draft for review" bands await Steve's review
+- "Draft for review" bands removed sitewide per Parker (July 5, 2026); the `.draft-notice` CSS remains in `main.css` for future draft pages
 - README TODO: set absolute `og:image` URLs after deploy (may be done — check `git log`; last commit set OG meta)
