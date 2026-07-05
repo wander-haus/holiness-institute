@@ -96,6 +96,20 @@ Steve's emailed edits, implemented with Parker:
 - **Full book bios** for Gajdosik and Zurlo swapped into the bio cards (kept collapsible, summary lines unchanged). "Pro Ponifice" typo rendered as "Pro Pontifice et Ecclesia" → NOTE (official name is "Pro Ecclesia et Pontifice").
 - **In-browser design fixes** (checked live with Parker): `.decline-strip` columns rebalanced to `4fr 6fr 3fr` so "Conversion hope" no longer wraps (the wrap made the strip look clipped); the two section buttons moved out of the prose measure into a new `.btn-row` (flex, centered, wraps with a gap — the old inline pair stacked touching); the moved flow strip on `holiness.html` §II uses a new `.flow-figure.flow-column` modifier (vertical ↓ form at all widths — four boxes can't fit the essay column, and the wrapped form stranded "Mission" after a dangling arrow).
 
+## Deficit section moved up on About (July 5, 2026 — DONE)
+
+Steve asked for "The Deficit Beneath the Activity" to hit the reader early —
+before "Our Theological Principles", or before "The Problem We Name" if that
+read better. Placed before **Principles** (his first instinct): "The Problem
+We Name" names the decline in words and ends "The Institute exists to keep
+that question before the Church"; the deficit section then shows it in data,
+and the Principles follow as the response. Before "The Problem We Name" it
+would have made that section's opening ("weakening for roughly a century")
+read as a repeat. The whole ensemble moved together: comment + NOTEs, prose,
+chart figure, arc strip, conversion-hope prose, and the `.btn-row`. Page now
+runs … Problem We Name → Deficit (chart/arc/buttons) → Principles → Offers →
+Holiness Planning in Brief → Who We Are.
+
 ## Reception years and the 2020 cutoff (July 5, 2026 — DONE)
 
 Steve clarified that the workbook's sheets are labeled by **submission year** — each reports the previous year's sacraments (the old "2016 sheet = 2015 data" anomaly was just this rule). Parker: end all graphs at 2020 until the final 2025 data arrives. This supersedes the July 4 range treatment (1921–2025-skip-2021).
