@@ -5,14 +5,25 @@
    All page *content* is static HTML; only this chrome is JS-injected,
    and every page carries a <noscript> nav fallback. */
 
+/* The header carries the reading arc, the front door, and the concrete
+   instrument — five links (July 6, 2026: the 8-link header read as crowded).
+   "Saints" precedes "Holiness" to mirror the reading path:
+   How You See God → The Saints God Sends → Holiness → Fatherhood. */
 const NAV_LINKS = [
   { id: 'about', href: 'about.html', label: 'About' },
+  { id: 'saints', href: 'saints.html', label: 'Saints' },
   { id: 'holiness', href: 'holiness.html', label: 'Holiness' },
   { id: 'fatherhood', href: 'fatherhood.html', label: 'Fatherhood' },
-  { id: 'holiness-guide', href: 'holiness-guide.html', label: 'Holiness Guide' },
-  { id: 'path-to-renewal', href: 'path-to-renewal.html', label: 'Path to Renewal' },
   { id: 'retreats', href: 'retreats.html', label: 'Retreats' },
-  { id: 'causality', href: 'causality.html', label: 'Causality' },
+];
+
+/* Deepening material lives in the footer's Go Deeper column only. The data
+   page joins it here (its old NOTE asked where it should live in the nav). */
+const DEEPER_LINKS = [
+  { href: 'holiness-guide.html', label: 'Holiness Guide' },
+  { href: 'path-to-renewal.html', label: 'Path to Renewal' },
+  { href: 'causality.html', label: 'Causality' },
+  { href: 'sacramental-data.html', label: 'Sacramental Data' },
 ];
 
 // "Start Here" is reserved for the landing page itself (Steve, "Landing
@@ -71,13 +82,13 @@ function footerHTML(footerMode, navMode = footerMode) {
       <div>
         <h2>Explore</h2>
         <ul>
-          ${NAV_LINKS.slice(0, 5).map((l) => `<li><a href="${l.href}">${l.label}</a></li>`).join('\n')}
+          ${NAV_LINKS.map((l) => `<li><a href="${l.href}">${l.label}</a></li>`).join('\n')}
         </ul>
       </div>
       <div>
         <h2>Go Deeper</h2>
         <ul>
-          ${NAV_LINKS.slice(5).map((l) => `<li><a href="${l.href}">${l.label}</a></li>`).join('\n')}
+          ${DEEPER_LINKS.map((l) => `<li><a href="${l.href}">${l.label}</a></li>`).join('\n')}
           <li><a href="laity.html">For the Laity</a></li>
           <li><a href="priests.html">For Priests</a></li>
           <li><a href="bishops.html">For Bishops</a></li>

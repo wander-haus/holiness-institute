@@ -158,6 +158,8 @@ function selectNode(item, node, nodes, panel) {
       <dd>${item.preserves}</dd>
       <dt>Where it stops short</dt>
       <dd>${item.stops}</dd>
+      <dt>Old error, new name</dt>
+      <dd>${item.ancestor}</dd>
       <dt>Restored to service</dt>
       <dd>${item.restored}</dd>
     </dl>`;

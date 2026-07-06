@@ -1092,3 +1092,111 @@ html.js .sd-controls {
 @media (prefers-reduced-motion: reduce) {
   .saint-card, .saint-card:hover { transform: none; }
 }
+
+/* --------------------------------------------------------------------------
+   The Saints God Sends — century frieze (saints.html)
+   -------------------------------------------------------------------------- */
+
+/* A vertical ledger: one gold spine runs down the left, each century hangs
+   its small-caps label in the gutter, and its saints sit as chips to the
+   right of the spine. Chronology reads top to bottom; on wide screens the
+   detail panel stands to the right and follows the scroll. Plain buttons —
+   keyboard-operable and legible at every width, no SVG. */
+.frieze-rail {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.frieze-rail::before {
+  content: '';
+  position: absolute;
+  top: 0.35rem;
+  bottom: 0.35rem;
+  left: 5.2rem;
+  width: 2px;
+  background: var(--gold);
+}
+.frieze-era {
+  display: grid;
+  grid-template-columns: 5.2rem minmax(0, 1fr);
+  align-items: baseline;
+}
+.frieze-era:not(:first-child) { margin-top: var(--space-3); }
+.frieze-era-label {
+  text-align: right;
+  padding-right: var(--space-2);
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  color: var(--gold-text);
+}
+/* The last era — our own — is not yet history: its label is rubricated
+   like its chip. */
+.frieze-era:last-child .frieze-era-label { color: var(--red); }
+.frieze-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: var(--space-1);
+  padding-left: var(--space-3);
+}
+.frieze-chip {
+  font: inherit;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  color: var(--navy);
+  background: var(--cream);
+  border: 1px solid rgb(27 42 74 / 0.3);
+  border-radius: 999px;
+  padding: 0.15rem 0.75rem;
+  cursor: pointer;
+}
+.frieze-chip:hover { background: rgb(176 141 62 / 0.12); border-color: var(--gold-bright); }
+.frieze-chip.selected {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--cream);
+}
+/* The final chip — our own age — is not yet history: rubricated, italic,
+   still being written. */
+.frieze-chip-open {
+  border-color: var(--red);
+  color: var(--red);
+  font-style: italic;
+}
+.frieze-chip-open.selected { background: var(--red); border-color: var(--red); color: var(--cream); }
+
+/* Without JS the frieze cannot render: hide its mount and panel so the
+   figure reads caption → text-version table, with nothing dangling. */
+html:not(.js) .saints-layout { display: none; }
+
+.saints-layout .diagram-panel { margin-top: var(--space-3); min-height: 11rem; }
+/* Wide screens: ledger left, panel right — the panel keeps pace with the
+   reader as the centuries scroll past. */
+@media (min-width: 900px) {
+  .saints-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(16rem, 36%, 20rem);
+    gap: var(--space-4);
+    align-items: start;
+  }
+  .saints-layout .diagram-panel {
+    position: sticky;
+    top: var(--space-3);
+    margin-top: 0;
+  }
+}
+.frieze-panel-more {
+  margin: var(--space-3) 0 0;
+  font-style: italic;
+  font-size: 0.98rem;
+}
+
+/* Static five-column table (text version / no-JS fallback): .reorder-table
+   supplies the dress and the stacked-card mobile form; these add the column
+   tints and the open final row. */
+.saints-table td[data-label="Heresy or Error Confronted"] { color: var(--red); }
+.saints-table td[data-label="Characteristic Form of Holiness"] { color: var(--navy); }
+.saints-table tr.open-row { border-top: 2px solid var(--red); }
+.saints-table tr.open-row th, .saints-table tr.open-row td { font-style: italic; }

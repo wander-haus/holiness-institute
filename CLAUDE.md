@@ -8,12 +8,12 @@ Static website for The Holiness Institute ("Called to the Fullness of Love"), fo
 
 - **No build step.** Edit HTML/CSS/JS directly; test with `python3 -m http.server 8000`.
 - **Shared nav/header/footer** is injected by `js/include.js`. Edit chrome there, never per-page.
-- **Diagram content** lives in `js/diagrams/*-data.js` (data) separate from rendering (`path.js`, `substitutes.js`, `causality.js`). Change text in the data files.
+- **Diagram content** lives in `js/diagrams/*-data.js` (data) separate from rendering (`path.js`, `substitutes.js`, `causality.js`, `saints.js`). Change text in the data files.
 - **Relative paths only** — the site must work at both `username.github.io/repo/` and a custom domain.
 - **Accessibility is a hard requirement:** every diagram keyboard-operable with a text alternative, animation respects `prefers-reduced-motion`, site fully readable without JS.
 - **Fonts are self-hosted** (Cormorant Garamond, EB Garamond) in `assets/fonts/`.
 - **Always italicize Latin text and titles** (Steve's rule, July 5, 2026): encyclical/document titles (*Novo Millennio Ineunte*, *Lumen Gentium*…), Latin phrases (*Nemo dat quod non habet*, *munus sanctificandi*), Latin honors (*Pro Pontifice et Ecclesia*). Use `<em>`; skip attribute values and `<cite>` elements (already italic).
-- **Voice:** the site's prose is drawn from Steve's writing — measured, theological, literary. Match it; don't paraphrase into marketing copy. Pages drafted from his notes carry a "Draft for review" band. Open questions for Steve are marked `NOTE for client review` in HTML comments (currently in `begin-laity.html`, `how-you-see-god.html`, `retreats.html`).
+- **Voice:** the site's prose is drawn from Steve's writing — measured, theological, literary. Match it; don't paraphrase into marketing copy. Open questions for Steve are marked `NOTE for client review` in HTML comments (grep for them; currently across `begin-laity`, `retreats`, `sacramental-data`, `holiness`, `about`, `index`, `saints`, `path-to-renewal`, `causality`, `fatherhood`, and `js/diagrams/substitutes-data.js`).
 - `client-documents/` is **gitignored** — source material, never published.
 
 ## Site map
@@ -24,6 +24,7 @@ Static website for The Holiness Institute ("Called to the Fullness of Love"), fo
 | `begin-laity/priests/bishops.html` | "Before You Go Further" threshold pages per audience |
 | `laity.html`, `priests.html`, `bishops.html` | Audience hubs with suggested reading paths |
 | `how-you-see-god.html` | Foundational page |
+| `saints.html` | "The Saints God Sends, and the God Who Comes" (July 6, 2026): Steve's essay nearly verbatim, in the reading path between `how-you-see-god` and `holiness` (nav label "Saints"). Interactive century frieze renders the essay's 33-row table from `js/diagrams/saints-data.js` via `saints.js`; full static table beneath as text version / no-JS fallback |
 | `about.html`, `holiness.html`, `fatherhood.html`, `holiness-guide.html`, `path-to-renewal.html`, `retreats.html`, `causality.html` | Main content pages; `holiness` has three interactive diagrams, `causality` has the inversion diagram |
 | `sacramental-data.html` | The data page: indexed per-capita chart (1921–2025), interpretive essay, searchable per-diocese explorer, methodology notes. Chart/explorer render from `js/diagrams/decline-data.js` (generated — see below) via `js/diagrams/decline.js` |
 | `404.html` | Not found |
@@ -58,6 +59,10 @@ The essay series is source material that informs the site's thinking and voice. 
 - `The_Seminary_of_Love.docx` — the family as the first seminary (theme already present on `holiness.html` / `fatherhood.html`)
 - `Put_out_into_the_deep.docx` — the bishop's charge for the holiness of priests and faithful (bishop-facing)
 - `The_Leadership_Illusion_FrGiertych_bolded.docx` — long piece with its own table of contents: how "leadership" supplanted fatherhood (the inversion theme of `causality.html`; also named under "What the Institute Offers" on `about.html` as a publication of the Institute)
+
+### The Saints God Sends (arrived July 6, 2026 — incorporated same day)
+
+- `The_Saints_God_Sends_1.docx` → **`saints.html`** (see the July 6 section below). Unlike the essay series above, Steve asked for this one to enter the site as a page — "as governing witness rather than as a resource in a library," placed in the reading path, per the plan he worked out in conversation with Fable and forwarded with the file. The essay's five-column table is the source for `js/diagrams/saints-data.js`.
 
 ## Holiness page rework (from Steve's email, July 2, 2026 — DONE July 2, 2026)
 
@@ -144,9 +149,51 @@ Full visual + code review with Parker; all findings fixed the same day:
 - **404 home link**: guesses `/'+first-segment+'/` then verifies by probing `assets/favicon-32.png`, falling back to `/` — works on github.io project sites, subpath deployments (wander.haus/holiness-institute/), and root custom domains.
 - **Typography nits**: straight quote in holiness §I (*Gaudium et Spes* quote), straight apostrophes in `path-data.js` lens text + the static stage list, "St Paul" → "St. Paul" (retreats).
 
+## The Saints God Sends — new page and sitewide weave (July 6, 2026 — DONE)
+
+Steve's new essay (`The_Saints_God_Sends_1.docx`), built per the plan he worked out with Fable and forwarded: a page of its own at the hinge of the reading path, the table made interactive, the heresy column joined to the substitutes taxonomy, three pressure-point insertions, and entry as governing witness (reading path + full nav) rather than under any "Resources" heading. All decisions confirmed by Parker (full nav entry, `saints.html` / "Saints", century frieze + panel, full weave in one pass).
+
+- **`saints.html`** — essay text nearly verbatim (straight apostrophes normalized to curly per site convention; Latin/title italics per Steve's rule). Holiness-style essay layout: `data-essay` (progress bar + scrollspy), TOC rail, mobile TOC, section kickers I–V under Steve's own headings (Pattern in History / Particular Remedy / When God Himself Comes / Mercy, Trust… / What God Is Already Showing). Epigraph Amos 3:7. Illuminated rhythm applied (drop caps on section openers; four pull-quotes, verbatim lines; one examen quoting the essay's own question). Vatican.va links added on first reference — *Haurietis Aquas*, *The Message of Fatima*, the Divine Mercy Sunday homily (22 April 2001), *Novo Millennio Ineunte* — all four URLs fetched and verified live. NMI 38 set as `blockquote.quote`.
+- **Century frieze** (`js/diagrams/saints-data.js` + `js/diagrams/saints.js`, wired in `main.js`): the essay's 33-row table verbatim as button-chips grouped by century (15 era groups) → `.diagram-panel` with crisis / heresy or error / characteristic form of holiness. No SVG — plain buttons, keyboard-operable at any width. The last row ("Our own") renders as a rubricated italic chip; its panel adds the "Already given: Thérèse, Faustina, John Paul II" field and links to `holiness.html#why-replaced` — the essay's heresy column joined to the substitutes taxonomy. Full static table lives in the figure's `.diagram-text` details (reuses `.reorder-table` dress incl. stacked mobile cards; `.saints-table` adds column tints + open-row rule); `html:not(.js) .saints-layout` hides the empty mount/panel so no-JS reads caption → table. **Verified:** three-way diff docx table ↔ data module ↔ static HTML table = 0 mismatches across all 33×5 cells; DOM smoke test (groups, chips, selection, open-row panel); links/anchors and tag balance across all touched pages.
+- **Reading path**: `how-you-see-god.html` Continue → `saints.html` (resolves the old "Continue untargeted" NOTE); saints Continue → `holiness.html`, quiet-link back to How You See God. Drafted bridge paragraph at the top of the essay ("the page behind this one ends with the saints…") → NOTE.
+- **Closing move** (drafted → NOTE): vertical flow figure Mercy→Trust→Abandonment→Grace→Holiness→Renewal with a quiet-link to `path-to-renewal.html`, then a paragraph fusing the open row with the substitutes and the already-indicated remedy ("What the Sacred Heart was for the seventeenth century, this witness is for ours").
+- **Nav**: `Saints` added to `NAV_LINKS` between About and Holiness (mirrors reading order). Footer columns are now 4/5/6 (Explore = About…Holiness Guide, Go Deeper picks up Path to Renewal). Noscript navs updated on all full pages + `index.html` + `how-you-see-god.html` (Saints before Holiness); `begin-*` noscripts unchanged (threshold flow goes through How You See God first).
+- **Pressure points** (each drafted → NOTE for client review): `index.html` — one sentence + link closing the "the answer is not new" paragraph ("God has answered every age this way — see how"); `path-to-renewal.html` — saints link added to the practice chain + a providential-pedigree paragraph before "Nothing on that path is new"; `causality.html` — instrumental-causality paragraph (saint as secondary cause of a prior divine initiative) between the four-causes answers and "Notice what is absent"; `holiness.html` — doorway line under the "Saints Show the Path" strip.
+- **Hubs**: a "The Saints God Sends" step added after How You See God on `laity/priests/bishops.html`, notes tailored per audience (drafted, like all hub copy).
+
+**Round 2 (same day, per Parker — "implement your recommendations"):**
+
+- **Substitutes fusion made bidirectional**: `ancestor` field on every entry in `substitutes-data.js` (drafted from the essay's last-row analysis — Pelagius returned / Gnostic instinct / Jansenism's residue / trust in technique → NOTE at top of that file), rendered in the wheel panel as "Old error, new name" between "stops short" and "restored". The text-version details on `holiness.html` carries a matching drafted summary paragraph + `saints.html` link (→ NOTE).
+- **Frieze deep links**: chips carry ids from `saints-data.js`, so `saints.html#margaret-mary` (etc.) selects that chip on load and on hashchange and scrolls it into view. These anchors are JS-generated — not in the static HTML; without JS the fragment is ignored and the reader has the static table. A link checker must treat `saints.html#<saint-id>` as valid against `saints-data.js` ids.
+- **Frieze keyboard**: roving tabindex — the frieze is a single tab stop; Arrow keys move along it, Home/End jump, Enter/Space select (33 chips are no longer 33 tab stops).
+- **Holiness saint cards retargeted** to `saints.html#augustine/#teresa-avila/#john-cross/#therese`; their old in-page fallback anchors are recorded in a NOTE for Steve to revert if preferred.
+- **Fourth pressure point**: drafted paragraph near the end of `fatherhood.html` §X — "its final column keeps saying fatherhood: Peter… Gregory… Borromeo… Vianney… Bosco" → NOTE.
+- **Pedigree names linked**: the path-to-renewal drafted paragraph now deep-links the Sacred Heart / Faustina / John Paul II to their frieze rows.
+- **Bridge reworded** ("Behind this page in the site's reading path stands How You See God…") so it reads correctly for both arrivals — reading path and top nav.
+
+**Frieze layout revision (same day, per Parker — the centered wrap read as jagged):**
+
+- The frieze is now a **vertical century ledger**: one continuous gold spine (`.frieze-rail::before` at `left: 5.2rem`), era labels right-aligned in the gutter (small-caps gold; the "Our own" label rubricated red like its chip), chips left-aligned to the right of the spine, chronology reading top to bottom. Same DOM — CSS only, plus one JS line.
+- **≥900px**: `.saints-layout` becomes a two-column grid; the detail panel stands to the right and is `position: sticky` (top `--space-3`), keeping pace as the ledger scrolls. **<900px**: panel sits under the ledger as before, and a chip tap calls `panel.scrollIntoView({block:'nearest'})` so selection is never invisible (guarded `window.matchMedia`, no scroll on hash-apply).
+
+## Navigation slimmed to five (July 6, 2026 — DONE)
+
+Per Parker: the 8-link header read as crowded once Saints joined. Restructured in `include.js`:
+
+- **Header** (`NAV_LINKS`, 5): About · Saints · Holiness · Fatherhood · Retreats — the reading arc plus the front door (About) and the concrete instrument (Abba). Holiness Guide, Path to Renewal, and Causality left the header.
+- **Footer**: Explore = the five header links, same order. Go Deeper = new `DEEPER_LINKS` const — Holiness Guide, Path to Renewal, Causality, **Sacramental Data** (its first nav home; that page's NOTE now asks Steve to confirm footer placement instead of asking where it should go) — plus the three audience hubs. Columns now 4/5/7.
+- Pages no longer in the header (`holiness-guide`, `path-to-renewal`, `causality`) keep their `data-page` attributes; they simply match no header link (like `sacramental-data` always has). Noscript navs were left complete — they are per-page sitemaps, not header mirrors.
+
+## CCC citations linked (July 6, 2026 — DONE)
+
+All three Catechism references now link the Vatican's IntraText archive, per the site's convention of linking magisterial sources: CCC 67 → `ENG0015/__PH.HTM` (saints.html), CCC 2014 → `__P71.HTM` and CCC 826 → `__P29.HTM` (holiness.html). All three URLs fetched and verified to contain their paragraphs. The archive has no per-paragraph anchors — links open the section page holding the paragraph. For future CCC references, find the right section page via the index at `vatican.va/archive/ENG0015/_INDEX.HTM`.
+
 ## Outstanding items
 
-- Resolve the `NOTE for client review` comments (laity threshold kicker, `how-you-see-god` Continue target, Eudes/Caussade question in `retreats.html`, nav placement + data-source attribution in `sacramental-data.html`, drafted prompts/rows/lenses in `holiness.html` + `path-data.js`, deficit-chart population-line departure + Jubilee strip region + medal name in `about.html`, "Start Here" door label on `index.html`)
+- Resolve the `NOTE for client review` comments (laity threshold kicker, Eudes/Caussade question in `retreats.html`, footer-placement confirmation + data-source attribution in `sacramental-data.html`, drafted prompts/rows/lenses in `holiness.html` + `path-data.js`, deficit-chart population-line departure + Jubilee strip region + medal name in `about.html`, "Start Here" door label on `index.html`)
+- Steve to confirm the slimmed navigation (July 6, 2026): five header links (About · Saints · Holiness · Fatherhood · Retreats), with Holiness Guide / Path to Renewal / Causality / Sacramental Data in the footer's Go Deeper
+- Steve to review the July 6 saints weave: the drafted bridge + closing move on `saints.html`, the frieze panel hint and "Our Own Age" chip label, the pressure-point insertions on `index.html` / `path-to-renewal.html` / `causality.html` / `holiness.html` / `fatherhood.html`, the hub path notes, the "Old error, new name" ancestor lines on the substitutes wheel, and the saint-card retarget on `holiness.html`. The landing-page sentence is the most sensitive of these (Steve is protective of that page — see the July 4 revert)
+- Ask Steve (July 6, 2026): should the frieze also mark the comings — Rue du Bac 1830 and Fatima 1917 — as quiet non-button markers inside their century groups (§III of the essay is about them, but the table is saints-only)? And should the site anywhere say explicitly that the Jansenism→Sacred Heart model case is the site's own seal (e.g. one sentence on `about.html` or in the saints-page closing)?
 - Steve to review the causality page's four-causes section (closely paraphrases his book) and confirm the *Leadership Illusion* pointer should live there until a dedicated essay page exists
 - "Draft for review" bands removed sitewide per Parker (July 5, 2026); the `.draft-notice` CSS remains in `main.css` for future draft pages
 - README TODO: set absolute `og:image` URLs after deploy (may be done — check `git log`; last commit set OG meta)

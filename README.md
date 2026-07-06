@@ -12,13 +12,14 @@ The site follows the founder's outline:
 - **Thresholds** (`begin-*.html`) — “Before You Go Further” pages for each audience
 - **Hubs** (`laity.html`, `priests.html`, `bishops.html`) — suggested reading paths
 - **Foundational page** — `how-you-see-god.html`
+- **The historical witness** — `saints.html` (“The Saints God Sends, and the God
+  Who Comes”): the founder's essay with an interactive century frieze of the saints,
+  placed in the reading path between `how-you-see-god` and `holiness`
 - **Main pages** — `about`, `holiness` (with three interactive diagrams), `fatherhood`,
   `holiness-guide`, `path-to-renewal`, `retreats`, `causality` (with the inversion diagram)
 
-Pages marked with a “Draft for review” band contain text drafted from the founder's
-notes and await his review. Search the HTML for `NOTE for client review` to find
-specific open questions (laity threshold kicker, notion-page Continue target,
-retreat naming, hub reading orders).
+Text drafted from the founder's notes awaits his review — search the HTML for
+`NOTE for client review` to find the specific open questions.
 
 ## Local development
 

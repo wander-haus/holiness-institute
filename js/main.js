@@ -17,6 +17,7 @@ if (document.body.dataset.essay !== undefined) {
 }
 
 const diagrams = [
+  ['saints-frieze-mount', './diagrams/saints.js', 'initSaints'],
   ['substitutes-figure', './diagrams/substitutes.js', 'initSubstitutes'],
   ['path-figure', './diagrams/path.js', 'initPath'],
   ['causality-figure', './diagrams/causality.js', 'initCausality'],

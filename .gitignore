@@ -1,5 +1,9 @@
 .DS_Store
 
+# FUSE-mount deletion placeholders left behind by sandboxed editing tools —
+# stale copies of edited files, never part of the site. Safe to delete.
+.fuse_hidden*
+
 # Founder's source documents — kept local, not published with the site.
 client-documents/
 
