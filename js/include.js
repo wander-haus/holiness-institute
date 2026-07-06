@@ -5,8 +5,9 @@
    All page *content* is static HTML; only this chrome is JS-injected,
    and every page carries a <noscript> nav fallback. */
 
-/* The header carries the reading arc, the front door, and the concrete
-   instrument — five links (July 6, 2026: the 8-link header read as crowded).
+/* The header carries the reading arc, the front door, and the charter —
+   five links (July 6, 2026: the 8-link header read as crowded; Steve then
+   swapped Path to Renewal in for Retreats "since we do not yet have them").
    "Saints" precedes "Holiness" to mirror the reading path:
    How You See God → The Saints God Sends → Holiness → Fatherhood. */
 const NAV_LINKS = [
@@ -14,14 +15,16 @@ const NAV_LINKS = [
   { id: 'saints', href: 'saints.html', label: 'Saints' },
   { id: 'holiness', href: 'holiness.html', label: 'Holiness' },
   { id: 'fatherhood', href: 'fatherhood.html', label: 'Fatherhood' },
-  { id: 'retreats', href: 'retreats.html', label: 'Retreats' },
+  { id: 'path-to-renewal', href: 'path-to-renewal.html', label: 'Path to Renewal' },
 ];
 
 /* Deepening material lives in the footer's Go Deeper column only. The data
-   page joins it here (its old NOTE asked where it should live in the nav). */
+   page joined it here (its old NOTE asked where it should live in the nav);
+   Retreats waits here until the retreats themselves exist (Steve, July 6,
+   2026). */
 const DEEPER_LINKS = [
   { href: 'holiness-guide.html', label: 'Holiness Guide' },
-  { href: 'path-to-renewal.html', label: 'Path to Renewal' },
+  { href: 'retreats.html', label: 'Retreats' },
   { href: 'causality.html', label: 'Causality' },
   { href: 'sacramental-data.html', label: 'Sacramental Data' },
 ];
