@@ -12,6 +12,8 @@ Static website for The Holiness Institute ("Called to the Fullness of Love"), fo
 - **Relative paths only** — the site must work at both `username.github.io/repo/` and a custom domain.
 - **Accessibility is a hard requirement:** every diagram keyboard-operable with a text alternative, animation respects `prefers-reduced-motion`, site fully readable without JS.
 - **Fonts are self-hosted** (Cormorant Garamond, EB Garamond) in `assets/fonts/`.
+- **Name and title** (Steve's rule, July 10, 2026): "Jesus Christ" (or "Jesus") when speaking of the person; "Christ" when speaking of role or office — his analogy: "my wife" vs. "Tonia". "In Jesus' name is power and life. We should use it." Quotations keep their sources' wording. First applications: "radiant with the life of Jesus Christ" (holiness §III retrieval ¶, about.html Principle V).
+- **Steve's prose rules** (July 10, 2026) govern all new and revised copy — see the section below.
 - **Always italicize Latin text and titles** (Steve's rule, July 5, 2026): encyclical/document titles (*Novo Millennio Ineunte*, *Lumen Gentium*…), Latin phrases (*Nemo dat quod non habet*, *munus sanctificandi*), Latin honors (*Pro Pontifice et Ecclesia*). Use `<em>`; skip attribute values and `<cite>` elements (already italic).
 - **Voice:** the site's prose is drawn from Steve's writing — measured, theological, literary. Match it; don't paraphrase into marketing copy. Open questions for Steve are marked `NOTE for client review` in HTML comments (grep for them; currently across `begin-laity`, `retreats`, `sacramental-data`, `holiness`, `about`, `index`, `saints`, `path-to-renewal`, `causality`, `fatherhood`, and `js/diagrams/substitutes-data.js`).
 - `client-documents/` is **gitignored** — source material, never published.
@@ -262,8 +264,49 @@ Per Parker: implement Steve's intent fully, including Chat's cross-page moves.
 **Go live** (Steve, same email): approved. Parker asked to review the diff before
 commit/push.
 
+## Steve's prose rules (July 10, 2026)
+
+Sent as "earlier notes" alongside the go-live email, with the name-and-title rule above.
+Written with the book manuscripts in mind ("per chapter" ≈ per page/section here). They
+govern all drafting and revision from now on; the retroactive sitewide pass they imply
+is pending Steve's word (see Outstanding items).
+
+- **Compositional movement.** Two paragraph modes, deliberately alternated: *unfolding*
+  (sympathy, situation, or felt question first; the difficulty surfaces; the naming or
+  principle arrives as the payoff) for section openings and hinges of the argument;
+  *point-then-support* (claim stated plainly, then established) for expository passages,
+  definitions, distinctions, diagnostic tools. Scripture, the saints, and the magisterium
+  function as the pressure that produces the point, not as confirmation appended after
+  it. Uniformity of either mode "reads as a machine."
+- **Sentence construction.** Prefer the longer sentence carrying two related points
+  (conjunctive adverb or subordinating conjunction) over a chopped sequence of short
+  declaratives; three staccato sentences in a row signal a tic. When a conjunctive
+  adverb joins two complete sentences: semicolon before, comma after. The short
+  declarative is reserved for the line that must land alone — hold it back so it keeps
+  its force.
+- **The negation test.** The ban targets the reflexive "this, not that" mannerism, not
+  every precise negation. Keep a negation that carries definitional or causal weight
+  (his kept example is essentially holiness §I's "statement of causality" line); cut the
+  lazy antithesis whose negated half adds no content.
+- **Contrast density.** At most one major contrastive construction ("not X but Y,"
+  "not merely," "rather than," "the question is not whether…") per 400–500 words; never
+  in consecutive paragraphs; each contrast family once per chapter unless the later
+  instance does new work. Four tests before keeping one: does it block a live
+  misreading? has the distinction already been made? does the affirmative half survive
+  with the negation removed? does it deepen the argument or merely sharpen the sound?
+  Default form of the prose is affirmative.
+- **Current density** (rough proxy count, July 10, post-trim): fatherhood 1/256 words,
+  how-you-see-god 1/208, causality 1/276, sacramental-data 1/305, holiness 1/369,
+  retreats 1/399, path-to-renewal 1/418, about 1/430, saints 1/924. Most pages run
+  hotter than his standard — largely in prose drawn from Steve's own documents — so the
+  retro pass would rewrite approved voice and needs his explicit go-ahead.
+
 ## Outstanding items
 
+- Decide with Steve when to run the retroactive pass his prose rules imply (the
+  contrast-density/negation rewrite — his "might help reduce the redundancy further").
+  Recommended: after he reviews the July 10 trim live, as its own reviewed change; it
+  rewrites the rhetorical texture of prose he has already approved.
 - Steve to review the July 10 trim in situ once live. He requested it, but he has not
   seen the specific cuts. Most sensitive: the saints.html §I compression and the
   fatherhood.html §IX–§X cuts (both touch his own prose most directly), and the Uzzah
