@@ -1250,6 +1250,21 @@ html.js .reveal.is-visible {
   html.js .reveal { opacity: 1; transform: none; }
 }
 
+/* ---------- FAQ page (July 10, 2026) ---------------------------------------------------- */
+/* Question headings and the small "Go deeper" links after some answers. */
+
+[data-page="faq"] .prose h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.35rem;
+  color: var(--navy);
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-2);
+}
+[data-page="faq"] .prose h3:first-child { margin-top: var(--space-3); }
+.faq-deeper { margin-top: var(--space-1); }
+.faq-deeper .quiet-link { font-size: 0.9rem; }
+
 /* ---------- Print ---------------------------------------------------------------------- */
 
 @media print {

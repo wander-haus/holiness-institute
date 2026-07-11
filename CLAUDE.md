@@ -29,6 +29,7 @@ Static website for The Holiness Institute ("Called to the Fullness of Love"), fo
 | `saints.html` | "The Saints God Sends, and the God Who Comes" (July 6, 2026): Steve's essay nearly verbatim, in the reading path between `how-you-see-god` and `holiness` (nav label "Saints"). Interactive century frieze renders the essay's 33-row table from `js/diagrams/saints-data.js` via `saints.js`; full static table beneath as text version / no-JS fallback |
 | `about.html`, `holiness.html`, `fatherhood.html`, `holiness-guide.html`, `path-to-renewal.html`, `retreats.html`, `causality.html` | Main content pages; `holiness` has three interactive diagrams, `causality` has the inversion diagram |
 | `sacramental-data.html` | The data page: indexed per-capita chart (1921–2025), interpretive essay, searchable per-diocese explorer, methodology notes. Chart/explorer render from `js/diagrams/decline-data.js` (generated — see below) via `js/diagrams/decline.js` |
+| `faq.html` | Frequently Asked Questions (July 10, 2026): Steve's 35 Q&As nearly verbatim under his six topic groups; essay TOC rail as the "side links" his document sketched; small go-deeper quiet links into the main pages |
 | `404.html` | Not found |
 
 ## client-documents/ — source material from Steve
@@ -264,6 +265,35 @@ Per Parker: implement Steve's intent fully, including Chat's cross-page moves.
 **Go live** (Steve, same email): approved. Parker asked to review the diff before
 commit/push.
 
+## FAQ page (July 10, 2026 — DONE)
+
+Steve's `FAQ.docx` ("I think we add it to the top bar… perhaps we add a couple links in
+smaller font after some of these") → **`faq.html`**. His 35 Q&As nearly verbatim (curly
+punctuation and Latin/title italics applied; his text already follows his name-and-title
+rule). The document's headnote suggested side links — Basic Questions / The Data /
+Interior Life / Family and Education / Priests and Bishops / Metrics and Renewal —
+implemented as the essay TOC rail + mobile TOC (`data-essay` scrollspy), six sections in
+the document's own order. Questions are `h3`s with ids for deep-linking; new CSS at the
+bottom of `main.css` (`[data-page="faq"] .prose h3`, `.faq-deeper`).
+
+- **Nav**: FAQ joined `NAV_LINKS` sixth and last (header + footer Explore mirror it);
+  noscript navs updated on all full pages, index, how-you-see-god, and the hubs
+  (begin-* untouched, per the saints precedent). Header carries six links again —
+  Steve's call ("add it to the top bar"), placed last as the reference door so the
+  reading arc About→Path to Renewal stays intact.
+- **Go-deeper links** (his "couple links in smaller font"): 13 `.faq-deeper` quiet
+  links after answers that have a page behind them — about.html (+#holiness-planning,
+  +#deficit-beneath-activity), holiness.html (+#why-replaced, +#belief-to-self-gift),
+  sacramental-data, saints, fatherhood (+#victim-icon-servant, +#bishop-father),
+  causality, path-to-renewal ×2. Drafted → NOTE.
+- **Vatican links**, first reference per page convention: NMI (intro), LG 40, FC,
+  CCC 2205 → `__P7S.HTM` (fetched; 2205 confirmed on that page), *Mulieris Dignitatem* 7
+  (fetched, live).
+- **Drafted → NOTE for client review**: the epigraph (1 Pet 3:15 — the document has
+  none), the assignment of questions to his six groups, and the go-deeper links.
+- **Verified**: tag balance; word-level diff against the docx = verbatim; all links and
+  fragments resolve sitewide; noscript parity; no straight quotes.
+
 ## Steve's prose rules (July 10, 2026)
 
 Sent as "earlier notes" alongside the go-live email, with the name-and-title rule above.
@@ -307,6 +337,10 @@ is pending Steve's word (see Outstanding items).
   contrast-density/negation rewrite — his "might help reduce the redundancy further").
   Recommended: after he reviews the July 10 trim live, as its own reviewed change; it
   rewrites the rhetorical texture of prose he has already approved.
+- Steve to review `faq.html` once live: the drafted epigraph, the grouping of his 35
+  questions under his six topic labels, and the go-deeper links (his "couple links"
+  suggestion — 13 were placed). Header placement implemented as he proposed (sixth
+  link, last); he asked "what do you think?" — answer sent via Parker.
 - Steve to review the July 10 trim in situ once live. He requested it, but he has not
   seen the specific cuts. Most sensitive: the saints.html §I compression and the
   fatherhood.html §IX–§X cuts (both touch his own prose most directly), and the Uzzah

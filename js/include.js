@@ -9,13 +9,16 @@
    five links (July 6, 2026: the 8-link header read as crowded; Steve then
    swapped Path to Renewal in for Retreats "since we do not yet have them").
    "Saints" precedes "Holiness" to mirror the reading path:
-   How You See God → The Saints God Sends → Holiness → Fatherhood. */
+   How You See God → The Saints God Sends → Holiness → Fatherhood.
+   FAQ joined as the sixth link per Steve (July 10, 2026) — the nutshell page
+   for the arriving reader, placed last as the header's reference door. */
 const NAV_LINKS = [
   { id: 'about', href: 'about.html', label: 'About' },
   { id: 'saints', href: 'saints.html', label: 'Saints' },
   { id: 'holiness', href: 'holiness.html', label: 'Holiness' },
   { id: 'fatherhood', href: 'fatherhood.html', label: 'Fatherhood' },
   { id: 'path-to-renewal', href: 'path-to-renewal.html', label: 'Path to Renewal' },
+  { id: 'faq', href: 'faq.html', label: 'FAQ' },
 ];
 
 /* Deepening material lives in the footer's Go Deeper column only. The data
