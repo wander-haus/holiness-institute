@@ -198,8 +198,77 @@ Per Parker: repeated images and scriptures cut — 12,356 → 10,671 words of pa
 
 Five micro-edits from Steve (sent against the pre-trim page): "govern **our lives**", "the ordinary forms **He gave us**", "the life of **Jesus** Christ", "necessary though **they can be at times**", "**already-but-not-yet**" hyphenated, "(**cf.** Jas 2:19)", and "gifts of the Holy **Spirit**" in prose (the book title *The Gifts of the Holy Ghost* left as is — he didn't bold it). Two of his edits touched passages cut in the same-day redundancy trim, so those were **restored with his revisions**: the §I "Much confusion enters" paragraph (had been deleted) and the §III "already-but-not-yet" paragraph (had been merged into the baptism paragraph — merge reverted to his two originals). His quoted context for the John-of-St.-Thomas paragraph also included the full Eph 3:17–19 sentence, but nothing there was bolded, so the trim's short-callback version stands. Page text now 10,873 words (12% below pre-trim).
 
+## Sitewide redundancy pass from Steve's ChatGPT review (July 10, 2026 — DONE)
+
+Steve ran the site through ChatGPT ("Chat") for a redundancy appraisal and asked for its
+responses to be applied as trimming prompts, with one standing exception he named:
+**Chat reads pull quotes as accidental duplicates — ignore all such advice.** (Verified:
+every "exact repetition" Chat flagged, on every page, was a `.pull-quote` mirroring its
+adjacent prose line, which is the site's design. None were touched.) He also asked to cut
+two things from `holiness-guide.html`, and then to go live. Net −1,460 words; +75 moved.
+Per Parker: implement Steve's intent fully, including Chat's cross-page moves.
+
+- **holiness.html** (10,899 → 10,726): §II's "governing end of pastoral action" sentence
+  now defers to §III as a bridge ("as the next section will draw out…"), per Chat's exact
+  prescription. **Uzzah and the Ark moved to `causality.html`** (Chat: it pulls the reader
+  into pastoral control mid-path; the rich young man already supplies "stopping short").
+  §VI: prayer-is-the-path deduped against §II, the four-fold "cannot program its way"
+  litany compressed, minimal-salvation ¶ tightened. Steve's July 6 restored passages and
+  micro-edits untouched; all figures, examens, ids, static alternatives unchanged.
+- **about.html** (2,626 → 2,583): "Five principles **shape** the Institute's work" (was
+  "govern everything" — de-echoes Purpose's "govern"); each principle card lighter by
+  its polemic aside (rule of life, not compressed essay); patron sentence quieter —
+  JP II + Claude de la Colombière named, "together with the saints of trust and
+  abandonment" (the four names dropped). Deficit chart/section untouched (Steve's
+  July 4 request; his prose requires the population line — Chat, reading text-only,
+  never saw the chart).
+- **saints.html** (3,788 → 3,697): §I survey compressed ~⅓ (Anthony/Benedict/Francis/
+  Dominic merged, Thomas to the table only; the five 16th-c. appositives dropped —
+  "The table below sets out what each restored."); §IV sequence-recital turned from
+  retelling into recall; §V's full restatement of the master claim cut to two short
+  sentences so "The present age has forgotten trust." stands in silence. Table, static
+  version, Steve's "If you read the Form of Holiness…" sentence, closing figure + drafted
+  ¶ all untouched.
+- **fatherhood.html** (5,832 → 5,126, −12%): §VII substance/accidents compressed to a
+  brief diagnostic aside (4 ¶ → 2; butler keeps full weight, per Chat); §VII closing
+  contrast-litany trimmed; §IX cut to a decisive conclusion around the *NMI* 38 warning
+  (concessive litany merged, the accidents ¶ deleted as §VII redundancy, substitute ¶
+  keeps "what must be received feels too fragile"); §X's three recap ¶s (family/priest/
+  bishop) deleted, courage+paradox merged (butler's "Only the father gives life to the
+  family" kept as its close), the §III-duplicating definitional ¶ deleted — "fathers
+  become sons again" now arrives two ¶s after the saints allusion. §IV instrument
+  exposition one sentence briefer. Victim/Icon/Servant intact.
+- **path-to-renewal.html** (917 → 837): Contemplation and Holiness-as-measure subpoints
+  stated sharply and left standing; practice chain broken into one-sentence steps (all
+  five links kept); closing keeps mercy→…→renewal as the only sequence (the belief→
+  self-gift restatement dropped from the drafted pedigree ¶).
+- **causality.html** (1,581 → 1,656): four of five examples compacted (concessives cut —
+  the intro line "always sincere, always plausible, always costly" carries them; home
+  and soul examples kept nearly whole per Chat); **received Uzzah**, placed after the
+  soul example as the pattern's severe biblical image, lightly compressed. Diagram text
+  version kept full — it is the collapsed accessibility alternative, not visible prose.
+- **sacramental-data.html** (1,738 → 1,526, −12%): Newman/Ratzinger sharpened; Baby Boom
+  demographic enumeration cut; Hope-of-2026 5 ¶ → 4 ¶ (−40%), now pointing to
+  holiness.html and fatherhood.html instead of summarizing the program; "seed of
+  renewal" dropped (image scatter), wave/bump/visitation kept. Chart, tables, method
+  notes untouched.
+- **holiness-guide.html** (690 → 535): per Steve — "The Laity's Proper Part" section cut
+  ("for now"; markup in git history; nothing linked to it), and "They do not need
+  contempt." deleted from the Why-a-Guide close.
+- **Verified**: tag balance all 8 pages; every surviving pull quote still mirrors a
+  verbatim prose line; no straight quotes introduced; all internal links/fragments
+  resolve (incl. saints.html JS anchors against `saints-data.js`); word counts above.
+
+**Go live** (Steve, same email): approved. Parker asked to review the diff before
+commit/push.
+
 ## Outstanding items
 
+- Steve to review the July 10 trim in situ once live. He requested it, but he has not
+  seen the specific cuts. Most sensitive: the saints.html §I compression and the
+  fatherhood.html §IX–§X cuts (both touch his own prose most directly), and the Uzzah
+  move to causality.html. Every removed passage is in git history under the July 10
+  commit; any of it can be restored verbatim if he asks.
 - Steve to review the rest of the July 6 redundancy trim of `holiness.html` — his prose was compressed in §§III, V, VI (deduped quotes, shortened substitute paragraphs); his July 6 edits implicitly re-approved the §I/§III passages above, but he sent them against the pre-trim page
 - Resolve the `NOTE for client review` comments (laity threshold kicker, Eudes/Caussade question in `retreats.html`, footer-placement confirmation + data-source attribution in `sacramental-data.html`, drafted prompts/rows/lenses in `holiness.html` + `path-data.js`, deficit-chart population-line departure + Jubilee strip region + medal name in `about.html`, "Start Here" door label on `index.html`)
 - Steve to review the July 6 saints weave: the drafted bridge + closing move on `saints.html`, the frieze panel hint and "Our Own Age" chip label, the pressure-point insertions on `index.html` / `path-to-renewal.html` / `causality.html` / `holiness.html` / `fatherhood.html`, the hub path notes, the "Old error, new name" ancestor lines on the substitutes wheel, and the saint-card retarget on `holiness.html`. The landing-page sentence is the most sensitive of these (Steve is protective of that page — see the July 4 revert)
