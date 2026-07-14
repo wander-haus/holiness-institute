@@ -29,7 +29,7 @@ Static website for The Holiness Institute ("Called to the Fullness of Love"), fo
 | `saints.html` | "The Saints God Sends, and the God Who Comes" (July 6, 2026): Steve's essay nearly verbatim, in the reading path between `how-you-see-god` and `holiness` (nav label "Saints"). Interactive century frieze renders the essay's 33-row table from `js/diagrams/saints-data.js` via `saints.js`; full static table beneath as text version / no-JS fallback |
 | `about.html`, `holiness.html`, `fatherhood.html`, `holiness-guide.html`, `path-to-renewal.html`, `retreats.html`, `causality.html` | Main content pages; `holiness` has three interactive diagrams, `causality` has the inversion diagram |
 | `sacramental-data.html` | The data page: indexed per-capita chart (1921–2025), interpretive essay, searchable per-diocese explorer, methodology notes. Chart/explorer render from `js/diagrams/decline-data.js` (generated — see below) via `js/diagrams/decline.js` |
-| `faq.html` | Frequently Asked Questions (July 10, 2026): Steve's 35 Q&As nearly verbatim under his six topic groups; essay TOC rail as the "side links" his document sketched; small go-deeper quiet links into the main pages |
+| `faq.html` | Frequently Asked Questions (July 10, 2026): Steve's Q&As nearly verbatim — 42 questions under seven topic groups since the Leadership section joined (July 14, 2026); essay TOC rail as the "side links" his document sketched; small go-deeper quiet links into the main pages |
 | `404.html` | Not found |
 
 ## client-documents/ — source material from Steve
@@ -294,6 +294,19 @@ bottom of `main.css` (`[data-page="faq"] .prose h3`, `.faq-deeper`).
 - **Verified**: tag balance; word-level diff against the docx = verbatim; all links and
   fragments resolve sitewide; noscript parity; no straight quotes.
 
+**Leadership section added (July 14, 2026 — DONE).** Steve's emailed section, placed
+per his explicit instructions: new `#leadership` section between Priests and Bishops
+and Metrics and Renewal, both TOCs updated. The leadership-language question moved from
+Priests and Bishops to open it (his "recommended move"), keeping its Causality
+go-deeper link. Seven new Q&As nearly verbatim — Greek transliterations (*hēgoumenoi*,
+*kathēgētai*) and *Summa Contra Gentiles* italicized; "SCG" left plain to match the
+page's "NMI" abbreviation style; one evident typo mended (the missing period after "It
+becomes a transaction"). The "Go deeper: Why Holiness Is Replaced" link after the St.
+Thomas answer is **Steve's own** (his email gave it as an absolute URL; converted to
+the site's relative form) — the first go-deeper link he has specified himself. Page now
+42 Q&As under seven groups. Verified: tag balance, all links/fragments, no straight
+quotes.
+
 ## Steve's prose rules (July 10, 2026)
 
 Sent as "earlier notes" alongside the go-live email, with the name-and-title rule above.
@@ -337,10 +350,11 @@ is pending Steve's word (see Outstanding items).
   contrast-density/negation rewrite — his "might help reduce the redundancy further").
   Recommended: after he reviews the July 10 trim live, as its own reviewed change; it
   rewrites the rhetorical texture of prose he has already approved.
-- Steve to review `faq.html` once live: the drafted epigraph, the grouping of his 35
-  questions under his six topic labels, and the go-deeper links (his "couple links"
-  suggestion — 13 were placed). Header placement implemented as he proposed (sixth
-  link, last); he asked "what do you think?" — answer sent via Parker.
+- Steve to review `faq.html` once live: the drafted epigraph, the grouping of his
+  original 35 questions under his six topic labels (the July 14 Leadership section and
+  its grouping are his own), and the original 13 go-deeper links (the 14th, after the
+  St. Thomas answer, is his). Header placement implemented as he proposed (sixth link,
+  last); he asked "what do you think?" — answer sent via Parker.
 - Steve to review the July 10 trim in situ once live. He requested it, but he has not
   seen the specific cuts. Most sensitive: the saints.html §I compression and the
   fatherhood.html §IX–§X cuts (both touch his own prose most directly), and the Uzzah
