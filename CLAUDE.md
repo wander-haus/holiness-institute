@@ -15,7 +15,7 @@ Static website for The Holiness Institute ("Called to the Fullness of Love"), fo
 - **Name and title** (Steve's rule, July 10, 2026): "Jesus Christ" (or "Jesus") when speaking of the person; "Christ" when speaking of role or office — his analogy: "my wife" vs. "Tonia". "In Jesus' name is power and life. We should use it." Quotations keep their sources' wording. First applications: "radiant with the life of Jesus Christ" (holiness §III retrieval ¶, about.html Principle V).
 - **Steve's prose rules** (July 10, 2026) govern all new and revised copy — see the section below.
 - **Always italicize Latin text and titles** (Steve's rule, July 5, 2026): encyclical/document titles (*Novo Millennio Ineunte*, *Lumen Gentium*…), Latin phrases (*Nemo dat quod non habet*, *munus sanctificandi*), Latin honors (*Pro Pontifice et Ecclesia*). Use `<em>`; skip attribute values and `<cite>` elements (already italic).
-- **Voice:** the site's prose is drawn from Steve's writing — measured, theological, literary. Match it; don't paraphrase into marketing copy. Open questions for Steve are marked `NOTE for client review` in HTML comments (grep for them; currently across `begin-laity`, `retreats`, `sacramental-data`, `holiness`, `about`, `index`, `saints`, `path-to-renewal`, `causality`, `fatherhood`, and `js/diagrams/substitutes-data.js`).
+- **Voice:** the site's prose is drawn from Steve's writing — measured, theological, literary. Match it; don't paraphrase into marketing copy. Open questions for Steve are marked `NOTE for client review` in HTML comments (grep for them; currently across `begin-laity`, `retreats`, `sacramental-data`, `holiness`, `about`, `index`, `saints`, `path-to-renewal`, `causality`, `fatherhood`, `family`, and `js/diagrams/substitutes-data.js`).
 - `client-documents/` is **gitignored** — source material, never published.
 
 ## Site map
@@ -28,6 +28,7 @@ Static website for The Holiness Institute ("Called to the Fullness of Love"), fo
 | `how-you-see-god.html` | Foundational page |
 | `saints.html` | "The Saints God Sends, and the God Who Comes" (July 6, 2026): Steve's essay nearly verbatim, in the reading path between `how-you-see-god` and `holiness` (nav label "Saints"). Interactive century frieze renders the essay's 33-row table from `js/diagrams/saints-data.js` via `saints.js`; full static table beneath as text version / no-JS fallback |
 | `about.html`, `holiness.html`, `fatherhood.html`, `holiness-guide.html`, `path-to-renewal.html`, `retreats.html`, `causality.html` | Main content pages; `holiness` has three interactive diagrams, `causality` has the inversion diagram |
+| `family.html` | "The Family: The Home and the School of Communion" (July 14, 2026): Steve's four family documents woven into one essay — see the July 14 section below. Seventh header link, after Fatherhood (nav label "Family") |
 | `sacramental-data.html` | The data page: indexed per-capita chart (1921–2025), interpretive essay, searchable per-diocese explorer, methodology notes. Chart/explorer render from `js/diagrams/decline-data.js` (generated — see below) via `js/diagrams/decline.js` |
 | `faq.html` | Frequently Asked Questions (July 10, 2026): Steve's Q&As nearly verbatim — 42 questions under seven topic groups since the Leadership section joined (July 14, 2026); essay TOC rail as the "side links" his document sketched; small go-deeper quiet links into the main pages |
 | `404.html` | Not found |
@@ -54,7 +55,7 @@ Updates sent by Steve Gajdosik. An essay series plus supporting material.
 
 **Background context — NOT to become new pages (per Parker, July 2, 2026):**
 
-The essay series is source material that informs the site's thinking and voice. Draw on it when writing or revising site content; do not publish it as pages unless Steve asks.
+The essay series is source material that informs the site's thinking and voice. Draw on it when writing or revising site content; do not publish it as pages unless Steve asks. **(Partially superseded July 14, 2026: Steve re-forwarded `The_Grace_We_No_Longer_Trust` and `The_Seminary_of_Love` with two new documents for the family page — their family material now feeds `family.html`; the rest of each essay remains background.)**
 
 - `Before_the_Visible_Crisis.docx` — first essay in the series: interior decline preceded the visible 1960s crisis (same thesis as `sacramental-data.html`)
 - `Fathers_Not_Managers.docx` — second essay (references the first): priesthood, its inversion, the structure the Church has been given
@@ -66,6 +67,101 @@ The essay series is source material that informs the site's thinking and voice. 
 ### The Saints God Sends (arrived July 6, 2026 — incorporated same day)
 
 - `The_Saints_God_Sends_1.docx` → **`saints.html`** (see the July 6 section below). Unlike the essay series above, Steve asked for this one to enter the site as a page — "as governing witness rather than as a resource in a library," placed in the reading path, per the plan he worked out in conversation with Fable and forwarded with the file. The essay's five-column table is the source for `js/diagrams/saints-data.js`.
+
+### The family documents (arrived July 14, 2026 — incorporated same day)
+
+Steve's email: "I think we need to add one more page to the top bar: the family… The
+family needs to get added to the Path to Renewal page, in brief, with a larger
+treatment on its own page on the top bar." Four attachments — "the Church's teaching
+and my extension of it":
+
+- `Alter_Trinitas_Essay.docx` (new) — the family as created and sacramental *imago
+  Trinitatis*; his extension of *alter Christus* to the family as *alter Trinitas*,
+  governed by analogy; Nazareth as archetype → `family.html` opening + §II
+- `HP_Ch08_The_Home_and_the_School_of_Communion.docx` (new) — a chapter of his book
+  (NMI 43, the two seminaries, family as subject not object of pastoral plans; carries
+  book-internal cross-references) → `family.html` §§I, IV, V
+- `The_Grace_We_No_Longer_Trust.docx`, `The_Seminary_of_Love.docx` — the July 2
+  background essays, re-forwarded for this treatment → `family.html` §III and the
+  substitutes-in-the-home passages of §IV
+
+## The Family page (July 14, 2026 — DONE)
+
+Built per Steve's email above; composition decisions confirmed by Parker (weave all
+four documents into one essay; Family as the seventh header link after Fatherhood;
+no cross-links from other pages this pass — weave later, after Steve reviews).
+
+- **`family.html`** — "The Family: The Home and the School of Communion." Essay
+  layout like `saints.html` (`data-essay`, TOC rail, mobile TOC, section kickers I–V),
+  epigraph John 17:21 (HP Ch08's own), drop caps, four pull quotes (verbatim lines),
+  one examen (Steve's own question: "Does it serve the home, or substitute for it?").
+  ~4,000 words of essay prose. Sections: I The Home and the School of Communion
+  (HP Ch08; his title) → II The Image of the Trinity (Alter Trinitas, compressed) →
+  III The Seminary of Love (the essay; his title) → IV The Dismantled Seedbed
+  (HP Ch08 industrial-revolution material + Grace's substitutes-in-the-home) → V The
+  Subject, Not the Object (HP Ch08 close + Seminary's "what this asks for"; ends with
+  his "She lacks saints" close). Continue → `path-to-renewal.html`, quiet-link back to
+  `fatherhood.html`.
+- **Compressions and adaptations (all NOTE'd in-page for Steve):** Alter Trinitas'
+  remotio/fittingness dialectic kept in brief; its Kuhner/*Communio* paragraph, the
+  extended Balthasar and hypostatic-union development, and the Ascension passage left
+  out (remain in the essay, restorable). HP Ch08's book-internal references adapted:
+  "the plan" → "a pastoral plan", "deciphered in the first chapter" → the data page,
+  "the letter demands" → "*Novo Millennio Ineunte* demands", "this book has yet to
+  say" clause dropped. Seminary of Love's priest-formation sections not used
+  (fatherhood.html's ground). Section titles II/IV/V drafted (I and III are his);
+  subtitle line and the opening bridge drafted. Divine pronouns normalized to
+  capitals (the four documents vary); name-and-title rule applied once to non-quoted
+  prose ("Jesus framed for us…" was "Christ framed"). One evident typo mended ("The
+  Law" mid-sentence → "the Law").
+- **Sources linked and verified live** (all fetched or search-verified July 14):
+  *Rerum Novarum* 12, *Quadragesimo Anno* 71, *Gravissimum Educationis* 3,
+  *Gratissimam Sane*, CCC 366 → `__P1B.HTM`, CCC 532 → `__P1L.HTM`, CCC 2685 →
+  `__P9H.HTM` (the last two fetched and confirmed to contain their paragraphs); LG,
+  MD, FC, GS, NMI, CCC 2205 reuse the site's existing verified URLs.
+- **Nav**: `family` joined `NAV_LINKS` seventh, after Fatherhood (header + footer
+  Explore mirror it). Noscript navs updated on all full pages + `index.html` +
+  `how-you-see-god.html` (Family after Fatherhood; after Holiness in
+  `fatherhood.html`'s own, which omits itself); `begin-*` untouched per precedent.
+  Fixed in passing: `path-to-renewal.html`'s noscript had been missing Saints since
+  July 6.
+- **Path to Renewal, in brief** (both drafted → NOTE): a two-sentence extension of
+  the spirituality-of-communion charter point (NMI 43's "home and the school of
+  communion" + "God built one of each before the Church built anything"), and a
+  family step in the practice chain ("the domestic church, the first seminary of
+  love… subject of renewal rather than the object of programs"), each linking
+  `family.html`.
+- **Outbound weaves on the page itself** (drafted → NOTE): causality.html (order of
+  causality inverted), how-you-see-god.html (the notion-of-God paragraph),
+  sacramental-data.html (the 1920 record), holiness.html#why-replaced (the
+  substitutes at work in the home).
+- **Verified**: tag balance all pages; all internal links/fragments resolve sitewide;
+  no straight quotes; four pull quotes mirror verbatim prose lines; sentence-level
+  fidelity check against the four docx extracts — every non-verbatim sentence is
+  either chrome or a NOTE'd draft/adaptation; Latin/title italics complete;
+  `include.js` passes `node --check`.
+
+**Round 2 (same day, per Parker — the cross-link weave, initially deferred, done
+before the single commit so Steve reviews the ensemble at once):**
+
+- **FAQ go-deeper links** (Family and Education): the why-the-family link
+  **retargeted** fatherhood.html → family.html (NOTE records the old target);
+  two new drafted links — dignity-of-the-family → `family.html#image-of-trinity`,
+  subsidiarity-education → `family.html#subject-not-object`. FAQ now carries 17
+  go-deeper links.
+- **Quiet links** (each → NOTE): fatherhood.html §II "the family is therefore the
+  first seminary of sonship…" and holiness.html §III "the first seminary, the
+  seminary of love" both link `family.html#seminary-of-love`.
+- **fatherhood.html continue-block retargeted**: "Continue to The Family" btn +
+  "Read: Holiness" quiet-link beneath (was a single "Read: Holiness" button —
+  NOTE records the old form for reverting).
+- **Hub path cards**: a "The Family" step on all three hubs — laity after Holiness
+  ("Your home is the domestic church…"), priests after Fatherhood ("The parish
+  reaps what the home sows…" — his line), bishops after Holiness ("A subject of
+  the Church's action, never merely the object of her programs…"). Drafted, like
+  all hub copy.
+- **Verified** (round 2): tag balance and links/fragments sitewide again; no
+  straight quotes on touched pages.
 
 ## Holiness page rework (from Steve's email, July 2, 2026 — DONE July 2, 2026)
 
@@ -346,6 +442,16 @@ is pending Steve's word (see Outstanding items).
 
 ## Outstanding items
 
+- Steve to review `family.html` (July 14, 2026): the weave of his four documents into
+  one essay (especially the §II compression of Alter Trinitas — the material left out
+  is listed in the page-top NOTE), the drafted section titles (II, IV, V), subtitle
+  and bridge, the adaptations of HP Ch08's book-internal references, the divine-
+  pronoun normalization and the one name-and-title application ("Jesus framed for
+  us…"), the outbound weaves, and the two drafted sentences on `path-to-renewal.html`.
+  Also his call: h1 wording. The round-2 weave is his to review too: the FAQ
+  go-deeper retarget (why-the-family: fatherhood → family) and two new links, the
+  fatherhood/holiness quiet links, the fatherhood continue-block retarget (old
+  form in its NOTE), and the three hub path cards.
 - Decide with Steve when to run the retroactive pass his prose rules imply (the
   contrast-density/negation rewrite — his "might help reduce the redundancy further").
   Recommended: after he reviews the July 10 trim live, as its own reviewed change; it

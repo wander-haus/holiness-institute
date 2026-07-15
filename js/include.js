@@ -11,12 +11,16 @@
    "Saints" precedes "Holiness" to mirror the reading path:
    How You See God → The Saints God Sends → Holiness → Fatherhood.
    FAQ joined as the sixth link per Steve (July 10, 2026) — the nutshell page
-   for the arriving reader, placed last as the header's reference door. */
+   for the arriving reader, placed last as the header's reference door.
+   Family joined as the seventh per Steve (July 14, 2026: "one more page to
+   the top bar: the family"), after Fatherhood — the two pages are siblings
+   in the reading arc, and Path to Renewal keeps its place before FAQ. */
 const NAV_LINKS = [
   { id: 'about', href: 'about.html', label: 'About' },
   { id: 'saints', href: 'saints.html', label: 'Saints' },
   { id: 'holiness', href: 'holiness.html', label: 'Holiness' },
   { id: 'fatherhood', href: 'fatherhood.html', label: 'Fatherhood' },
+  { id: 'family', href: 'family.html', label: 'Family' },
   { id: 'path-to-renewal', href: 'path-to-renewal.html', label: 'Path to Renewal' },
   { id: 'faq', href: 'faq.html', label: 'FAQ' },
 ];

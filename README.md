@@ -16,7 +16,9 @@ The site follows the founder's outline:
   Who Comes”): the founder's essay with an interactive century frieze of the saints,
   placed in the reading path between `how-you-see-god` and `holiness`
 - **Main pages** — `about`, `holiness` (with three interactive diagrams), `fatherhood`,
-  `holiness-guide`, `path-to-renewal`, `retreats`, `causality` (with the inversion diagram)
+  `family` (“The Family: The Home and the School of Communion”), `holiness-guide`,
+  `path-to-renewal`, `retreats`, `causality` (with the inversion diagram),
+  `sacramental-data` (the data page), `faq`
 
 Text drafted from the founder's notes awaits his review — search the HTML for
 `NOTE for client review` to find the specific open questions.
