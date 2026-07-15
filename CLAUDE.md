@@ -440,6 +440,20 @@ is pending Steve's word (see Outstanding items).
   hotter than his standard — largely in prose drawn from Steve's own documents — so the
   retro pass would rewrite approved voice and needs his explicit go-ahead.
 
+## Custom domain: theholinessinstitute.org (July 15, 2026)
+
+The site's domain is **theholinessinstitute.org** (GoDaddy-registered, GitHub Pages
+hosted). Repo side, done this date: `CNAME` file at root; every page's absolute
+`og:url`/`og:image` rewritten from the old `wander.haus/holiness-institute/` deploy
+URL to `https://theholinessinstitute.org/…` (38 URLs across 20 pages); README deploy
+note updated (its stale og:image TODO resolved). DNS side, done at GoDaddy by Parker:
+four apex A records (185.199.108–111.153), `www` CNAME → `wander-haus.github.io`
+(GitHub auto-redirects www → apex once both resolve). After DNS propagates, check
+**Enforce HTTPS** in repo Settings → Pages. If the domain ever changes: update the
+`CNAME` file and search-replace the OG URLs together. The comment in `404.html`
+mentioning `wander.haus/holiness-institute/` is illustrative (subpath-deploy support)
+and intentionally kept.
+
 ## Outstanding items
 
 - Steve to review `family.html` (July 14, 2026): the weave of his four documents into
@@ -472,4 +486,4 @@ is pending Steve's word (see Outstanding items).
 - Ask Steve (July 6, 2026): should the frieze also mark the comings — Rue du Bac 1830 and Fatima 1917 — as quiet non-button markers inside their century groups (§III of the essay is about them, but the table is saints-only)? And should the site anywhere say explicitly that the Jansenism→Sacred Heart model case is the site's own seal (e.g. one sentence on `about.html` or in the saints-page closing)?
 - Steve to review the causality page's four-causes section (closely paraphrases his book) and confirm the *Leadership Illusion* pointer should live there until a dedicated essay page exists
 - "Draft for review" bands removed sitewide per Parker (July 5, 2026); the `.draft-notice` CSS remains in `main.css` for future draft pages
-- README TODO: set absolute `og:image` URLs after deploy (may be done — check `git log`; last commit set OG meta)
+- After the domain cutover propagates: confirm **Enforce HTTPS** is checked in repo Settings → Pages, and verify the old `wander.haus/holiness-institute/` URL redirects

@@ -41,8 +41,9 @@ not in each page). Diagram content lives in `js/diagrams/*-data.js`.
 2. Repository **Settings → Pages → Source**: deploy from branch `main`, folder `/ (root)`.
 3. The site uses only relative paths, so it works at both `username.github.io/repo/`
    and a custom domain with no changes.
-4. **TODO after deploy:** set the absolute `og:image` URL in each page's `<head>`
-   (search for `TODO: set absolute og:image`). The image is `assets/og-image.png`.
+4. The custom domain is `theholinessinstitute.org` (the `CNAME` file). Each page's
+   `<head>` carries absolute `og:url`/`og:image` URLs on that domain — if the domain
+   ever changes, update the `CNAME` file and search-replace those URLs together.
 
 ## Notes
 
