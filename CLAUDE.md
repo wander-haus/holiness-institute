@@ -84,6 +84,10 @@ and my extension of it":
 - `The_Grace_We_No_Longer_Trust.docx`, `The_Seminary_of_Love.docx` — the July 2
   background essays, re-forwarded for this treatment → `family.html` §III and the
   substitutes-in-the-home passages of §IV
+- `The_Family_1.docx` (July 17, 2026) — Steve's revision of the woven page itself:
+  he exported `family.html`, edited it in Word, and returned it ("can you replace
+  the family page with the attached?"). Now the governing text of `family.html` —
+  see the July 17 update in the Family page section below.
 
 ## The Family page (July 14, 2026 — DONE)
 
@@ -162,6 +166,29 @@ before the single commit so Steve reviews the ensemble at once):**
   all hub copy.
 - **Verified** (round 2): tag balance and links/fragments sitewide again; no
   straight quotes on touched pages.
+
+**July 17, 2026 — Steve's revision replaces the woven text (DONE).** Steve
+returned `The_Family_1.docx` — a round-trip of the page itself, edited in Word —
+with "can you replace the family page with the attached?". The page's essay text
+now follows his document verbatim (both directions machine-verified: every prose
+sentence of the page is in the docx and vice versa). His return resolved the
+page's drafted-content NOTEs — he kept the section titles, subtitle, bridge,
+adapted book-references, name-and-title application, and all four outbound weave
+links (his copy even used the site's live theholinessinstitute.org URLs;
+rendered back to relative per convention) — so those NOTEs were removed; a
+single head comment records the provenance. His substantive edits beyond
+micro-punctuation: §II opens with a new unfolding paragraph ("Watch a man and
+woman bend over a newborn…"), a rewritten purification paragraph, and a new
+*convenientia* development ("the family holds its dignity only by spending
+it…"); §II's "not merely functional" sentence re-compressed and "governed
+throughout by analogy"; §III's promise recast to "the child's notion of God"
+and its kenosis paragraph inverted to example-first; "toward the person of
+Jesus Christ" ×2; §V "Every program must either serve the home or else it
+quietly takes its place"; the close joined into one paragraph without "And".
+The priests-hub card quoting the old §V line was updated to his revision.
+Skeleton unchanged: ids, TOC, epigraph, four pull quotes (still verbatim
+mirrors), examen, continue block — all inbound anchors
+(`#image-of-trinity`, `#seminary-of-love`, `#subject-not-object`) intact.
 
 ## Holiness page rework (from Steve's email, July 2, 2026 — DONE July 2, 2026)
 
@@ -456,16 +483,13 @@ and intentionally kept.
 
 ## Outstanding items
 
-- Steve to review `family.html` (July 14, 2026): the weave of his four documents into
-  one essay (especially the §II compression of Alter Trinitas — the material left out
-  is listed in the page-top NOTE), the drafted section titles (II, IV, V), subtitle
-  and bridge, the adaptations of HP Ch08's book-internal references, the divine-
-  pronoun normalization and the one name-and-title application ("Jesus framed for
-  us…"), the outbound weaves, and the two drafted sentences on `path-to-renewal.html`.
-  Also his call: h1 wording. The round-2 weave is his to review too: the FAQ
-  go-deeper retarget (why-the-family: fatherhood → family) and two new links, the
-  fatherhood/holiness quiet links, the fatherhood continue-block retarget (old
-  form in its NOTE), and the three hub path cards.
+- `family.html` itself is settled (July 17, 2026): Steve's returned
+  `The_Family_1.docx` is the governing text, verbatim. Still his to review: the
+  two drafted sentences on `path-to-renewal.html`, and the round-2 weave on other
+  pages — the FAQ go-deeper retarget (why-the-family: fatherhood → family) and two
+  new links, the fatherhood/holiness quiet links, the fatherhood continue-block
+  retarget (old form in its NOTE), and the three hub path cards (priests card
+  updated July 17 to his revised "no third thing" line).
 - Decide with Steve when to run the retroactive pass his prose rules imply (the
   contrast-density/negation rewrite — his "might help reduce the redundancy further").
   Recommended: after he reviews the July 10 trim live, as its own reviewed change; it
