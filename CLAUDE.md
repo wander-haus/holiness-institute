@@ -30,7 +30,7 @@ Static website for The Holiness Institute ("Called to the Fullness of Love"), fo
 | `about.html`, `holiness.html`, `fatherhood.html`, `holiness-guide.html`, `path-to-renewal.html`, `retreats.html`, `causality.html` | Main content pages; `holiness` has three interactive diagrams, `causality` has the inversion diagram |
 | `family.html` | "The Family: The Home and the School of Communion" (July 14, 2026): Steve's four family documents woven into one essay — see the July 14 section below. Seventh header link, after Fatherhood (nav label "Family") |
 | `sacramental-data.html` | The data page: indexed per-capita chart (1921–2025), interpretive essay, searchable per-diocese explorer, methodology notes. Chart/explorer render from `js/diagrams/decline-data.js` (generated — see below) via `js/diagrams/decline.js` |
-| `faq.html` | Frequently Asked Questions (July 10, 2026): Steve's Q&As nearly verbatim — 42 questions under seven topic groups since the Leadership section joined (July 14, 2026); essay TOC rail as the "side links" his document sketched; small go-deeper quiet links into the main pages |
+| `faq.html` | Frequently Asked Questions (July 10, 2026): Steve's Q&As nearly verbatim — 43 questions under seven topic groups since the Leadership section joined (July 14, 2026) and the catechesis/liturgy/truth question joined Basic Questions (September 24, 2026); essay TOC rail as the "side links" his document sketched; small go-deeper quiet links into the main pages |
 | `404.html` | Not found |
 
 ## client-documents/ — source material from Steve
@@ -429,6 +429,15 @@ Thomas answer is **Steve's own** (his email gave it as an absolute URL; converte
 the site's relative form) — the first go-deeper link he has specified himself. Page now
 42 Q&As under seven groups. Verified: tag balance, all links/fragments, no straight
 quotes.
+
+**Catechesis question added (September 24, 2026 — DONE).** Steve's new Q&A, "If
+catechesis, liturgy, truth, and Catholic education are so important, why doesn't the
+Institute begin there?" (`#why-not-begin-with-catechesis`), placed in Basic Questions
+directly after `#why-john-paul-ii`, whose NMI 29 argument it extends. Text verbatim
+(curly apostrophes; titles italicized). Vatican links on first reference for
+*Catechesi Tradendae*, *Veritatis Splendor*, *Ecclesia Dei*, *Ex Corde Ecclesiae*
+(all fetched, live); VS 4 and VS 11 quotations checked against vatican.va. No go-deeper
+link. Page now 43 Q&As. Verified: tag balance, no straight quotes.
 
 ## Steve's prose rules (July 10, 2026)
 
